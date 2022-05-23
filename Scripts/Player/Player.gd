@@ -1,10 +1,15 @@
 extends KinematicBody2D
 
-const ACCELERATION = 500
-const MAX_SPEED = 80
-const FRICTION = 500
+export var acceleration = 500
+export var max_speed = 80
+export var friction = 500
 
 var velocity = Vector2.ZERO
+
+var stats = PlayerStats
+
+func _ready():
+	stats.connect("no_health", self, "queue_free")
 
 # Code so far based on HeartBeast tutorial
 # https://youtu.be/TQKXU7iSWUU
@@ -16,8 +21,8 @@ func _physics_process(delta):
 	input_vector = input_vector.normalized()
 	
 	if input_vector != Vector2.ZERO:
-		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
+		velocity = velocity.move_toward(input_vector * max_speed, acceleration * delta)
 	else:
-		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 		
 	velocity = move_and_slide(velocity)
