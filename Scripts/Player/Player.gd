@@ -6,10 +6,10 @@ export var friction = 500
 
 var velocity = Vector2.ZERO
 
-var stats = PlayerStats
+# var stats = PlayerStats
 
-func _ready():
-	stats.connect("no_health", self, "queue_free")
+# func _ready():
+	# stats.connect("no_health", self, "queue_free")
 
 # Code so far based on HeartBeast tutorial
 # https://youtu.be/TQKXU7iSWUU

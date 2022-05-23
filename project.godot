@@ -27,7 +27,7 @@ run/main_scene="res://Scenes/title_screen.tscn"
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 GameState="*res://game_state.gd"
-PlayerStats="*res://Player/PlayerStats.tscn"
+PlayerStats="*res://Scenes/Player/PlayerStats.tscn"
 
 [display]
 
