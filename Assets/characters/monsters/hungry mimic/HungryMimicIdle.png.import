@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/slime.png-4689021a42c7f645ee46a0a03b56efad.stex"
+path="res://.import/HungryMimicIdle.png-864fd5457f1f830375e38b5f8b5b1b25.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/characters/monsters/slime/slime.png"
-dest_files=[ "res://.import/slime.png-4689021a42c7f645ee46a0a03b56efad.stex" ]
+source_file="res://Assets/characters/monsters/hungry mimic/HungryMimicIdle.png"
+dest_files=[ "res://.import/HungryMimicIdle.png-864fd5457f1f830375e38b5f8b5b1b25.stex" ]
 
 [params]
 

@@ -10,6 +10,11 @@
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 26, 26 )
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+process_mode = 0
+smoothing_enabled = true
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="Wooden" type="Sprite" parent="StaticBody2D"]
@@ -19,3 +24,5 @@ texture = ExtResource( 3 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 76, 28 )
 shape = SubResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
