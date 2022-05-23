@@ -1,0 +1,105 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Assets/fonts/novem___.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/fonts/scream_when_youre_ready_to_die.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scenes/Buttons/OptionsButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Buttons/NewGameButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Buttons/ContinueButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/logo/computer.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/FadeIn.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/title_screen.gd" type="Script" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 15
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=4]
+default_font = SubResource( 3 )
+
+[node name="Title Screen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 8 )
+
+[node name="Menu" type="VBoxContainer" parent="."]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 300.0
+margin_bottom = 160.0
+
+[node name="Title" type="VBoxContainer" parent="Menu"]
+margin_right = 280.0
+margin_bottom = 42.0
+
+[node name="AdminQuest" type="RichTextLabel" parent="Menu/Title"]
+margin_right = 280.0
+margin_bottom = 21.0
+theme = SubResource( 2 )
+text = "AdminQuest"
+fit_content_height = true
+
+[node name="SubText" type="RichTextLabel" parent="Menu/Title"]
+margin_top = 25.0
+margin_right = 280.0
+margin_bottom = 42.0
+theme = SubResource( 4 )
+text = "A Sysadmin Learning Adventure"
+fit_content_height = true
+
+[node name="CenterRow" type="HBoxContainer" parent="Menu"]
+margin_top = 46.0
+margin_right = 280.0
+margin_bottom = 147.0
+size_flags_vertical = 3
+
+[node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
+margin_right = 150.0
+margin_bottom = 101.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 0
+alignment = 1
+
+[node name="NewGameButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 20.0
+margin_right = 150.0
+margin_bottom = 40.0
+scene_to_load = "res://World.tscn"
+
+[node name="ContinueButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 40.0
+margin_right = 150.0
+margin_bottom = 60.0
+
+[node name="OptionsButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 60.0
+margin_right = 150.0
+margin_bottom = 80.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Menu/CenterRow"]
+margin_left = 154.0
+margin_right = 280.0
+margin_bottom = 101.0
+
+[node name="TextureRect" type="TextureRect" parent="Menu/CenterRow/CenterContainer"]
+margin_right = 126.0
+margin_bottom = 101.0
+texture = ExtResource( 6 )
+
+[node name="FadeIn" parent="." instance=ExtResource( 7 )]
+visible = false
+
+[connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]
