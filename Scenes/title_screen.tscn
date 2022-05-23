@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/fonts/novem___.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/fonts/scream_when_youre_ready_to_die.ttf" type="DynamicFontData" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Assets/logo/computer.png" type="Texture" id=6]
 [ext_resource path="res://Scenes/FadeIn.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/title_screen.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/Buttons/MainMenuButton.gd" type="Script" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -73,6 +74,7 @@ anchor_bottom = 0.0
 margin_top = 20.0
 margin_right = 150.0
 margin_bottom = 40.0
+script = ExtResource( 9 )
 scene_to_load = "res://World.tscn"
 
 [node name="ContinueButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 5 )]
@@ -81,6 +83,7 @@ anchor_bottom = 0.0
 margin_top = 40.0
 margin_right = 150.0
 margin_bottom = 60.0
+script = ExtResource( 9 )
 
 [node name="OptionsButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 3 )]
 anchor_right = 0.0
@@ -88,6 +91,7 @@ anchor_bottom = 0.0
 margin_top = 60.0
 margin_right = 150.0
 margin_bottom = 80.0
+script = ExtResource( 9 )
 
 [node name="CenterContainer" type="CenterContainer" parent="Menu/CenterRow"]
 margin_left = 154.0
