@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/slime.png-4689021a42c7f645ee46a0a03b56efad.stex"
+path="res://.import/VenomousChimeraIdle.png-bddd0a38723b7eb2cf01c060dab4f1b7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/characters/monsters/slime/slime.png"
-dest_files=[ "res://.import/slime.png-4689021a42c7f645ee46a0a03b56efad.stex" ]
+source_file="res://Assets/characters/monsters/venomous chimera/VenomousChimeraIdle.png"
+dest_files=[ "res://.import/VenomousChimeraIdle.png-bddd0a38723b7eb2cf01c060dab4f1b7.stex" ]
 
 [params]
 

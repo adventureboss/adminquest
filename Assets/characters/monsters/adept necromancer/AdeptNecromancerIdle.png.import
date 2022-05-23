@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/slime.png-4689021a42c7f645ee46a0a03b56efad.stex"
+path="res://.import/AdeptNecromancerIdle.png-e2dbc20901a74d42558d539c7f859568.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/characters/monsters/slime/slime.png"
-dest_files=[ "res://.import/slime.png-4689021a42c7f645ee46a0a03b56efad.stex" ]
+source_file="res://Assets/characters/monsters/adept necromancer/AdeptNecromancerIdle.png"
+dest_files=[ "res://.import/AdeptNecromancerIdle.png-e2dbc20901a74d42558d539c7f859568.stex" ]
 
 [params]
 
