@@ -26,6 +26,7 @@ run/main_scene="res://World.tscn"
 [autoload]
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+GameState="*res://game_state.gd"
 
 [display]
 
