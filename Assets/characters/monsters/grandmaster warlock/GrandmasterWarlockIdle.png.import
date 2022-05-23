@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/slime.png-4689021a42c7f645ee46a0a03b56efad.stex"
+path="res://.import/GrandmasterWarlockIdle.png-2bae70de67e9e85d4dd2219218b0af55.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/characters/monsters/slime/slime.png"
-dest_files=[ "res://.import/slime.png-4689021a42c7f645ee46a0a03b56efad.stex" ]
+source_file="res://Assets/characters/monsters/grandmaster warlock/GrandmasterWarlockIdle.png"
+dest_files=[ "res://.import/GrandmasterWarlockIdle.png-2bae70de67e9e85d4dd2219218b0af55.stex" ]
 
 [params]
 
