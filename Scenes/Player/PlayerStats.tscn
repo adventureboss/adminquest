@@ -4,3 +4,5 @@
 
 [node name="PlayerStats" instance=ExtResource( 1 )]
 script = null
+
+[node name="Stats" parent="." index="0" instance=ExtResource( 1 )]
