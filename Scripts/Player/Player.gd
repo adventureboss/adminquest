@@ -6,6 +6,9 @@ const FRICTION = 500
 
 var velocity = Vector2.ZERO
 
+var inventory_resource = load("res://Scripts/Player/Inventory.gd")
+var inventory = inventory_resource.new()
+
 # Code so far based on HeartBeast tutorial
 # https://youtu.be/TQKXU7iSWUU
 func _physics_process(delta):
