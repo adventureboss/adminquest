@@ -11,6 +11,8 @@ enum {
 
 var state = MOVE
 var velocity = Vector2.ZERO
+var inventory_resource = load("res://Scripts/Player/Inventory.gd")
+var inventory = inventory_resource.new()
 
 onready var game_state = get_node("/root/GameState")
 
