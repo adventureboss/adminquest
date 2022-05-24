@@ -39,8 +39,6 @@ run/main_scene="res://Scenes/title_screen.tscn"
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 GameState="*res://game_state.gd"
-ItemDatabase="*res://Scripts/Managers/ItemDatabase.gd"
-GameManager="*res://Scripts/Managers/GameManager.gd"
 
 [display]
 
