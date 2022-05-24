@@ -20,7 +20,7 @@ func add_item(item_name, quantity):
 		print("Can't add a negative number of items")
 		return
 		
-	var item = ItemDatabase.get_item(item_name)
+	var item = self.get_item(item_name)
 	if not item:
 		print("Could not find item")
 		return
