@@ -10,6 +10,7 @@ var stats = PlayerStats
 
 #func _ready():
 #	stats.connect("no_health", self, "queue_free")
+onready var animated_sprite = $AnimatedSprite
 
 # Code so far based on HeartBeast tutorial
 # https://youtu.be/TQKXU7iSWUU
@@ -24,5 +25,15 @@ func _physics_process(delta):
 		velocity = velocity.move_toward(input_vector * max_speed, acceleration * delta)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
+		if input_vector.x > 0:
+			animated_sprite.set_flip_h(false)
+			animated_sprite.set_animation("run_right_down")
+		if input_vector.x < 0:
+			animated_sprite.set_flip_h(true)
+			animated_sprite.set_animation("run_right_down")
+		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
+	else:
+		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+		animated_sprite.set_animation("idle_right_down")
 		
 	velocity = move_and_slide(velocity)
