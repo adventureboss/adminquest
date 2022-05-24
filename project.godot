@@ -21,12 +21,14 @@ _global_script_class_icons={
 [application]
 
 config/name="AdminQuest"
-run/main_scene="res://World.tscn"
+run/main_scene="res://Scenes/title_screen.tscn"
 
 [autoload]
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 GameState="*res://game_state.gd"
+ItemDatabase="*res://Scripts/Managers/ItemDatabase.gd"
+GameManager="*res://Scripts/Managers/GameManager.gd"
 
 [display]
 
