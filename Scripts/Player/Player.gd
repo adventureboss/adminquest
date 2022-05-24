@@ -1,13 +1,9 @@
-extends KinematicBody2D
+extends "Entity.gd"
 
 export var acceleration = 500
 export var max_speed = 80
 export var friction = 500
 
-enum {
-	MOVE,
-	ATTACK
-}
 
 var state = MOVE
 var velocity = Vector2.ZERO
@@ -28,7 +24,7 @@ func _ready():
 func _physics_process(delta):
 	match state:
 		MOVE:
-			move_state(delta)
+			enter_move(delta)
 		ATTACK:
 			attack_state(delta)
 
@@ -40,22 +36,10 @@ func get_input_vector():
 	return input_vector.normalized()
 
 
-func move_state(delta):
+func enter_move(delta):
 	var input_vector = get_input_vector()
 	
-	if input_vector != Vector2.ZERO:
-		animation_tree.set("parameters/idle/blend_position", input_vector)
-		animation_tree.set("parameters/run/blend_position", input_vector)
-		animation_state.travel("run")
-		velocity = velocity.move_toward(input_vector * max_speed, acceleration * delta)
-	else:
-		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
-		animation_state.travel("idle")
-		
-	velocity = move_and_slide(velocity)
-	
-	#if Input.is_action_just_pressed("attack"):
-	#	state = ATTACK
+	.move_state(delta, input_vector)
 
 func attack_state(delta):
 	pass
