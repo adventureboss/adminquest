@@ -1,6 +1,7 @@
 extends "Entity.gd"
 
 var state = MOVE
+
 var inventory_resource = load("res://Scripts/Player/Inventory.gd")
 var inventory = inventory_resource.new()
 
@@ -8,12 +9,13 @@ func _ready():
 	animation_player = $AnimationPlayer
 	animation_tree = $AnimationTree
 	animation_state = animation_tree.get("parameters/playback")
-	game_state.connect("no_health", self, "queue_free")
 
 
 # Code so far based on HeartBeast tutorial
 # https://youtu.be/TQKXU7iSWUU
 func _physics_process(delta):
+	if Input.is_action_just_pressed("attack"):
+		state = ATTACK
 	match state:
 		MOVE:
 			enter_move(delta)

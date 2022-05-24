@@ -1,6 +1,5 @@
 extends "Entity.gd"
 
-var state = MOVE
 var inventory_resource = load("res://Scripts/Player/Inventory.gd")
 var inventory = inventory_resource.new()
 
@@ -12,6 +11,7 @@ enum movement {
 	STILL
 }
 
+var state = MOVE
 export var movement_mag = .5
 export var movement_dur = 1
 
@@ -22,7 +22,6 @@ func _ready():
 	animation_player = $AnimationPlayer
 	animation_tree = $AnimationTree
 	animation_state = animation_tree.get("parameters/playback")
-	game_state.connect("no_health", self, "queue_free")
 
 
 # Code so far based on HeartBeast tutorial

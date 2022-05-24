@@ -23,9 +23,11 @@ func _physics_process(delta):
 	pass
 
 func move_state(delta, movement_vector):
+	
 	if movement_vector != Vector2.ZERO:
 		animation_tree.set("parameters/idle/blend_position", movement_vector)
 		animation_tree.set("parameters/run/blend_position", movement_vector)
+		animation_tree.set("parameters/attack/blend_position", movement_vector)
 		animation_state.travel("run")
 		velocity = velocity.move_toward(movement_vector * max_speed, acceleration * delta)
 	else:
