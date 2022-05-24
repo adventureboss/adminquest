@@ -36,4 +36,7 @@ func enter_move(delta):
 	.move_state(delta, input_vector)
 
 func attack_state(delta):
-	pass
+	animation_state.travel("attack")
+
+func attack_animation_finished():
+	state = MOVE
