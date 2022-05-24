@@ -1,19 +1,18 @@
 extends Control
 
-var health = 4 setget set_health
-var max_health = 4 setget set_max_health
+onready var game_state = get_node("/root/GameState")
 
-onready var label = $Label
+onready var fullHeartsUI =  $FullHearts
+onready var emptyHeartsUI = $EmptyHearts
 
-func set_health(value):
-	health = clamp(value, 0, max_health)
-	if label != null:
-		label.text = "HP = " + str(health)
-	
-func set_max_health(value):
-	max_health = max(value, 1)
+func display_health(value):
+	if fullHeartsUI != null:
+		fullHeartsUI.rect_size.x = game_state.player_stats.health * 12
+		
+func display_max_health(value):
+	if emptyHeartsUI != null:
+		emptyHeartsUI.rect_size.x = game_state.player_stats.max_health * 12
 	
 func _ready():
-	self.max_health = PlayerStats.max_health
-	self.health = PlayerStats.health
-	PlayerStats.connect("health_changed", self, "set_health")
+	game_state.connect("max_health_changed", self, "display_max_health")
+	game_state.connect("health_changed", self, "display_health")

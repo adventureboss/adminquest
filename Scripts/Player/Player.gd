@@ -6,11 +6,12 @@ export var friction = 500
 
 var velocity = Vector2.ZERO
 
-var stats = PlayerStats
+onready var game_state = get_node("/root/GameState")
 
-#func _ready():
-#	stats.connect("no_health", self, "queue_free")
 onready var animated_sprite = $AnimatedSprite
+
+func _ready():
+	game_state.connect("no_health", self, "queue_free")
 
 # Code so far based on HeartBeast tutorial
 # https://youtu.be/TQKXU7iSWUU
