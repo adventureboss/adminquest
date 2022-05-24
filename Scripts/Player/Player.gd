@@ -15,11 +15,13 @@ var inventory_resource = load("res://Scripts/Player/Inventory.gd")
 var inventory = inventory_resource.new()
 
 onready var game_state = get_node("/root/GameState")
-
-onready var animated_sprite = $AnimatedSprite
+onready var animation_player = $AnimationPlayer
+onready var animation_tree = $AnimationTree
+onready var animation_state = animation_tree.get("parameters/playback")
 
 func _ready():
 	game_state.connect("no_health", self, "queue_free")
+
 
 # Code so far based on HeartBeast tutorial
 # https://youtu.be/TQKXU7iSWUU
@@ -42,33 +44,18 @@ func move_state(delta):
 	var input_vector = get_input_vector()
 	
 	if input_vector != Vector2.ZERO:
-		if input_vector.x > 0:
-			animated_sprite.set_flip_h(false)
-			animated_sprite.set_animation("run_right_down")
-		if input_vector.x < 0:
-			animated_sprite.set_flip_h(true)
-			animated_sprite.set_animation("run_right_down")
+		animation_tree.set("parameters/idle/blend_position", input_vector)
+		animation_tree.set("parameters/run/blend_position", input_vector)
+		animation_state.travel("run")
 		velocity = velocity.move_toward(input_vector * max_speed, acceleration * delta)
-		
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
-		animated_sprite.set_animation("idle_right_down")
+		animation_state.travel("idle")
 		
 	velocity = move_and_slide(velocity)
 	
-	if Input.is_action_just_pressed("attack"):
-		state = ATTACK
+	#if Input.is_action_just_pressed("attack"):
+	#	state = ATTACK
 
 func attack_state(delta):
-	var input_vector = get_input_vector()
-	
-	if input_vector != Vector2.ZERO:
-		if input_vector.x > 0:
-			animated_sprite.set_flip_h(false)
-			animated_sprite.set_animation("attack")
-		if input_vector.x < 0:
-			animated_sprite.set_flip_h(true)
-			animated_sprite.set_animation("attack")
-	else:
-		animated_sprite.set_animation("attack")
-	
+	pass
