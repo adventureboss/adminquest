@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[node name="Magic" type="PanelContainer"]
+margin_right = 320.0
+margin_bottom = 162.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 1 )
+
+[node name="MagicContainer" type="VBoxContainer" parent="."]
+margin_right = 320.0
+margin_bottom = 162.0
+
+[node name="M" type="Button" parent="MagicContainer"]
+margin_right = 320.0
+margin_bottom = 144.0
+size_flags_vertical = 3
+flat = true
+
+[node name="F" type="Button" parent="MagicContainer"]
+visible = false
+margin_right = 320.0
+margin_bottom = 20.0
+flat = true
+
+[node name="Label" type="Label" parent="MagicContainer"]
+margin_top = 148.0
+margin_right = 320.0
+margin_bottom = 162.0
+text = "Label"
+align = 1
