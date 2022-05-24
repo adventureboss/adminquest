@@ -4,8 +4,10 @@
 [ext_resource path="res://Scripts/Player/Player.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 7.0
-height = 0.0
+radius = 5.0
+height = 2.0
+
+[sub_resource type="AnimationNodeAnimation" id=2]
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
@@ -130,12 +132,10 @@ animations = [ {
 position = Vector2( 0, -8 )
 z_index = 1
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 8 )
+position = Vector2( 0, 11 )
+rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
