@@ -19,6 +19,9 @@ onready var animation_state = animation_tree.get("parameters/playback")
 func _ready():
 	game_state.connect("no_health", self, "queue_free")
 
+func _physics_process(delta):
+	pass
+
 func move_state(delta, movement_vector):
 	if movement_vector != Vector2.ZERO:
 		animation_tree.set("parameters/idle/blend_position", movement_vector)

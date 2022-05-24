@@ -4,6 +4,20 @@ var state = MOVE
 var inventory_resource = load("res://Scripts/Player/Inventory.gd")
 var inventory = inventory_resource.new()
 
+enum movement {
+	LEFT,
+	RIGHT,
+	UP,
+	DOWN,
+	STILL
+}
+
+export var movement_mag = .5
+export var movement_dur = 1
+
+var current_dir = movement.STILL
+onready var current_dur = 0.0
+
 func _ready():
 	animation_player = $AnimationPlayer
 	animation_tree = $AnimationTree
@@ -31,9 +45,31 @@ func get_input_vector():
 
 
 func enter_move(delta):
-	var input_vector = get_input_vector()
+	# make an input vector
+	var movement_vector = Vector2.ZERO
 	
-	.move_state(delta, input_vector)
+	if current_dur <= 0.0:
+		# returns an int 0 to 6
+		var rand = randi()%8
+		
+		current_dir = rand
+		current_dur = movement_dur
+		
+	match current_dir:
+		movement.LEFT:
+			movement_vector = Vector2(movement_mag * -1, 0.0)
+		movement.RIGHT:
+			movement_vector = Vector2(movement_mag * -1, 0.0)
+		movement.UP:
+			movement_vector = Vector2(0.0, movement_mag)
+		movement.DOWN:
+			movement_vector = Vector2(0.0, -1 * movement_mag)
+		_:
+			pass
+			
+	current_dur -= delta
+		
+	.move_state(delta, movement_vector)
 
 func attack_state(delta):
 	pass
