@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/slime.png-4689021a42c7f645ee46a0a03b56efad.stex"
+path="res://.import/CorruptedTreantIdle.png-727d67d07123e9c72a804aabf42a3c48.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/characters/monsters/slime/slime.png"
-dest_files=[ "res://.import/slime.png-4689021a42c7f645ee46a0a03b56efad.stex" ]
+source_file="res://Assets/characters/monsters/corrupted treant/CorruptedTreantIdle.png"
+dest_files=[ "res://.import/CorruptedTreantIdle.png-727d67d07123e9c72a804aabf42a3c48.stex" ]
 
 [params]
 

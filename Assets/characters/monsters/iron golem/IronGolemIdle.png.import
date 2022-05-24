@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/slime.png-4689021a42c7f645ee46a0a03b56efad.stex"
+path="res://.import/IronGolemIdle.png-6738e74dad7ab4306770195dc35f9c10.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/characters/monsters/slime/slime.png"
-dest_files=[ "res://.import/slime.png-4689021a42c7f645ee46a0a03b56efad.stex" ]
+source_file="res://Assets/characters/monsters/iron golem/IronGolemIdle.png"
+dest_files=[ "res://.import/IronGolemIdle.png-6738e74dad7ab4306770195dc35f9c10.stex" ]
 
 [params]
 

@@ -13,9 +13,21 @@ _global_script_classes=[ {
 "class": "DialogueResource",
 "language": "GDScript",
 "path": "res://addons/dialogue_manager/dialogue_resource.gd"
+}, {
+"base": "Resource",
+"class": "Inventory",
+"language": "GDScript",
+"path": "res://Scripts/Player/Inventory.gd"
+}, {
+"base": "Resource",
+"class": "ItemResource",
+"language": "GDScript",
+"path": "res://Scripts/Item/Item.gd"
 } ]
 _global_script_class_icons={
-"DialogueResource": ""
+"DialogueResource": "",
+"Inventory": "",
+"ItemResource": ""
 }
 
 [application]
@@ -27,6 +39,8 @@ run/main_scene="res://Scenes/title_screen.tscn"
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 GameState="*res://game_state.gd"
+ItemDatabase="*res://Scripts/Managers/ItemDatabase.gd"
+GameManager="*res://Scripts/Managers/GameManager.gd"
 
 [display]
 
