@@ -1,16 +1,23 @@
 extends Node
 
+export var player_stats = {
+	max_health = 3,
+	health = 3
+}
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+signal no_health
+signal health_changed(value)
+signal max_health_changed(value)
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	player_stats.health = player_stats.max_health
 
+func set_max_health(value):
+	player_stats.max_health = value
+	emit_signal("max_health_changed")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func set_health(value):
+	player_stats.health = value
+	emit_signal("health_changed", player_stats.health)
+	if player_stats.health <= 0:
+		emit_signal("no_health")
