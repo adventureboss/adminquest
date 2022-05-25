@@ -40,7 +40,7 @@ var knockback = Vector2.ZERO
 func _on_Hurtbox_area_entered(area: Area2D) -> void:
 	stats.health -= 1
 	
-	knockback = Vector2.RIGHT * 120
+	knockback = (area.global_position - global_position).normalized()
 
 func canSeePlayer():
 	return playerDetection and playerDetection.canSeePlayer()
@@ -49,7 +49,7 @@ func moveToState(newState):
 	if state != newState:
 		state = newState
 		timeSpentState = 0
-		
+
 func decideState(delta):
 	timeSpentState += delta
 	

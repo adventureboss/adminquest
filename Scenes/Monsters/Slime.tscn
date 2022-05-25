@@ -30,11 +30,11 @@ animations = [ {
 "speed": 4.0
 } ]
 
-[sub_resource type="CircleShape2D" id=6]
-radius = 5.0
-
 [sub_resource type="CircleShape2D" id=7]
 radius = 6.0
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 10.0499
 
 [node name="Slime" type="KinematicBody2D"]
 script = ExtResource( 3 )
@@ -46,26 +46,32 @@ animation = "Bounce"
 frame = 3
 playing = true
 
-[node name="Hurtbox" parent="AnimatedSprite" instance=ExtResource( 1 )]
-
-[node name="CollisionShape2D" parent="AnimatedSprite/Hurtbox" index="0"]
-shape = SubResource( 6 )
-
 [node name="Moving Collision" type="KinematicBody2D" parent="AnimatedSprite"]
 
 [node name="Collision" type="CollisionShape2D" parent="AnimatedSprite/Moving Collision"]
+visible = false
 shape = SubResource( 7 )
 
+[node name="Hurtbox" parent="." instance=ExtResource( 1 )]
+collision_layer = 17
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2( 0, 3 )
+shape = SubResource( 6 )
+
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, 2 )
 collision_mask = 8912896
 
 [node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
+visible = false
 modulate = Color( 1, 1, 1, 0.486275 )
 
 [node name="Stats" parent="." instance=ExtResource( 5 )]
 max_health = 2
 
-[connection signal="area_entered" from="AnimatedSprite/Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+[connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
 
-[editable path="AnimatedSprite/Hurtbox"]
+[editable path="Hurtbox"]
 [editable path="PlayerDetectionZone"]
