@@ -5,8 +5,8 @@
 [ext_resource path="res://HitAndHurtBoxes/Hitbox.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 5.0
-height = 2.0
+radius = 3.0
+height = 0.0
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -307,30 +307,6 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=25]
-animation = "attack_left"
-
-[sub_resource type="AnimationNodeAnimation" id=26]
-animation = "attack_left"
-
-[sub_resource type="AnimationNodeAnimation" id=27]
-animation = "attack_right"
-
-[sub_resource type="AnimationNodeAnimation" id=28]
-animation = "attack_right"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id=29]
-blend_point_0/node = SubResource( 25 )
-blend_point_0/pos = Vector2( -1, -1.1 )
-blend_point_1/node = SubResource( 26 )
-blend_point_1/pos = Vector2( -1, 1 )
-blend_point_2/node = SubResource( 27 )
-blend_point_2/pos = Vector2( 1, 1 )
-blend_point_3/node = SubResource( 28 )
-blend_point_3/pos = Vector2( 1, -1.1 )
-min_space = Vector2( -1, -1.2 )
-max_space = Vector2( 1, 1.2 )
-
 [sub_resource type="AnimationNodeAnimation" id=8]
 animation = "idle_left"
 
@@ -355,6 +331,30 @@ blend_point_3/pos = Vector2( -1, -0.9 )
 min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
 blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=25]
+animation = "attack_left"
+
+[sub_resource type="AnimationNodeAnimation" id=26]
+animation = "attack_left"
+
+[sub_resource type="AnimationNodeAnimation" id=27]
+animation = "attack_right"
+
+[sub_resource type="AnimationNodeAnimation" id=28]
+animation = "attack_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=29]
+blend_point_0/node = SubResource( 25 )
+blend_point_0/pos = Vector2( -1, -1.1 )
+blend_point_1/node = SubResource( 26 )
+blend_point_1/pos = Vector2( -1, 1 )
+blend_point_2/node = SubResource( 27 )
+blend_point_2/pos = Vector2( 1, 1 )
+blend_point_3/node = SubResource( 28 )
+blend_point_3/pos = Vector2( 1, -1.1 )
+min_space = Vector2( -1, -1.2 )
+max_space = Vector2( 1, 1.2 )
 
 [sub_resource type="AnimationNodeAnimation" id=16]
 animation = "run_left"
@@ -387,15 +387,17 @@ max_space = Vector2( 1, 1.1 )
 [sub_resource type="AnimationNodeStateMachineTransition" id=30]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=31]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachine" id=13]
-states/attack/node = SubResource( 29 )
-states/attack/position = Vector2( 381.452, 255 )
 states/idle/node = SubResource( 12 )
 states/idle/position = Vector2( 381.327, 142.812 )
+states/light_attack/node = SubResource( 29 )
+states/light_attack/position = Vector2( 283.952, 281.5 )
 states/run/node = SubResource( 20 )
 states/run/position = Vector2( 617.452, 142.75 )
-transitions = [ "idle", "run", SubResource( 21 ), "run", "idle", SubResource( 22 ), "idle", "attack", SubResource( 30 ), "attack", "idle", SubResource( 31 ) ]
+transitions = [ "idle", "run", SubResource( 21 ), "run", "idle", SubResource( 22 ), "idle", "light_attack", SubResource( 30 ), "light_attack", "idle", SubResource( 31 ) ]
 start_node = "idle"
 graph_offset = Vector2( -178.548, 0 )
 
@@ -420,7 +422,7 @@ hframes = 6
 vframes = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 13 )
+position = Vector2( 3, 14 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
@@ -438,8 +440,8 @@ tree_root = SubResource( 13 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 14 )
-parameters/attack/blend_position = Vector2( 0.0371747, 0.0675324 )
 parameters/idle/blend_position = Vector2( 0.95632, 0.963492 )
+parameters/light_attack/blend_position = Vector2( 0, 0 )
 parameters/run/blend_position = Vector2( 0.86803, 0.0142857 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 3 )]
