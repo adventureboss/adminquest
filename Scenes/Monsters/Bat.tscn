@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://Scenes/Monsters/SmallShadow.png" type="Texture" id=1]
-[ext_resource path="res://Scenes/Monsters/Bat.png" type="Texture" id=2]
+[ext_resource path="res://Assets/SmallShadow.png" type="Texture" id=1]
+[ext_resource path="res://Assets/characters/Bat.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Hitbox and Hurtbox/Hurtbox.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Monsters/Bat.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Enemy/Bat.gd" type="Script" id=4]
 [ext_resource path="res://Stats.tscn" type="PackedScene" id=5]
 
 [sub_resource type="AtlasTexture" id=1]
@@ -47,7 +47,7 @@ script = ExtResource( 4 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
 animation = "Fly"
-frame = 4
+frame = 1
 playing = true
 offset = Vector2( 0, -12 )
 

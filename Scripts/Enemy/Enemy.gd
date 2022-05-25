@@ -1,4 +1,4 @@
-extends "Player/Entity.gd"
+extends "../Player/Entity.gd"
 
 enum State {
 	IDLE,
