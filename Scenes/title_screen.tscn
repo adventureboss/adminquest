@@ -7,7 +7,7 @@
 [ext_resource path="res://Scenes/Buttons/ContinueButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/logo/computer.png" type="Texture" id=6]
 [ext_resource path="res://Scenes/FadeIn.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/title_screen.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/title_screen.gd" type="Script" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20

@@ -1,4 +1,4 @@
-extends "../Player/Entity.gd"
+extends "Entity.gd"
 
 enum State {
 	IDLE,
@@ -30,10 +30,17 @@ export(float) var wanderMovement = 0.5
 export(float) var delayBeforeNextWander = 1.0
 
 var state = State.IDLE
+onready var stats = $Stats
 var timeSpentState = 0
 
+onready var EnemyDeathEffect = preload("res://newEffects/BatEffect.tscn")
+
+var knockback = Vector2.ZERO
+
 func _on_Hurtbox_area_entered(area: Area2D) -> void:
-	queue_free()
+	stats.health -= 1
+	
+	knockback = Vector2.RIGHT * 120
 
 func canSeePlayer():
 	return playerDetection and playerDetection.canSeePlayer()
@@ -102,6 +109,9 @@ func processMovement(delta):
 	velocity = move_and_slide(velocity)
 	
 func _physics_process(delta):
+	knockback = knockback.move_toward(Vector2.ZERO, 200 * delta)
+	knockback = move_and_slide(knockback)
+	
 	._physics_process(delta)
 	decideState(delta)
 	
@@ -114,3 +124,9 @@ func _physics_process(delta):
 			processWanderingState(delta)
 	
 	processMovement(delta)
+
+func _on_Stats_no_health():
+	queue_free()
+	var enemyDeathEffect = EnemyDeathEffect.instance()
+	get_parent().add_child(enemyDeathEffect) 
+	enemyDeathEffect.global_position = global_position

@@ -2,7 +2,7 @@ extends "Entity.gd"
 
 var state = MOVE
 
-var inventory_resource = load("res://Scripts/Player/Inventory.gd")
+var inventory_resource = load("res://Scripts/Entity/Inventory.gd")
 var inventory = inventory_resource.new()
 
 func _ready():

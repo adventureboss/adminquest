@@ -22,7 +22,6 @@ func _ready():
 	if animation_tree:
 		 animation_state = animation_tree.get("parameters/playback")
 	
-	
 func _physics_process(delta):
 	pass
 
