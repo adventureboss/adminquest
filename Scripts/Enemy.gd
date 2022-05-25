@@ -70,8 +70,11 @@ func processIdleState(delta):
 	
 # Assume playerDetection is available on the chase state
 func processChaseState(delta):
-	var direction = (playerDetection.player.global_position - global_position).normalized()
-	.move_state(delta, direction) 
+	var direction: Vector2 = playerDetection.player.global_position - global_position
+	if direction.length_squared() > 1:
+		.move_state(delta, direction.normalized())
+	else:
+		velocity = Vector2.ZERO
 
 func shouldMoveToWandering(delta):
 	if shouldWander and timeSpentState > delayBeforeNextWander:
@@ -80,13 +83,13 @@ func shouldMoveToWandering(delta):
 	
 		match current_dir:
 			Movement.LEFT:
-				movement_vector = Vector2(-1, 0.0)
+				movement_vector = Vector2.LEFT
 			Movement.RIGHT:
-				movement_vector = Vector2(1, 0.0)
+				movement_vector = Vector2.RIGHT
 			Movement.UP:
-				movement_vector = Vector2(0.0, 1)
+				movement_vector = Vector2.UP
 			Movement.DOWN:
-				movement_vector = Vector2(0.0, -1)
+				movement_vector = Vector2.DOWN
 			_:
 				pass
 		
