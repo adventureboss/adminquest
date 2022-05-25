@@ -1,0 +1,296 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialogue_manager/dialogue_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+syntax_version = 2
+raw_text = "~ initialize
+do set_dialog_state(\"doug\", \"met\", 0)
+do set_dialog_state(\"doug\", \"initialized\", true)
+
+~ first_meet
+Doug: Oh man, am I glad to see you!
+Doug: This whole world is an absolute mess. There are bugs and issues everywhere!
+Doug: If I were you, I would go see the Graybeard in the village.
+....
+Doug: You could at least not or something. System admins are so weird.
+
+~ subsequent_meet
+if get_dialog_state(\"graybeard\", \"met\") != 1
+	Doug: Well, get going! 
+else
+	Doug: Glad you talked to Graybeard. He's been so edgy lately.
+	
+~ main
+if get_dialog_state(\"doug\", \"initialized\") == false
+	=> initialize
+elif get_dialog_state(\"doug\", \"met\") == 0
+	=> first_meet
+else
+	=> subsequent_meet
+"
+errors = [  ]
+titles = {
+"first_meet": "5",
+"initialize": "1",
+"main": "18",
+"subsequent_meet": "12"
+}
+lines = {
+"0": {
+"next_id": "1",
+"text": "initialize",
+"type": "title"
+},
+"1": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "doug"
+} ], [ {
+"type": "string",
+"value": "met"
+} ], [ {
+"type": "number",
+"value": 0
+} ] ],
+"function": "set_dialog_state"
+},
+"next_id": "2",
+"type": "mutation"
+},
+"11": {
+"next_id": "12",
+"text": "subsequent_meet",
+"type": "title"
+},
+"12": {
+"condition": {
+"expression": [ {
+"function": "get_dialog_state",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "graybeard"
+} ], [ {
+"type": "string",
+"value": "met"
+} ] ]
+}, {
+"type": "comparison",
+"value": "!="
+}, {
+"type": "number",
+"value": 1
+} ]
+},
+"next_conditional_id": "14",
+"next_id": "13",
+"next_id_after": "end",
+"type": "condition"
+},
+"13": {
+"character": "Doug",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "end",
+"parent_id": "12",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Well, get going!",
+"time": null,
+"translation_key": "Well, get going!",
+"type": "dialogue"
+},
+"14": {
+"next_conditional_id": "end",
+"next_id": "15",
+"next_id_after": "end",
+"type": "condition"
+},
+"15": {
+"character": "Doug",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "end",
+"parent_id": "14",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Glad you talked to Graybeard. He's been so edgy lately.",
+"time": null,
+"translation_key": "Glad you talked to Graybeard. He's been so edgy lately.",
+"type": "dialogue"
+},
+"17": {
+"next_id": "18",
+"text": "main",
+"type": "title"
+},
+"18": {
+"condition": {
+"expression": [ {
+"function": "get_dialog_state",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "doug"
+} ], [ {
+"type": "string",
+"value": "initialized"
+} ] ]
+}, {
+"type": "comparison",
+"value": "=="
+}, {
+"type": "bool",
+"value": false
+} ]
+},
+"next_conditional_id": "20",
+"next_id": "19",
+"next_id_after": "end",
+"type": "condition"
+},
+"19": {
+"next_id": "1",
+"parent_id": "18",
+"type": "goto"
+},
+"2": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "doug"
+} ], [ {
+"type": "string",
+"value": "initialized"
+} ], [ {
+"type": "bool",
+"value": true
+} ] ],
+"function": "set_dialog_state"
+},
+"next_id": "end",
+"type": "mutation"
+},
+"20": {
+"condition": {
+"expression": [ {
+"function": "get_dialog_state",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "doug"
+} ], [ {
+"type": "string",
+"value": "met"
+} ] ]
+}, {
+"type": "comparison",
+"value": "=="
+}, {
+"type": "number",
+"value": 0
+} ]
+},
+"next_conditional_id": "22",
+"next_id": "21",
+"next_id_after": "end",
+"type": "condition"
+},
+"21": {
+"next_id": "5",
+"parent_id": "20",
+"type": "goto"
+},
+"22": {
+"next_conditional_id": "end",
+"next_id": "23",
+"next_id_after": "end",
+"type": "condition"
+},
+"23": {
+"next_id": "12",
+"parent_id": "22",
+"type": "goto"
+},
+"4": {
+"next_id": "5",
+"text": "first_meet",
+"type": "title"
+},
+"5": {
+"character": "Doug",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "6",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Oh man, am I glad to see you!",
+"time": null,
+"translation_key": "Oh man, am I glad to see you!",
+"type": "dialogue"
+},
+"6": {
+"character": "Doug",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "7",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "This whole world is an absolute mess. There are bugs and issues everywhere!",
+"time": null,
+"translation_key": "This whole world is an absolute mess. There are bugs and issues everywhere!",
+"type": "dialogue"
+},
+"7": {
+"character": "Doug",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "8",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "If I were you, I would go see the Graybeard in the village.",
+"time": null,
+"translation_key": "If I were you, I would go see the Graybeard in the village.",
+"type": "dialogue"
+},
+"8": {
+"character": "",
+"inline_mutations": [  ],
+"next_id": "9",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "....",
+"time": null,
+"translation_key": "....",
+"type": "dialogue"
+},
+"9": {
+"character": "Doug",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "end",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "You could at least not or something. System admins are so weird.",
+"time": null,
+"translation_key": "You could at least not or something. System admins are so weird.",
+"type": "dialogue"
+}
+}
