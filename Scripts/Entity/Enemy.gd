@@ -29,18 +29,23 @@ export(float) var timeWandering = 1
 export(float) var wanderMovement = 0.5
 export(float) var delayBeforeNextWander = 1.0
 
+var knockback_vector = Vector2.ZERO
+export var knockback_force = 100
+export var knockback_dur = .15
+var current_knockback_dur = 0
+
 var state = State.IDLE
 onready var stats = $Stats
 var timeSpentState = 0
 
 onready var EnemyDeathEffect = preload("res://newEffects/BatEffect.tscn")
 
-var knockback = Vector2.ZERO
-
 func _on_Hurtbox_area_entered(area: Area2D) -> void:
-	stats.health -= 1
+	stats.set_health(stats.health - 1)
 	
-	knockback = (area.global_position - global_position).normalized()
+	knockback_vector = (global_position - area.global_position).normalized() * knockback_force
+	
+	current_knockback_dur = knockback_dur
 
 func canSeePlayer():
 	return playerDetection and playerDetection.canSeePlayer()
@@ -109,8 +114,11 @@ func processMovement(delta):
 	velocity = move_and_slide(velocity)
 	
 func _physics_process(delta):
-	knockback = knockback.move_toward(Vector2.ZERO, 200 * delta)
-	knockback = move_and_slide(knockback)
+	if current_knockback_dur >= 0.0:
+		var collision = move_and_slide(knockback_vector)
+		current_knockback_dur -= delta
+	else:
+		knockback_vector = Vector2.ZERO
 	
 	._physics_process(delta)
 	decideState(delta)

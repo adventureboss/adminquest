@@ -43,6 +43,7 @@ max_speed = 6
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 5 )
 animation = "Bounce"
+frame = 2
 playing = true
 
 [node name="Moving Collision" type="KinematicBody2D" parent="AnimatedSprite"]
@@ -51,7 +52,7 @@ playing = true
 shape = SubResource( 7 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 1 )]
-collision_layer = 17
+collision_layer = 2147483664
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( 0, 3 )
