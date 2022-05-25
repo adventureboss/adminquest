@@ -38,12 +38,13 @@ radius = 6.0
 [node name="Slime" type="KinematicBody2D"]
 script = ExtResource( 3 )
 max_speed = 10
+shouldFollow = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 17, 16 )
 frames = SubResource( 5 )
 animation = "Bounce"
-frame = 2
+frame = 3
 playing = true
 
 [node name="Hurtbox" parent="AnimatedSprite" instance=ExtResource( 1 )]

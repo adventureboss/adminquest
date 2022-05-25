@@ -12,8 +12,8 @@ enum {
 }
 
 onready var game_state = get_node("/root/GameState")
-onready var animation_player = $AnimationPlayer
-onready var animation_tree = $AnimationTree
+onready var animation_player = get_node_or_null("AnimationPlayer")
+onready var animation_tree = get_node_or_null("AnimationTree")
 var animation_state = null
 
 func _ready():
