@@ -1,26 +1,33 @@
 extends KinematicBody2D
 
-#var knockback = Vector2.ZERO
+const EnemyDeathEffect = preload("res://newEffects/BatEffect.tscn")
 
-#func _physics_process(delta):
-	#knockback = knockback.move_toward(Vector2.ZERO, 200 * delta)
-	#knockback = move_and_slide(knockback)
-	
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var knockback = Vector2.ZERO
 
 
-# Called when the node enters the scene tree for the first time.
+onready var stats = $Stats
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+#func _ready():
+	#print(stats.max_health)
+	#print(stats.health)
+
+func _physics_process(delta):
+	knockback = knockback.move_toward(Vector2.ZERO, 200 * delta)
+	knockback = move_and_slide(knockback)
 
 
 func _on_Hurtbox_area_entered(area):
-	#knockback = area.knockback_vector * 120
-	queue_free()
+	stats.health -= 1
+	
+	knockback = Vector2.RIGHT * 120
+	#queue_free()
 	
 	 # Replace with function body.
+
+
+func _on_Stats_no_health():
+	queue_free()
+	var enemyDeathEffect = EnemyDeathEffect.instance()
+	get_parent().add_child(enemyDeathEffect) 
+	enemyDeathEffect.global_position = global_position
+	# Replace with function body.

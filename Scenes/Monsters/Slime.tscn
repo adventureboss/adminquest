@@ -40,7 +40,6 @@ script = ExtResource( 3 )
 max_speed = 10
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 17, 16 )
 frames = SubResource( 5 )
 animation = "Bounce"
 frame = 3
@@ -50,14 +49,12 @@ playing = true
 collision_layer = 0
 
 [node name="CollisionShape2D" parent="AnimatedSprite/Hurtbox" index="0"]
-position = Vector2( 0, 2 )
 shape = SubResource( 6 )
 
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 4 )]
 
 [node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
 modulate = Color( 1, 1, 1, 0.486275 )
-position = Vector2( 17, 17 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 modulate = Color( 0.752941, 0.0901961, 0.0392157, 0.505882 )
