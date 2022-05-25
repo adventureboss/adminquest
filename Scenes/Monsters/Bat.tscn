@@ -37,7 +37,7 @@ animations = [ {
 
 [sub_resource type="CapsuleShape2D" id=9]
 radius = 5.0
-height = 16.0
+height = 8.0
 
 [sub_resource type="CapsuleShape2D" id=8]
 radius = 8.0
@@ -50,7 +50,8 @@ max_speed = 12
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
 animation = "Fly"
-frame = 4
+frame = 3
+speed_scale = 0.6
 playing = true
 offset = Vector2( 0, -12 )
 
