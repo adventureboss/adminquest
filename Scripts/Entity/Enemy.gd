@@ -15,11 +15,10 @@ enum Movement {
 	STILL
 }
 
-onready var body = $"AnimatedSprite/Moving Collision"
-onready var playerDetection = $PlayerDetectionZone
+onready var playerDetection = get_node_or_null("PlayerDetectionZone")
 
-# Following properties
-export(bool) var shouldFollow = true
+# Following properties - Requires a PlayerDetectionZone
+export(bool) var shouldFollow = false
 export(float) var timeFollowingAfterLost = 2.0
 export(bool) var shouldFollowAfterLost = true
 
@@ -29,6 +28,7 @@ export(float) var timeWandering = 1
 export(float) var wanderMovement = 0.5
 export(float) var delayBeforeNextWander = 1.0
 
+# Knockback properties
 var knockback_vector = Vector2.ZERO
 export var knockback_force = 100
 export var knockback_dur = .15
@@ -39,6 +39,11 @@ onready var stats = $Stats
 var timeSpentState = 0
 
 onready var EnemyDeathEffect = preload("res://newEffects/BatEffect.tscn")
+
+func _ready() -> void:
+	._ready()
+	if shouldFollow:
+		assert(playerDetection != null, "If 'Should Follow' is set, a 'PlayerDetectionZone' is needed")
 
 func _on_Hurtbox_area_entered(area: Area2D) -> void:
 	stats.set_health(stats.health - 1)

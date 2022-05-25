@@ -263,7 +263,6 @@ graph_offset = Vector2( -178.548, 0 )
 position = Vector2( 0, -8 )
 z_index = 1
 script = ExtResource( 2 )
-shouldFollow = false
 shouldFollowAfterLost = false
 
 [node name="Sprite" type="Sprite" parent="."]
