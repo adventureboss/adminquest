@@ -7,11 +7,11 @@ onready var emptyHeartsUI = $EmptyHearts
 
 func display_health(value):
 	if fullHeartsUI != null:
-		fullHeartsUI.rect_size.x = game_state.player_stats.health * 12
+		fullHeartsUI.rect_size.x = value * 12
 		
 func display_max_health(value):
 	if emptyHeartsUI != null:
-		emptyHeartsUI.rect_size.x = game_state.player_stats.max_health * 12
+		emptyHeartsUI.rect_size.x = value * 12
 	
 func _ready():
 	game_state.connect("max_health_changed", self, "display_max_health")
