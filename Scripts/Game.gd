@@ -8,8 +8,8 @@ func _ready():
 func add_scene(path = "res://Scenes/World.tscn"):
 	var scene = load(path)
 	if scene == null:
-		# handle this by going to the default path?
-		pass
+		# no scene, no game...
+		get_tree().change_scene("res://Scenes/title_screen.tscn")
 
 	var instance = scene.instance()
 	add_child(instance)
