@@ -14,5 +14,7 @@ func display_max_health(value):
 		emptyHeartsUI.rect_size.x = value * 12
 	
 func _ready():
+	display_max_health(game_state.player_stats.max_health)
+	display_health(game_state.player_stats.health)
 	game_state.connect("max_health_changed", self, "display_max_health")
 	game_state.connect("health_changed", self, "display_health")
