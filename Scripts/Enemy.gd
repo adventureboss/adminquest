@@ -18,9 +18,6 @@ enum Movement {
 onready var body = $"AnimatedSprite/Moving Collision"
 onready var playerDetection = $PlayerDetectionZone
 
-# Used for movement
-export(int) var speed = 20
-
 # Following properties
 export(bool) var shouldFollow = true
 export(float) var timeFollowingAfterLost = 2.0
@@ -29,7 +26,8 @@ export(bool) var shouldFollowAfterLost = true
 # Wandering properties
 export(bool) var shouldWander = true
 export(float) var timeWandering = 1
-export var wanderMovement = 0.5
+export(float) var wanderMovement = 0.5
+export(float) var delayBeforeNextWander = 1.0
 
 var state = State.IDLE
 var timeSpentState = 0
@@ -64,15 +62,15 @@ func decideState(delta):
 			moveToState(State.IDLE)
 			
 func processIdleState(delta):
-	velocity = Vector2.ZERO
+	.move_state(delta, Vector2.ZERO) 
 	
 # Assume playerDetection is available on the chase state
 func processChaseState(delta):
 	var direction = (playerDetection.player.global_position - global_position).normalized()
-	velocity = velocity.move_toward(direction * speed, acceleration * delta)
+	.move_state(delta, direction) 
 
 func shouldMoveToWandering(delta):
-	if shouldWander:
+	if shouldWander and timeSpentState > delayBeforeNextWander:
 		var current_dir = randi() % 8
 		var movement_vector = null
 	
@@ -91,6 +89,8 @@ func shouldMoveToWandering(delta):
 		if movement_vector:
 			.move_state(delta, movement_vector * wanderMovement) 
 			return true
+	
+	return false
 
 func processWanderingState(delta):
 	pass
@@ -110,4 +110,4 @@ func _physics_process(delta):
 		State.WANDERING:
 			processWanderingState(delta)
 	
-	processMovement(delta)	
+	processMovement(delta)
