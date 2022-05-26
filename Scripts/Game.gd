@@ -8,10 +8,8 @@ var dialogueSection = null
 func _ready():
 	add_scene(path_to_load)
 	$CanvasLayer/DialogBox.visible = false
-	var doug = get_tree().get_root().find_node("Doug",true,false)
-	doug.connect("display_dialogue", self, "display_dialogue")
+	GameState.game = self
 
-	
 func add_scene(path = "res://Scenes/World.tscn"):
 	var scene = load(path)
 	if scene == null:
