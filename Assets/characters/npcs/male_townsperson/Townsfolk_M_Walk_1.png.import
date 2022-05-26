@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Townsfolk_M_Idle_2.png-a1ef4b9d967bd1dc3da02929be00154d.stex"
+path="res://.import/Townsfolk_M_Walk_1.png-a4f0750be71d7894550276c4d0709513.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/characters/npcs/Townsfolk_M_Idle_2.png"
-dest_files=[ "res://.import/Townsfolk_M_Idle_2.png-a1ef4b9d967bd1dc3da02929be00154d.stex" ]
+source_file="res://Assets/characters/npcs/male_townsperson/Townsfolk_M_Walk_1.png"
+dest_files=[ "res://.import/Townsfolk_M_Walk_1.png-a4f0750be71d7894550276c4d0709513.stex" ]
 
 [params]
 
