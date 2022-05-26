@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Assets/characters/player.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Entity/Player.gd" type="Script" id=2]
@@ -443,6 +443,8 @@ graph_offset = Vector2( -178.548, 0 )
 radius = 13.0
 height = 6.00006
 
+[sub_resource type="CircleShape2D" id=34]
+
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 0, -8 )
 z_index = 1
@@ -483,6 +485,8 @@ parameters/run/blend_position = Vector2( 0.86803, 0.0142857 )
 [node name="Hurtbox" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, 13 )
 rotation = 1.5708
+collision_layer = 1
+collision_mask = 1
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( -5.00007, -20 )
@@ -490,6 +494,16 @@ rotation = 1.5708
 shape = SubResource( 32 )
 disabled = true
 
+[node name="Trigger" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0, 13 )
+rotation = 1.5708
+
+[node name="CollisionShape2D" parent="Trigger" index="0"]
+position = Vector2( -4, -0.999989 )
+rotation = 1.5708
+shape = SubResource( 34 )
+
 [node name="Position2D" type="Position2D" parent="."]
 
 [editable path="Hurtbox"]
+[editable path="Trigger"]
