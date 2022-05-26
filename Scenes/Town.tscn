@@ -462,7 +462,6 @@ position = Vector2( -1, 0 )
 position = Vector2( 559, 184 )
 z_index = 0
 collision_layer = 524545
-motion/sync_to_physics = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
 remote_path = NodePath("../../../Camera2D")

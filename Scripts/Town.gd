@@ -16,8 +16,9 @@ func set_camera_limits():
 func set_character():
 	pass
 
-func _on_GraveyardArea2D_area_entered(area):
+func _on_GraveyardArea2D_area_entered(_area):
 	# Change to Graveyard scene
+	print("help")
 	var game = get_node("/root/Game")
 	game.add_scene("res://Scenes/Graveyard.tscn")
 	game.remove_scene(self)
