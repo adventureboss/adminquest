@@ -36,6 +36,16 @@ func set_hours(value):
 func increase_hours(by):
 	set_hours(player_stats.hours + by)
 
+func start_dialogue(resource, entry) -> void:
+	get_tree().paused = true
+	var dialogue = yield(DialogueManager.get_next_dialogue_line(entry, resource), "completed")
+	if dialogue != null:
+		var balloon = preload("res://Scenes/Dialogue/example_balloon.tscn").instance()
+		balloon.dialogue = dialogue
+		get_tree().current_scene.add_child(balloon)
+		start_dialogue(resource, yield(balloon, "actioned"))
+	get_tree().paused = false
+
 func save_game(filename: String):
 	var save_data: Dictionary = {
 		player = {
