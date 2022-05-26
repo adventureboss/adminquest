@@ -1,20 +1,20 @@
 extends Node2D
 
-const ENERGYBALL_SPEED = 200
+const MISSILE_SPEED = 200
 
-func _ready() -> void:
-	set_process(true)
+func _physics_process(delta: float) -> void:
+	var direction = Vector2.RIGHT.rotated(rotation)
+	global_position += MISSILE_SPEED * direction * delta
 
-func get_input_vector():
-	var input_vector = Vector2.ZERO
-	input_vector.x = 1
-	input_vector.y = 0
-	return input_vector
 
-func _process(delta: float) -> void:
-	var motion = get_input_vector() * ENERGYBALL_SPEED
-	
-	# Movement equation
-	set_position(get_position() + motion * delta)
-	
-	
+func destroy():
+	queue_free()
+
+func _on_Hitbox_area_entered(area):
+	destroy()
+
+func _on_Hitbox_body_entered(area):
+	destroy()
+
+func _on_VisibilityNotifier2D_screen_exited():
+	queue_free()
