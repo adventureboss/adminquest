@@ -12,6 +12,8 @@ signal health_changed(value)
 signal max_health_changed(value)
 signal hours_changed(value)
 
+var game
+
 func _ready():
 	player_stats.health = player_stats.max_health
 

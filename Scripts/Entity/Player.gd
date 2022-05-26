@@ -48,9 +48,17 @@ func light_attack_state(delta):
 	animation_state.travel("light_attack")
 
 func ranged_attack_state(delta):
+	var input_vector = get_input_vector()
 	var energyball = ENERGYBALL.instance()
-	get_parent().add_child(energyball)
-	energyball.set_position(get_node("Position2D").get_global_position())
+
+	get_tree().current_scene.add_child(energyball)
+	energyball.global_position = self.global_position
+	
+	if input_vector.x < 0:
+		energyball.rotation = deg2rad(180)
+	else:
+		energyball.rotation = deg2rad(0)
+
 	attack_animation_finished()
 
 func attack_animation_finished():
