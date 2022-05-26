@@ -12,7 +12,7 @@
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/Monsters/Slime.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Assets/TileMap/AnimatedRockTileMap.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Scenes/Npc/MaleTownsperson.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/InteractableObjects/Doug.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scenes/Monsters/Bat.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scenes/Player/Wanderer.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Assets/TileMap/DecorationsTileMap.tscn" type="PackedScene" id=16]
@@ -88,8 +88,6 @@ scale = Vector2( 1.01427, 1 )
 [node name="Slime" parent="YSort" instance=ExtResource( 11 )]
 position = Vector2( 112, 212 )
 
-[node name="MaleTownsperson" parent="YSort" instance=ExtResource( 13 )]
-
 [node name="Wanderer" parent="YSort" instance=ExtResource( 15 )]
 position = Vector2( 119, 238 )
 
@@ -104,3 +102,6 @@ position = Vector2( 125, 304 )
 
 [node name="Bat4" parent="YSort" instance=ExtResource( 14 )]
 position = Vector2( 334, 284 )
+
+[node name="Doug" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 61, 261 )
