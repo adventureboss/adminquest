@@ -440,7 +440,7 @@ position = Vector2( 0, 0 )
 tile_data = PoolIntArray( 1048584, 0, 0, 1114120, 0, 65536, 1114124, 0, 0, 1179656, 0, 65536, 1179660, 0, 65536, 1245192, 0, 65536, 1245196, 0, 65536, 1310728, 0, 65536, 1310732, 0, 131072, 1376264, 0, 131072 )
 
 [node name="GraveyardArea2D" type="Area2D" parent="."]
-position = Vector2( 702, 113 )
+position = Vector2( 679, 102 )
 scale = Vector2( 0.998, 1 )
 collision_layer = 256
 collision_mask = 256
@@ -450,7 +450,7 @@ position = Vector2( 40.0802, 5 )
 shape = SubResource( 38 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 151, 401 )
+position = Vector2( 558, 184 )
 current = true
 process_mode = 0
 smoothing_enabled = true
@@ -459,8 +459,10 @@ smoothing_enabled = true
 position = Vector2( -1, 0 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 12 )]
-position = Vector2( 152, 401 )
+position = Vector2( 559, 184 )
 z_index = 0
+collision_layer = 524545
+motion/sync_to_physics = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
 remote_path = NodePath("../../../Camera2D")
