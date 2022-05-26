@@ -2,8 +2,15 @@ extends Node2D
 
 export var path_to_load  = "res://Scenes/World.tscn"
 
+var dialogueName = null
+var dialogueSection = null
+
 func _ready():
 	add_scene(path_to_load)
+	$CanvasLayer/DialogBox.visible = false
+	var doug = get_tree().get_root().find_node("Doug",true,false)
+	doug.connect("display_dialogue", self, "display_dialogue")
+
 	
 func add_scene(path = "res://Scenes/World.tscn"):
 	var scene = load(path)
@@ -17,3 +24,8 @@ func add_scene(path = "res://Scenes/World.tscn"):
 func remove_scene(name):
 	var scene = get_node_or_null(name)
 	remove_child(name)
+
+
+func display_dialogue(dialogueName, dialogueSection):
+	$CanvasLayer/DialogBox.visible = true
+	
