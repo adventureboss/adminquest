@@ -502,7 +502,6 @@ rotation = 1.5708
 position = Vector2( -4, -0.999989 )
 rotation = 1.5708
 shape = SubResource( 34 )
-disabled = true
 
 [node name="Position2D" type="Position2D" parent="."]
 
