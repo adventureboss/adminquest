@@ -59,6 +59,7 @@ script = ExtResource( 3 )
 position = Vector2( 1, 5 )
 scale = Vector2( 0.359375, 0.351562 )
 frames = SubResource( 10 )
+frame = 6
 playing = true
 
 [node name="Hitbox" parent="AnimatedSprite" instance=ExtResource( 2 )]

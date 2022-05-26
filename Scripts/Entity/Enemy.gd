@@ -39,6 +39,8 @@ onready var stats = $Stats
 var timeSpentState = 0
 
 onready var EnemyDeathEffect = preload("res://newEffects/BatEffect.tscn")
+onready var HitEffect = preload("res://newEffects/HitEffect.tscn")
+
 
 func _ready() -> void:
 	._ready()
@@ -46,7 +48,13 @@ func _ready() -> void:
 		assert(playerDetection != null, "If 'Should Follow' is set, a 'PlayerDetectionZone' is needed")
 
 func _on_Hurtbox_area_entered(area: Area2D) -> void:
+	var effect = HitEffect.instance()
+	get_parent().add_child(effect)
+	effect.global_position = global_position
 	stats.set_health(stats.health - 1)
+	
+	
+	
 	
 	knockback_vector = (global_position - area.global_position).normalized() * knockback_force
 	
@@ -122,8 +130,10 @@ func _physics_process(delta):
 	if current_knockback_dur >= 0.0:
 		var collision = move_and_slide(knockback_vector)
 		current_knockback_dur -= delta
+
 	else:
 		knockback_vector = Vector2.ZERO
+		
 	
 	._physics_process(delta)
 	decideState(delta)
@@ -143,3 +153,5 @@ func _on_Stats_no_health():
 	var enemyDeathEffect = EnemyDeathEffect.instance()
 	get_parent().add_child(enemyDeathEffect) 
 	enemyDeathEffect.global_position = global_position
+	
+	
