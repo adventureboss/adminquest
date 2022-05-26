@@ -44,7 +44,6 @@ shouldFollow = true
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 5 )
 animation = "Bounce"
-frame = 2
 playing = true
 
 [node name="Moving Collision" type="KinematicBody2D" parent="AnimatedSprite"]

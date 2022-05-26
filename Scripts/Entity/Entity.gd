@@ -8,7 +8,8 @@ var velocity = Vector2.ZERO
 
 enum {
 	MOVE,
-	ATTACK
+	LIGHT_ATTACK,
+	RANGED_ATTACK
 }
 
 onready var game_state = get_node("/root/GameState")
@@ -41,6 +42,8 @@ func move_state(delta, movement_vector):
 		
 	velocity = move_and_slide(velocity)
 
+func light_attack_state(delta):
+	pass
 
-func attack_state(delta):
+func ranged_attack_state(delta):
 	pass
