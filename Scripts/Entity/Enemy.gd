@@ -16,6 +16,7 @@ enum Movement {
 }
 
 onready var playerDetection = get_node_or_null("PlayerDetectionZone")
+onready var playerStopZone = get_node_or_null("StopZone")
 
 # Following properties - Requires a PlayerDetectionZone
 export(bool) var shouldFollow = false
@@ -83,11 +84,25 @@ func processIdleState(delta):
 	
 # Assume playerDetection is available on the chase state
 func processChaseState(delta):
-	var direction: Vector2 = playerDetection.player.global_position - global_position
-	if direction.length_squared() > 1:
-		.move_state(delta, direction.normalized())
+	var player = playerDetection.player
+	var collisionShape: CollisionShape2D = player.get_node_or_null("CollisionShape2D")
+	
+	var playerPosition: Vector2
+	
+	if collisionShape != null:
+		playerPosition = collisionShape.global_position
 	else:
+		playerPosition = player.global_position
+		
+	var direction = (playerPosition - global_position)
+	
+	if playerStopZone != null and playerStopZone.player == player:
 		velocity = Vector2.ZERO
+	elif playerStopZone == null and direction.length_squared() > 1:
+		velocity = Vector2.ZERO
+	else:
+		.move_state(delta, direction.normalized())
+
 
 func shouldMoveToWandering(delta):
 	if shouldWander and timeSpentState > delayBeforeNextWander:
@@ -116,7 +131,7 @@ func processWanderingState(delta):
 	pass
 	
 func processMovement(delta):
-	velocity = move_and_slide(velocity)
+	pass
 	
 func _physics_process(delta):
 	if current_knockback_dur >= 0.0:
