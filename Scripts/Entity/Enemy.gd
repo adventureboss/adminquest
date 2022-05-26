@@ -18,6 +18,8 @@ enum Movement {
 onready var playerDetection = get_node_or_null("PlayerDetectionZone")
 onready var playerStopZone = get_node_or_null("StopZone")
 
+export(int) var hoursPerKill = 1
+
 # Following properties - Requires a PlayerDetectionZone
 export(bool) var shouldFollow = false
 export(float) var timeFollowingAfterLost = 2.0
@@ -163,5 +165,5 @@ func _on_Stats_no_health():
 	var enemyDeathEffect = EnemyDeathEffect.instance()
 	get_parent().add_child(enemyDeathEffect) 
 	enemyDeathEffect.global_position = global_position
-	GameState.increase_hours(1)
+	GameState.increase_hours(hoursPerKill)
 	
