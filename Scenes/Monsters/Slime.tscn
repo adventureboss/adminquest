@@ -41,11 +41,13 @@ radius = 10.0499
 [node name="Slime" type="KinematicBody2D"]
 script = ExtResource( 3 )
 max_speed = 12
+hoursPerKill = 2
 shouldFollow = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 5 )
 animation = "Bounce"
+frame = 1
 playing = true
 
 [node name="Moving Collision" type="KinematicBody2D" parent="AnimatedSprite"]
