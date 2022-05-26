@@ -34,6 +34,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [ true ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hurtbox/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -5.00007, -20 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hurtbox/CollisionShape2D:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
 
 [sub_resource type="Animation" id=15]
 resource_name = "attack_left"
@@ -86,7 +110,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -1.99995, 14 ) ]
+"values": [ Vector2( -5.99994, 18 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Hurtbox/CollisionShape2D:rotation_degrees")
@@ -176,7 +200,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -2.00005, -14 ) ]
+"values": [ Vector2( -5.00008, -21 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("Hurtbox/CollisionShape2D:disabled")
@@ -218,6 +242,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hurtbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -394,7 +430,7 @@ auto_advance = true
 states/idle/node = SubResource( 12 )
 states/idle/position = Vector2( 381.327, 142.812 )
 states/light_attack/node = SubResource( 29 )
-states/light_attack/position = Vector2( 283.952, 281.5 )
+states/light_attack/position = Vector2( 383.389, 277.5 )
 states/run/node = SubResource( 20 )
 states/run/position = Vector2( 617.452, 142.75 )
 transitions = [ "idle", "run", SubResource( 21 ), "run", "idle", SubResource( 22 ), "idle", "light_attack", SubResource( 30 ), "light_attack", "idle", SubResource( 31 ) ]
@@ -404,8 +440,8 @@ graph_offset = Vector2( -178.548, 0 )
 [sub_resource type="AnimationNodeStateMachinePlayback" id=14]
 
 [sub_resource type="CapsuleShape2D" id=32]
-radius = 5.99998
-height = 6.00004
+radius = 13.0
+height = 6.00006
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 0, -8 )
@@ -449,7 +485,7 @@ position = Vector2( 0, 13 )
 rotation = 1.5708
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
-position = Vector2( -2, 0.40649 )
+position = Vector2( -5.00007, -20 )
 rotation = 1.5708
 shape = SubResource( 32 )
 disabled = true
