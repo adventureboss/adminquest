@@ -1,7 +1,5 @@
 extends Node2D
 
-export var character_pos = Vector2(0.0, 0.0)
-
 func _ready():
 	set_camera_limits()
 	set_character()
