@@ -1,4 +1,4 @@
-extends "Player/Entity.gd"
+extends "Entity.gd"
 
 enum State {
 	IDLE,
@@ -28,8 +28,17 @@ export(float) var timeWandering = 1
 export(float) var wanderMovement = 0.5
 export(float) var delayBeforeNextWander = 1.0
 
+# Knockback properties
+var knockback_vector = Vector2.ZERO
+export var knockback_force = 100
+export var knockback_dur = .15
+var current_knockback_dur = 0
+
 var state = State.IDLE
+onready var stats = $Stats
 var timeSpentState = 0
+
+onready var EnemyDeathEffect = preload("res://newEffects/BatEffect.tscn")
 
 func _ready() -> void:
 	._ready()
@@ -37,7 +46,11 @@ func _ready() -> void:
 		assert(playerDetection != null, "If 'Should Follow' is set, a 'PlayerDetectionZone' is needed")
 
 func _on_Hurtbox_area_entered(area: Area2D) -> void:
-	queue_free()
+	stats.set_health(stats.health - 1)
+	
+	knockback_vector = (global_position - area.global_position).normalized() * knockback_force
+	
+	current_knockback_dur = knockback_dur
 
 func canSeePlayer():
 	return playerDetection and playerDetection.canSeePlayer()
@@ -46,7 +59,7 @@ func moveToState(newState):
 	if state != newState:
 		state = newState
 		timeSpentState = 0
-		
+
 func decideState(delta):
 	timeSpentState += delta
 	
@@ -106,6 +119,12 @@ func processMovement(delta):
 	velocity = move_and_slide(velocity)
 	
 func _physics_process(delta):
+	if current_knockback_dur >= 0.0:
+		var collision = move_and_slide(knockback_vector)
+		current_knockback_dur -= delta
+	else:
+		knockback_vector = Vector2.ZERO
+	
 	._physics_process(delta)
 	decideState(delta)
 	
@@ -118,3 +137,9 @@ func _physics_process(delta):
 			processWanderingState(delta)
 	
 	processMovement(delta)
+
+func _on_Stats_no_health():
+	queue_free()
+	var enemyDeathEffect = EnemyDeathEffect.instance()
+	get_parent().add_child(enemyDeathEffect) 
+	enemyDeathEffect.global_position = global_position

@@ -11,7 +11,6 @@ enum {
 	ATTACK
 }
 
-
 onready var game_state = get_node("/root/GameState")
 onready var animation_player = get_node_or_null("AnimationPlayer")
 onready var animation_tree = get_node_or_null("AnimationTree")
@@ -23,13 +22,10 @@ func _ready():
 	if animation_tree:
 		 animation_state = animation_tree.get("parameters/playback")
 	
-	
 func _physics_process(delta):
 	pass
 
 func move_state(delta, movement_vector):
-	var input_vector = Vector2.ZERO
-		
 	if movement_vector != Vector2.ZERO:
 		if animation_tree:
 			animation_tree.set("parameters/idle/blend_position", movement_vector)
@@ -44,6 +40,7 @@ func move_state(delta, movement_vector):
 			animation_state.travel("idle")
 		
 	velocity = move_and_slide(velocity)
+
 
 func attack_state(delta):
 	pass
