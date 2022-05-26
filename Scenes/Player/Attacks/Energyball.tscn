@@ -59,7 +59,7 @@ script = ExtResource( 3 )
 position = Vector2( 1, 5 )
 scale = Vector2( 0.359375, 0.351562 )
 frames = SubResource( 10 )
-frame = 6
+frame = 2
 playing = true
 
 [node name="Hitbox" parent="AnimatedSprite" instance=ExtResource( 2 )]
@@ -70,5 +70,13 @@ scale = Vector2( 2.78261, 2.84445 )
 position = Vector2( -1, -1 )
 rotation = 1.5708
 shape = SubResource( 11 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -3.75, 4.5 )
+scale = Vector2( 1.975, 0.95 )
+
+[connection signal="area_entered" from="AnimatedSprite/Hitbox" to="." method="_on_Hitbox_area_entered"]
+[connection signal="body_entered" from="AnimatedSprite/Hitbox" to="." method="_on_Hitbox_body_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 
 [editable path="AnimatedSprite/Hitbox"]
