@@ -1182,7 +1182,8 @@ format = 1
 position = Vector2( 0, 0 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 61, 460 )
+position = Vector2( 59, 454 )
+current = true
 process_mode = 0
 smoothing_enabled = true
 

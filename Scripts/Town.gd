@@ -18,6 +18,6 @@ func set_character():
 
 func _on_GraveyardArea2D_area_entered(area):
 	# Change to Graveyard scene
-	var game = get_node("/root/parent")
+	var game = get_node("/root/Game")
 	game.add_scene("res://Scenes/Graveyard.tscn")
-	game.remove_scene("Town")
+	game.remove_scene(self)
