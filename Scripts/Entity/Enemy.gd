@@ -52,13 +52,8 @@ func _on_Hurtbox_area_entered(area: Area2D) -> void:
 	var effect = HitEffect.instance()
 	get_parent().add_child(effect)
 	effect.global_position = global_position
-	stats.set_health(stats.health - 1)
-	
-	
-	
-	
+	stats.set_health(stats.health - 1)	
 	knockback_vector = (global_position - area.global_position).normalized() * knockback_force
-	
 	current_knockback_dur = knockback_dur
 
 func canSeePlayer():
@@ -168,5 +163,5 @@ func _on_Stats_no_health():
 	var enemyDeathEffect = EnemyDeathEffect.instance()
 	get_parent().add_child(enemyDeathEffect) 
 	enemyDeathEffect.global_position = global_position
-	
+	GameState.increase_hours(1)
 	
