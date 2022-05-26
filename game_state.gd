@@ -32,6 +32,9 @@ func set_hours(value):
 	emit_signal("hours_changed", player_stats.hours)
 	if player_stats.hours <= 0:
 		emit_signal("no_hours")
+		
+func increase_hours(by):
+	set_hours(player_stats.hours + by)
 
 func save_game(filename: String):
 	var save_data: Dictionary = {

@@ -51,11 +51,13 @@ height = 14.0
 [node name="Bat" type="KinematicBody2D"]
 script = ExtResource( 4 )
 max_speed = 18
+hoursPerKill = 3
 shouldFollow = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
 animation = "Fly"
+frame = 4
 speed_scale = 0.6
 playing = true
 offset = Vector2( 0, -12 )

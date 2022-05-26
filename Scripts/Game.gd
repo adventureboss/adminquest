@@ -17,12 +17,10 @@ func add_scene(path = "res://Scenes/World.tscn"):
 		get_tree().change_scene("res://Scenes/title_screen.tscn")
 
 	var instance = scene.instance()
-	add_child(instance)
+	call_deferred("add_child", instance)
 
-func remove_scene(name):
-	var scene = get_node_or_null(name)
-	remove_child(name)
-
+func remove_scene(scene):
+	remove_child(scene)
 
 func display_dialogue(dialogueName, dialogueSection):
 	$CanvasLayer/DialogBox.visible = true
