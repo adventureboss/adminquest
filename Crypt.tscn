@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Assets/TileMap/EmptyTileMap/TextureRect_Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/tilesets/dungeon_/dungeon_text.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Assets/tilesets/TilesetGraveyard.png" type="Texture" id=6]
 [ext_resource path="res://Assets/tilesets/dungeon_/dungeon_ [lava].png" type="Texture" id=7]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Stair.tscn" type="PackedScene" id=9]
 
 [sub_resource type="TileSet" id=5]
 0/name = "dungeon_ [lava].png 0"
@@ -160,10 +161,10 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 1966114, 0, 0 )
 
-[node name="StairLabels" type="Node2D" parent="."]
+[node name="Stairs" type="Node2D" parent="."]
 position = Vector2( 515, 111 )
 
-[node name="1" type="Label" parent="StairLabels"]
+[node name="1" type="Label" parent="Stairs"]
 margin_left = -3.0
 margin_top = 129.0
 margin_right = 37.0
@@ -171,7 +172,13 @@ margin_bottom = 143.0
 custom_colors/font_color = Color( 0, 1, 0.760784, 1 )
 text = "1"
 
-[node name="2" type="Label" parent="StairLabels"]
+[node name="Position1" type="Position2D" parent="Stairs"]
+position = Vector2( 37, 135 )
+
+[node name="Stair1" parent="Stairs" instance=ExtResource( 9 )]
+position = Vector2( 22, 133 )
+
+[node name="2" type="Label" parent="Stairs"]
 margin_left = -226.0
 margin_top = -1.0
 margin_right = -186.0
@@ -179,7 +186,13 @@ margin_bottom = 13.0
 custom_colors/font_color = Color( 0, 1, 0.760784, 1 )
 text = "2"
 
-[node name="3" type="Label" parent="StairLabels"]
+[node name="Position2" type="Position2D" parent="Stairs"]
+position = Vector2( -202, 8 )
+
+[node name="Stair2" parent="Stairs" instance=ExtResource( 9 )]
+position = Vector2( -220, 9 )
+
+[node name="3" type="Label" parent="Stairs"]
 margin_left = -177.0
 margin_top = 63.0
 margin_right = -137.0
@@ -187,7 +200,13 @@ margin_bottom = 77.0
 custom_colors/font_color = Color( 0, 1, 0.760784, 1 )
 text = "3"
 
-[node name="4" type="Label" parent="StairLabels"]
+[node name="Position3" type="Position2D" parent="Stairs"]
+position = Vector2( -170, 73 )
+
+[node name="Stair3" parent="Stairs" instance=ExtResource( 9 )]
+position = Vector2( -155, 69 )
+
+[node name="4" type="Label" parent="Stairs"]
 margin_left = -386.0
 margin_top = 128.0
 margin_right = -346.0
@@ -195,7 +214,13 @@ margin_bottom = 142.0
 custom_colors/font_color = Color( 0, 1, 0.760784, 1 )
 text = "4"
 
-[node name="5" type="Label" parent="StairLabels"]
+[node name="Position4" type="Position2D" parent="Stairs"]
+position = Vector2( -364, 137 )
+
+[node name="Stair4" parent="Stairs" instance=ExtResource( 9 )]
+position = Vector2( -379, 136 )
+
+[node name="5" type="Label" parent="Stairs"]
 margin_left = -441.0
 margin_top = 194.0
 margin_right = -401.0
@@ -203,7 +228,13 @@ margin_bottom = 208.0
 custom_colors/font_color = Color( 0, 1, 0.760784, 1 )
 text = "5"
 
-[node name="6" type="Label" parent="StairLabels"]
+[node name="Position5" type="Position2D" parent="Stairs"]
+position = Vector2( -425, 201 )
+
+[node name="Stair5" parent="Stairs" instance=ExtResource( 9 )]
+position = Vector2( -444, 200 )
+
+[node name="6" type="Label" parent="Stairs"]
 margin_left = -443.0
 margin_top = 292.0
 margin_right = -403.0
@@ -211,7 +242,13 @@ margin_bottom = 306.0
 custom_colors/font_color = Color( 0, 1, 0.760784, 1 )
 text = "6"
 
-[node name="7" type="Label" parent="StairLabels"]
+[node name="Position6" type="Position2D" parent="Stairs"]
+position = Vector2( -426, 297 )
+
+[node name="Stair6" parent="Stairs" instance=ExtResource( 9 )]
+position = Vector2( -443, 296 )
+
+[node name="7" type="Label" parent="Stairs"]
 margin_left = -430.0
 margin_top = 383.0
 margin_right = -390.0
@@ -219,7 +256,13 @@ margin_bottom = 399.0
 custom_colors/font_color = Color( 0, 1, 0.760784, 1 )
 text = "7"
 
-[node name="8" type="Label" parent="StairLabels"]
+[node name="Position7" type="Position2D" parent="Stairs"]
+position = Vector2( -395, 392 )
+
+[node name="Stair7" parent="Stairs" instance=ExtResource( 9 )]
+position = Vector2( -410, 392 )
+
+[node name="8" type="Label" parent="Stairs"]
 margin_left = 196.0
 margin_top = 98.0
 margin_right = 236.0
@@ -227,7 +270,13 @@ margin_bottom = 112.0
 custom_colors/font_color = Color( 0, 1, 0.760784, 1 )
 text = "8"
 
-[node name="9" type="Label" parent="StairLabels"]
+[node name="Position8" type="Position2D" parent="Stairs"]
+position = Vector2( 214, 104 )
+
+[node name="Stair8" parent="Stairs" instance=ExtResource( 9 )]
+position = Vector2( 197, 99 )
+
+[node name="9" type="Label" parent="Stairs"]
 margin_left = 206.0
 margin_top = 227.0
 margin_right = 246.0
@@ -235,7 +284,13 @@ margin_bottom = 241.0
 custom_colors/font_color = Color( 0, 1, 0.760784, 1 )
 text = "9"
 
-[node name="10" type="Label" parent="StairLabels"]
+[node name="Position9" type="Position2D" parent="Stairs"]
+position = Vector2( 214, 233 )
+
+[node name="Stair9" parent="Stairs" instance=ExtResource( 9 )]
+position = Vector2( 231, 234 )
+
+[node name="10" type="Label" parent="Stairs"]
 margin_left = 366.0
 margin_top = 63.0
 margin_right = 406.0
@@ -243,7 +298,13 @@ margin_bottom = 77.0
 custom_colors/font_color = Color( 0, 1, 0.760784, 1 )
 text = "10"
 
-[node name="11" type="Label" parent="StairLabels"]
+[node name="Position10" type="Position2D" parent="Stairs"]
+position = Vector2( 389, 73 )
+
+[node name="Stair10" parent="Stairs" instance=ExtResource( 9 )]
+position = Vector2( 373, 69 )
+
+[node name="11" type="Label" parent="Stairs"]
 margin_left = 386.0
 margin_top = -29.0
 margin_right = 426.0
@@ -251,7 +312,13 @@ margin_bottom = -15.0
 custom_colors/font_color = Color( 0, 1, 0.760784, 1 )
 text = "11"
 
-[node name="12" type="Label" parent="StairLabels"]
+[node name="Position11" type="Position2D" parent="Stairs"]
+position = Vector2( 390, -23 )
+
+[node name="Stair11" parent="Stairs" instance=ExtResource( 9 )]
+position = Vector2( 408, -25 )
+
+[node name="12" type="Label" parent="Stairs"]
 margin_left = 1.0
 margin_top = 381.0
 margin_right = 41.0
@@ -259,7 +326,13 @@ margin_bottom = 395.0
 custom_colors/font_color = Color( 0, 1, 0.760784, 1 )
 text = "12"
 
-[node name="13" type="Label" parent="StairLabels"]
+[node name="Position12" type="Position2D" parent="Stairs"]
+position = Vector2( 21, 393 )
+
+[node name="Stair12" parent="Stairs" instance=ExtResource( 9 )]
+position = Vector2( 5, 389 )
+
+[node name="13" type="Label" parent="Stairs"]
 margin_left = -253.0
 margin_top = 206.0
 margin_right = -213.0
@@ -267,7 +340,13 @@ margin_bottom = 220.0
 custom_colors/font_color = Color( 0, 1, 0.760784, 1 )
 text = "13"
 
-[node name="14" type="Label" parent="StairLabels"]
+[node name="Position13" type="Position2D" parent="Stairs"]
+position = Vector2( -235, 216 )
+
+[node name="Stair13" parent="Stairs" instance=ExtResource( 9 )]
+position = Vector2( -253, 218 )
+
+[node name="14" type="Label" parent="Stairs"]
 margin_left = -351.0
 margin_top = 82.0
 margin_right = -311.0
@@ -275,7 +354,13 @@ margin_bottom = 96.0
 custom_colors/font_color = Color( 0, 1, 0.760784, 1 )
 text = "14"
 
-[node name="15" type="Label" parent="StairLabels"]
+[node name="Position14" type="Position2D" parent="Stairs"]
+position = Vector2( -350, 90 )
+
+[node name="Stair14" parent="Stairs" instance=ExtResource( 9 )]
+position = Vector2( -331, 86 )
+
+[node name="15" type="Label" parent="Stairs"]
 margin_left = 109.0
 margin_top = 200.0
 margin_right = 149.0
@@ -283,7 +368,13 @@ margin_bottom = 214.0
 custom_colors/font_color = Color( 0, 1, 0.760784, 1 )
 text = "15"
 
-[node name="16" type="Label" parent="StairLabels"]
+[node name="Position15" type="Position2D" parent="Stairs"]
+position = Vector2( 133, 216 )
+
+[node name="Stair15" parent="Stairs" instance=ExtResource( 9 )]
+position = Vector2( 117, 214 )
+
+[node name="16" type="Label" parent="Stairs"]
 margin_left = -436.0
 margin_top = -2.0
 margin_right = -396.0
@@ -291,7 +382,13 @@ margin_bottom = 12.0
 custom_colors/font_color = Color( 0, 1, 0.760784, 1 )
 text = "16"
 
-[node name="17" type="Label" parent="StairLabels"]
+[node name="Position16" type="Position2D" parent="Stairs"]
+position = Vector2( -394, 8 )
+
+[node name="Stair16" parent="Stairs" instance=ExtResource( 9 )]
+position = Vector2( -410, 6 )
+
+[node name="17" type="Label" parent="Stairs"]
 margin_left = -385.0
 margin_top = -3.0
 margin_right = -345.0
@@ -299,7 +396,13 @@ margin_bottom = 11.0
 custom_colors/font_color = Color( 0, 1, 0.760784, 1 )
 text = "17"
 
-[node name="18" type="Label" parent="StairLabels"]
+[node name="Position17" type="Position2D" parent="Stairs"]
+position = Vector2( -394, 8 )
+
+[node name="Stair17" parent="Stairs" instance=ExtResource( 9 )]
+position = Vector2( -378, 1 )
+
+[node name="18" type="Label" parent="Stairs"]
 margin_left = 204.0
 margin_top = 306.0
 margin_right = 244.0
@@ -307,7 +410,13 @@ margin_bottom = 320.0
 custom_colors/font_color = Color( 0, 1, 0.760784, 1 )
 text = "18"
 
-[node name="19" type="Label" parent="StairLabels"]
+[node name="Position18" type="Position2D" parent="Stairs"]
+position = Vector2( 214, 312 )
+
+[node name="Stair18" parent="Stairs" instance=ExtResource( 9 )]
+position = Vector2( 228, 311 )
+
+[node name="19" type="Label" parent="Stairs"]
 margin_left = 192.0
 margin_top = -16.0
 margin_right = 232.0
@@ -315,13 +424,25 @@ margin_bottom = -2.0
 custom_colors/font_color = Color( 0, 1, 0.760784, 1 )
 text = "19"
 
-[node name="20" type="Label" parent="StairLabels"]
+[node name="Position19" type="Position2D" parent="Stairs"]
+position = Vector2( 198, -7 )
+
+[node name="Stair19" parent="Stairs" instance=ExtResource( 9 )]
+position = Vector2( 214, -10 )
+
+[node name="20" type="Label" parent="Stairs"]
 margin_left = -228.0
 margin_top = 319.0
 margin_right = -188.0
 margin_bottom = 333.0
 custom_colors/font_color = Color( 0, 1, 0.760784, 1 )
 text = "20"
+
+[node name="Position20" type="Position2D" parent="Stairs"]
+position = Vector2( -236, 329 )
+
+[node name="Stair20" parent="Stairs" instance=ExtResource( 9 )]
+position = Vector2( -218, 325 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 515, 111 )
