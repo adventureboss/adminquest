@@ -31,11 +31,12 @@ radius = 4.0
 height = 2.0
 
 [node name="GenericEnemy" type="KinematicBody2D"]
+collision_layer = 16385
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -8 )
 frames = SubResource( 5 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

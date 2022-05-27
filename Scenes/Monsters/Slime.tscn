@@ -74,6 +74,7 @@ modulate = Color( 1, 1, 1, 0.486275 )
 max_health = 2
 
 [node name="StopZone" parent="." instance=ExtResource( 4 )]
+collision_layer = 16384
 
 [node name="CollisionShape2D" parent="StopZone" index="0"]
 modulate = Color( 0.956863, 0.054902, 0.054902, 0.556863 )

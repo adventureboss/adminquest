@@ -30,6 +30,7 @@ animations = [ {
 radius = 5.0
 
 [node name="GenericEnemy" type="KinematicBody2D"]
+collision_layer = 16385
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -8 )

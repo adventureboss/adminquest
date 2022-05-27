@@ -50,10 +50,12 @@ animations = [ {
 height = 6.0
 
 [node name="GenericEnemy" type="KinematicBody2D"]
+collision_layer = 16385
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -16 )
 frames = SubResource( 10 )
+frame = 5
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
