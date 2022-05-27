@@ -1,6 +1,6 @@
 extends Node2D
 
-export var path_to_load  = "res://Scenes/World.tscn"
+export var path_to_load  = "res://Scenes/Sea.tscn"
 
 signal scene_changed(path)
 
@@ -12,7 +12,7 @@ func _ready():
 	$CanvasLayer/DialogBox.visible = false
 	GameState.game = self
 
-func add_scene(path = "res://Scenes/World.tscn"):
+func add_scene(path = "res://Scenes/Sea.tscn"):
 	var scene = load(path)
 	
 	emit_signal("scene_changed", path)
