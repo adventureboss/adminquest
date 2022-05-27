@@ -15,7 +15,6 @@ enum {
 onready var game_state = get_node("/root/GameState")
 onready var animation_player = get_node_or_null("AnimationPlayer")
 onready var animation_tree = get_node_or_null("AnimationTree")
-onready var swordHitbox = $Hitbox
 var animation_state = null
 
 func _ready():
@@ -23,7 +22,7 @@ func _ready():
 	if animation_tree:
 		 animation_state = animation_tree.get("parameters/playback")
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	pass
 
 func move_state(delta, movement_vector):
@@ -42,8 +41,8 @@ func move_state(delta, movement_vector):
 		
 	velocity = move_and_slide(velocity)
 
-func light_attack_state(delta):
+func light_attack_state(_delta):
 	pass
 
-func ranged_attack_state(delta):
+func ranged_attack_state(_delta):
 	pass
