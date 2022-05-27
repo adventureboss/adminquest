@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/salamisound-4195836-small-quiet-waves-rippling.mp3-9a94ff036a44c92f72d22a59f0658a7c.mp3str"
+
+[deps]
+
+source_file="res://salamisound-4195836-small-quiet-waves-rippling.mp3"
+dest_files=[ "res://.import/salamisound-4195836-small-quiet-waves-rippling.mp3-9a94ff036a44c92f72d22a59f0658a7c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

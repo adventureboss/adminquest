@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://Assets/TileMap/EmptyTileMap/EmptyCarpetTileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/TileMap/EmptyTileMap/EmptyWaterTileMap.tscn" type="PackedScene" id=2]
@@ -15,6 +15,13 @@
 [ext_resource path="res://Scripts/Town.gd" type="Script" id=13]
 [ext_resource path="res://Scenes/Monsters/Bat.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scenes/InteractableObjects/LordGraybeard.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Music.mp3" type="AudioStream" id=16]
+[ext_resource path="res://Scenes/Monsters/WaterElemental.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scenes/Monsters/SkilledBattleMage.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Scenes/Monsters/IronGolem.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Scenes/Monsters/FlutteringPixie.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Scenes/Monsters/GrizzledTreant.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Scenes/Monsters/DeftSorceress.tscn" type="PackedScene" id=22]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -391,6 +398,7 @@ radius = 53.1063
 height = 152.0
 
 [node name="Town" type="Node2D"]
+position = Vector2( 193, -52 )
 script = ExtResource( 13 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 144.0 ]
@@ -488,6 +496,28 @@ position = Vector2( 163, 372 )
 
 [node name="LordGraybeard" parent="YSort" instance=ExtResource( 15 )]
 position = Vector2( 275, 182 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+autoplay = true
+
+[node name="GenericEnemy" parent="." instance=ExtResource( 17 )]
+position = Vector2( 282, 273 )
+
+[node name="GenericEnemy2" parent="." instance=ExtResource( 18 )]
+position = Vector2( 333, 236 )
+
+[node name="GenericEnemy3" parent="." instance=ExtResource( 19 )]
+position = Vector2( 185, 205 )
+
+[node name="GenericEnemy4" parent="." instance=ExtResource( 21 )]
+position = Vector2( 455, 221 )
+
+[node name="GenericEnemy5" parent="." instance=ExtResource( 20 )]
+position = Vector2( 445, 261 )
+
+[node name="GenericEnemy6" parent="." instance=ExtResource( 22 )]
+position = Vector2( 390, 299 )
 
 [connection signal="area_entered" from="GraveyardArea2D" to="." method="_on_GraveyardArea2D_area_entered"]
 [connection signal="area_entered" from="DockArea2D" to="." method="_on_DockArea2D_area_entered"]
