@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/bjorn_lynne_-_the_freeze_proud_music_preview.mp3-33d804314d2997263404428f8035c388.mp3str"
+
+[deps]
+
+source_file="res://newEffects/bjorn_lynne_-_the_freeze_proud_music_preview.mp3"
+dest_files=[ "res://.import/bjorn_lynne_-_the_freeze_proud_music_preview.mp3-33d804314d2997263404428f8035c388.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

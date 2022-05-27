@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/salamisound-4195836-small-quiet-waves-rippling.mp3-3e034b96f584473a17ab2aa8c14081fe.mp3str"
+
+[deps]
+
+source_file="res://newEffects/salamisound-4195836-small-quiet-waves-rippling.mp3"
+dest_files=[ "res://.import/salamisound-4195836-small-quiet-waves-rippling.mp3-3e034b96f584473a17ab2aa8c14081fe.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
