@@ -1,6 +1,7 @@
 extends "Entity.gd"
 
 var state = MOVE
+var stats = PlayerStats
 
 var inventory_resource = load("res://Scripts/Entity/Inventory.gd")
 var inventory = inventory_resource.new()
@@ -8,6 +9,7 @@ var inventory = inventory_resource.new()
 const ENERGYBALL = preload("res://Scenes/Player/Attacks/Energyball.tscn")
 
 func _ready():
+	stats.connect("no_health", self, "queue_free")
 	animation_player = $AnimationPlayer
 	animation_tree = $AnimationTree
 	animation_state = animation_tree.get("parameters/playback")
@@ -63,3 +65,7 @@ func ranged_attack_state(_delta):
 
 func attack_animation_finished():
 	state = MOVE
+
+
+func _on_Hurtbox_area_entered(area):
+	stats.health -= 1
