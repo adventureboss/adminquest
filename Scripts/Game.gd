@@ -19,7 +19,7 @@ func add_scene(path = "res://Scenes/World.tscn"):
 	
 	if scene == null:
 		# no scene, no game...
-		var game = get_tree().change_scene("res://Scenes/title_screen.tscn")
+		var _game = get_tree().change_scene("res://Scenes/title_screen.tscn")
 
 	var instance = scene.instance()
 	call_deferred("add_child", instance)
