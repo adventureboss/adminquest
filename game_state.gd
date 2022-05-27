@@ -14,6 +14,8 @@ signal hours_changed(value)
 
 var game
 
+export var current_scene_name = "Title Screen" setget scene_change
+
 func _ready():
 	player_stats.health = player_stats.max_health
 
@@ -35,7 +37,11 @@ func set_hours(value):
 		
 func increase_hours(by):
 	set_hours(player_stats.hours + by)
-
+	
+# Scene change handling
+func scene_change(name):
+	current_scene_name = name
+	
 func start_dialogue(resource, entry) -> void:
 	get_tree().paused = true
 	var dialogue = yield(DialogueManager.get_next_dialogue_line(entry, resource), "completed")
