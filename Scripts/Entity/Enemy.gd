@@ -31,18 +31,11 @@ export(float) var timeWandering = 1
 export(float) var wanderMovement = 0.5
 export(float) var delayBeforeNextWander = 1.0
 
-# Knockback properties
-var knockback_vector = Vector2.ZERO
-export var knockback_force = 100
-export var knockback_dur = .15
-var current_knockback_dur = 0
-
 var state = State.IDLE
 onready var stats = $Stats
 var timeSpentState = 0
 
 onready var EnemyDeathEffect = preload("res://newEffects/BatEffect.tscn")
-onready var HitEffect = preload("res://newEffects/HitEffect.tscn")
 
 
 func _ready() -> void:
@@ -50,12 +43,8 @@ func _ready() -> void:
 		assert(playerDetection != null, "If 'Should Follow' is set, a 'PlayerDetectionZone' is needed")
 
 func _on_Hurtbox_area_entered(area: Area2D) -> void:
-	var effect = HitEffect.instance()
-	get_parent().add_child(effect)
-	effect.global_position = global_position
 	stats.set_health(stats.health - 1)	
-	knockback_vector = (global_position - area.global_position).normalized() * knockback_force
-	current_knockback_dur = knockback_dur
+	knockback(area)
 
 func canSeePlayer():
 	return playerDetection and playerDetection.canSeePlayer()
@@ -138,14 +127,6 @@ func processMovement(_delta):
 	pass
 	
 func _physics_process(delta):
-	if current_knockback_dur >= 0.0:
-		var _collision = move_and_slide(knockback_vector)
-		current_knockback_dur -= delta
-
-	else:
-		knockback_vector = Vector2.ZERO
-		
-	
 	._physics_process(delta)
 	decideState(delta)
 	

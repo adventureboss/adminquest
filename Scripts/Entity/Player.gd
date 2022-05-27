@@ -8,6 +8,7 @@ var inventory = inventory_resource.new()
 const ENERGYBALL = preload("res://Scenes/Player/Attacks/Energyball.tscn")
 
 func _ready():
+	game_state.connect("no_health", self, "queue_free")
 	animation_player = $AnimationPlayer
 	animation_tree = $AnimationTree
 	animation_state = animation_tree.get("parameters/playback")
@@ -63,3 +64,7 @@ func ranged_attack_state(_delta):
 
 func attack_animation_finished():
 	state = MOVE
+
+func onPlayerHit(area):
+	knockback(area)
+	GameState.set_health(GameState.player_stats.health - 1)

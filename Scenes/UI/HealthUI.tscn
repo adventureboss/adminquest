@@ -8,6 +8,9 @@
 margin_right = 176.0
 margin_bottom = 49.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="EmptyHearts" type="TextureRect" parent="."]
 margin_left = 3.0
@@ -15,6 +18,7 @@ margin_top = 3.0
 margin_right = 51.0
 margin_bottom = 15.0
 texture = ExtResource( 3 )
+expand = true
 stretch_mode = 2
 
 [node name="FullHearts" type="TextureRect" parent="."]
@@ -23,4 +27,5 @@ margin_top = 3.0
 margin_right = 51.0
 margin_bottom = 15.0
 texture = ExtResource( 2 )
+expand = true
 stretch_mode = 2
