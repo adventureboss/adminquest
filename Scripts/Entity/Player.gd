@@ -55,9 +55,7 @@ func ranged_attack_state(_delta):
 	energyball.global_position = self.global_position
 	
 	if facingDirection.x < 0:
-		energyball.rotation = deg2rad(180)
-	else:
-		energyball.rotation = deg2rad(0)
+		energyball.direction = Vector2.LEFT
 
 	attack_animation_finished()
 
