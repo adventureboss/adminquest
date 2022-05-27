@@ -1,9 +1,13 @@
 extends Node2D
 
 const MISSILE_SPEED = 200
+var direction = Vector2.RIGHT
+
+onready var sprite = $AnimatedSprite
 
 func _physics_process(delta: float) -> void:
-	var direction = Vector2.RIGHT.rotated(rotation)
+	if direction == Vector2.LEFT:
+		sprite.flip_h = true
 	global_position += MISSILE_SPEED * direction * delta
 
 
