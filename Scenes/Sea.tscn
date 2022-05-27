@@ -44,7 +44,7 @@ position = Vector2( 0, 0 )
 tile_data = PoolIntArray( 983065, 0, 0, 983071, 0, 0, 1048601, 0, 65536, 1048607, 0, 65536, 1114137, 0, 65536, 1114143, 0, 65536, 1179673, 0, 131072, 1179679, 0, 131072, 1245203, 0, 0, 1245210, 0, 196609, 1245211, 0, 196610, 1245212, 0, 196610, 1245213, 0, 196610, 1245214, 0, 196611, 1245216, 0, 196609, 1245217, 0, 196611, 1310739, 0, 65536, 1376275, 0, 65536, 1441811, 0, 65536, 1507347, 0, 65536, 1572883, 0, 131072 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 381, 439 )
+position = Vector2( 383, 405 )
 current = true
 process_mode = 0
 smoothing_enabled = true
@@ -61,17 +61,16 @@ position = Vector2( 40.0802, 5 )
 shape = SubResource( 38 )
 
 [node name="YSort" type="YSort" parent="."]
-position = Vector2( -93, 53 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( 474, 386 )
+position = Vector2( 383, 405 )
 z_index = 0
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
 remote_path = NodePath("../../../Camera2D")
 
 [node name="Doug" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 489, 431 )
+position = Vector2( 398, 467 )
 rotation = -1.5708
 
 [connection signal="area_entered" from="TownArea2D" to="." method="_on_TownArea2D_area_entered"]

@@ -19,7 +19,7 @@ func _on_GraveyardArea2D_area_entered(_area):
 	game.remove_scene(self)
 
 
-func _on_DockArea2D_area_entered(area):
+func _on_DockArea2D_area_entered(_area):
 	# Change to seaside scene
 	var game = get_node("/root/Game")
 	game.add_scene("res://Scenes/Sea.tscn")

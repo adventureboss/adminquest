@@ -46,7 +46,6 @@ onready var HitEffect = preload("res://newEffects/HitEffect.tscn")
 
 
 func _ready() -> void:
-	._ready()
 	if shouldFollow:
 		assert(playerDetection != null, "If 'Should Follow' is set, a 'PlayerDetectionZone' is needed")
 
@@ -132,15 +131,15 @@ func shouldMoveToWandering(delta):
 	
 	return false
 
-func processWanderingState(delta):
+func processWanderingState(_delta):
 	pass
 	
-func processMovement(delta):
+func processMovement(_delta):
 	pass
 	
 func _physics_process(delta):
 	if current_knockback_dur >= 0.0:
-		var collision = move_and_slide(knockback_vector)
+		var _collision = move_and_slide(knockback_vector)
 		current_knockback_dur -= delta
 
 	else:

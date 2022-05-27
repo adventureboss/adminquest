@@ -14,7 +14,7 @@ func set_camera_limits():
 	$Camera2D.limit_bottom = map_limits.end.y * map_cellsize.y
 
 
-func _on_TownArea2D_area_entered(area):
+func _on_TownArea2D_area_entered(_area):
 	# Change to town area
 	var game = get_node("/root/Game")
 	game.add_scene("res://Scenes/Town.tscn")
