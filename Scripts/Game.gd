@@ -13,6 +13,9 @@ func _ready():
 	GameState.game = self
 
 func add_scene(path = "res://Scenes/World.tscn"):
+	$Fade/FadeIn.show()
+	$Fade/FadeIn.Fade_in()
+	
 	var scene = load(path)
 	
 	emit_signal("scene_changed", path)
