@@ -80,7 +80,7 @@ func _ready() -> void:
 		next_id = dialogue.next_id
 	else:
 		while true:
-			if Input.is_action_just_pressed("interact"):
+			if Input.is_action_just_pressed("ui_accept"):
 				next_id = dialogue.next_id
 				break
 			yield(get_tree(), "idle_frame")

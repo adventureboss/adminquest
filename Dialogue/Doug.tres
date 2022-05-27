@@ -5,19 +5,248 @@
 [resource]
 script = ExtResource( 1 )
 syntax_version = 2
-raw_text = "~ main
-Doug: well, here we are"
+raw_text = "~ initialize
+do set_dialogue_state(\"doug\", \"met\", 0)
+do set_dialogue_state(\"doug\", \"initialized\", true)
+=> main
+
+~ main
+if get_dialogue_state(\"doug\", \"initialized\") == false
+	=> initialize
+if get_dialogue_state(\"doug\", \"met\") == 0
+	=> first_meet
+	
+~ first_meet
+Doug: Oh boy! I'm so glad you're here. This infrastructure is a mess.
+Doug: There are bugs everywhere! Tons of vulnerabilities.
+Doug: As a matter of fact, we're even out of storage space!
+Doug: Lord Graybeard is LOSING it. You better go see him.
+Hero:
+  - Look, man. I need a quick refresher on what it is I DO here.
+  - What am I standing around here talk to you for then?
+Doug: The ol' silent hero trope, eh? 
+Hero: ...
+Doug: Get going! He's in the village north of here.
+Doug: Oh yeah! One more thing.
+Doug: Make sure you have your Sword of RF! Press 'e' to swing!
+
+~ subsequent_meets
+Doug: Why are you standing around! Get moving!
+"
 errors = [  ]
 titles = {
-"main": "1"
+"first_meet": "12",
+"initialize": "1",
+"main": "6",
+"subsequent_meets": "26"
 }
 lines = {
 "0": {
 "next_id": "1",
-"text": "main",
+"text": "initialize",
 "type": "title"
 },
 "1": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "doug"
+} ], [ {
+"type": "string",
+"value": "met"
+} ], [ {
+"type": "number",
+"value": 0
+} ] ],
+"function": "set_dialogue_state"
+},
+"next_id": "2",
+"type": "mutation"
+},
+"11": {
+"next_id": "12",
+"text": "first_meet",
+"type": "title"
+},
+"12": {
+"character": "Doug",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "13",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Oh boy! I'm so glad you're here. This infrastructure is a mess.",
+"time": null,
+"translation_key": "Oh boy! I'm so glad you're here. This infrastructure is a mess.",
+"type": "dialogue"
+},
+"13": {
+"character": "Doug",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "14",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "There are bugs everywhere! Tons of vulnerabilities.",
+"time": null,
+"translation_key": "There are bugs everywhere! Tons of vulnerabilities.",
+"type": "dialogue"
+},
+"14": {
+"character": "Doug",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "15",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "As a matter of fact, we're even out of storage space!",
+"time": null,
+"translation_key": "As a matter of fact, we're even out of storage space!",
+"type": "dialogue"
+},
+"15": {
+"character": "Doug",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "16",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Lord Graybeard is LOSING it. You better go see him.",
+"time": null,
+"translation_key": "Lord Graybeard is LOSING it. You better go see him.",
+"type": "dialogue"
+},
+"16": {
+"character": "",
+"inline_mutations": [  ],
+"next_id": "17",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Hero:",
+"time": null,
+"translation_key": "Hero:",
+"type": "dialogue"
+},
+"17": {
+"next_id": "19",
+"next_id_after": "19",
+"replacements": [  ],
+"responses": PoolStringArray( "17", "18" ),
+"text": "Look, man. I need a quick refresher on what it is I DO here.",
+"translation_key": "Look, man. I need a quick refresher on what it is I DO here.",
+"type": "response"
+},
+"18": {
+"next_id": "19",
+"next_id_after": "19",
+"replacements": [  ],
+"text": "What am I standing around here talk to you for then?",
+"translation_key": "What am I standing around here talk to you for then?",
+"type": "response"
+},
+"19": {
+"character": "Doug",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "20",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "The ol' silent hero trope, eh?",
+"time": null,
+"translation_key": "The ol' silent hero trope, eh?",
+"type": "dialogue"
+},
+"2": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "doug"
+} ], [ {
+"type": "string",
+"value": "initialized"
+} ], [ {
+"type": "bool",
+"value": true
+} ] ],
+"function": "set_dialogue_state"
+},
+"next_id": "3",
+"type": "mutation"
+},
+"20": {
+"character": "Hero",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "21",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "...",
+"time": null,
+"translation_key": "...",
+"type": "dialogue"
+},
+"21": {
+"character": "Doug",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "22",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Get going! He's in the village north of here.",
+"time": null,
+"translation_key": "Get going! He's in the village north of here.",
+"type": "dialogue"
+},
+"22": {
+"character": "Doug",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "23",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Oh yeah! One more thing.",
+"time": null,
+"translation_key": "Oh yeah! One more thing.",
+"type": "dialogue"
+},
+"23": {
+"character": "Doug",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "end",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Make sure you have your Sword of RF! Press 'e' to swing!",
+"time": null,
+"translation_key": "Make sure you have your Sword of RF! Press 'e' to swing!",
+"type": "dialogue"
+},
+"25": {
+"next_id": "26",
+"text": "subsequent_meets",
+"type": "title"
+},
+"26": {
 "character": "Doug",
 "character_replacements": [  ],
 "inline_mutations": [  ],
@@ -26,9 +255,78 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "well, here we are",
+"text": "Why are you standing around! Get moving!",
 "time": null,
-"translation_key": "well, here we are",
+"translation_key": "Why are you standing around! Get moving!",
 "type": "dialogue"
+},
+"3": {
+"next_id": "6",
+"type": "goto"
+},
+"5": {
+"next_id": "6",
+"text": "main",
+"type": "title"
+},
+"6": {
+"condition": {
+"expression": [ {
+"function": "get_dialogue_state",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "doug"
+} ], [ {
+"type": "string",
+"value": "initialized"
+} ] ]
+}, {
+"type": "comparison",
+"value": "=="
+}, {
+"type": "bool",
+"value": false
+} ]
+},
+"next_conditional_id": "8",
+"next_id": "7",
+"next_id_after": "8",
+"type": "condition"
+},
+"7": {
+"next_id": "1",
+"parent_id": "6",
+"type": "goto"
+},
+"8": {
+"condition": {
+"expression": [ {
+"function": "get_dialogue_state",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "doug"
+} ], [ {
+"type": "string",
+"value": "met"
+} ] ]
+}, {
+"type": "comparison",
+"value": "=="
+}, {
+"type": "number",
+"value": 0
+} ]
+},
+"next_conditional_id": "end",
+"next_id": "9",
+"next_id_after": "end",
+"type": "condition"
+},
+"9": {
+"next_id": "12",
+"parent_id": "8",
+"type": "goto"
 }
 }

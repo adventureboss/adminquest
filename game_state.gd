@@ -7,6 +7,9 @@ export var player_stats = {
 	hours = 0
 }
 
+# establish defautl dictionary for dialogue states
+var _dialogue_state: Dictionary = {}
+
 signal no_health
 signal health_changed(value)
 signal max_health_changed(value)
@@ -77,3 +80,17 @@ func load_game(filename: String):
 		return true
 	else:
 		return false
+
+
+# handle dialog states
+func set_dialogue_state(actor: String, variable: String, value):
+	if not self._dialogue_state.has(actor):
+		self._dialogue_state[actor] = {}
+
+	self._dialogue_state[actor][variable] = value
+
+func get_dialogue_state(actor: String, variable, default = null):
+	if not self._dialogue_state.has(actor):
+		self._dialogue_state[actor] = {}
+
+	return self._dialogue_state[actor].get(variable, default)
