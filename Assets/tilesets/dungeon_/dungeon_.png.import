@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dungeonDecoration_0 [redCarpet].png-d5235df055b2fe0f49fffd9b2a9bdd19.stex"
+path="res://.import/dungeon_.png-0d93321985d48f18ea9344548d502aaf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/tilesets/dungeon_ v1.0/dungeonDecoration_0 [redCarpet].png"
-dest_files=[ "res://.import/dungeonDecoration_0 [redCarpet].png-d5235df055b2fe0f49fffd9b2a9bdd19.stex" ]
+source_file="res://Assets/tilesets/dungeon_/dungeon_.png"
+dest_files=[ "res://.import/dungeon_.png-0d93321985d48f18ea9344548d502aaf.stex" ]
 
 [params]
 

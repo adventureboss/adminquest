@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/acid_.png-f6b936a672f5f0b6f3f492883de9ed4c.stex"
+path="res://.import/dungeon_ [lava].png-98a9665e77b74e9405830ae48a356621.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/tilesets/dungeon_ v1.0/acid_.png"
-dest_files=[ "res://.import/acid_.png-f6b936a672f5f0b6f3f492883de9ed4c.stex" ]
+source_file="res://Assets/tilesets/dungeon_/dungeon_ [lava].png"
+dest_files=[ "res://.import/dungeon_ [lava].png-98a9665e77b74e9405830ae48a356621.stex" ]
 
 [params]
 

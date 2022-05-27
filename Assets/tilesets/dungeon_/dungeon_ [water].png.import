@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fire_.png-3ad311561cb47ac707f66425ca3cfff6.stex"
+path="res://.import/dungeon_ [water].png-6d8e127a763f331c9524c5961c9a0077.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/tilesets/dungeon_ v1.0/fire_.png"
-dest_files=[ "res://.import/fire_.png-3ad311561cb47ac707f66425ca3cfff6.stex" ]
+source_file="res://Assets/tilesets/dungeon_/dungeon_ [water].png"
+dest_files=[ "res://.import/dungeon_ [water].png-6d8e127a763f331c9524c5961c9a0077.stex" ]
 
 [params]
 
