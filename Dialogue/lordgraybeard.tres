@@ -1,0 +1,1429 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialogue_manager/dialogue_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+syntax_version = 2
+raw_text = "~ initialize
+do set_dialogue_state(\"graybeard\", \"initialized\", true)
+do set_dialogue_state(\"graybeard\", \"met\", 1)
+=> first_meet
+
+~ main
+if get_dialogue_state(\"graybeard\", \"initialized\") == false
+	=> initialize
+if get_dialogue_state(\"graybeard\", \"met\") < 1
+	=> first_meet
+if get_quest_state(\"any_quest\", \"state\") == \"in_progess\"
+	=> active_quest_meet
+if get_quest_state(\"any_quest\", \"state\") == \"complete\"
+	=> turn_in
+else 
+	=> active_quest_meet
+
+~ first_meet
+Lord Graybeard: ...
+- Hello?
+	=> awake_gentle
+- The process must be asleep. Ctrl+C!
+	=> awake_panic
+
+~ awake_gentle
+Lord Graybeard: What? What's that? Oh, hello there!
+Lord Graybeard: Forgive me, I was in the background for a moment. Much to do!
+=> introduction
+
+~ awake_panic
+Lord Graybeard: GOOD GRACIOUS! You can't just go around cancelling someone like that.
+Lord Graybeard: Goodness me. The impatience of the youth these days.
+=> introduction
+
+~ introduction
+- Doug said you needed some help.
+	Lord Graybeard: Of course, yes! So glad you've come to fix this place.
+	do set_dialogue_state(\"graybeard\", \"kind\", true)
+	=> quest_1
+- I'm here to fix this system, but I'm billing for it.
+	Lord Graybeard: Back in my day we fixed systems for fun! Didn't know we could get paid!
+	Lord Graybeard: Anyway ..
+	do set_dialogue_state(\"graybeard\", \"kind\", false)
+	=> quest_1
+	
+~ quest_1
+Lord Graybeard: We're running low on storage space around here. Somebody turned on debug logging on their app and the logs are out of control.
+Lord Graybeard: I need you to go to the distant crypt known as VarLog and take care of it.
+=> quest_1_responses
+
+~ quest_1_responses
+- Why are the logs in a crypt?
+	Lord Graybeard: It's where they go to die, of course
+	=> quest_1_responses
+- If I remove them, won't they just come back?
+	Lord Graybeard: Most likely. We must find the source, but for now, deleting them should buy us some time.
+	Lord Graybeard: If this gets any worse, the root filesystem will fill up and then we'll be in big trouble!
+	=> quest_1_responses
+- I'm ready to go!
+	=> quest_1_part_2
+- I don't bother will quest text, just send me on my way!
+	=> quest_1_part_2
+	
+
+~ quest_1_part_2
+Lord Graybeard: Once you've destroyed all the logs in the VarLog, come back to me.
+do set_quest_state(\"any_quest\", \"state\", \"in_progress\")
+do set_quest_state(\"quest_1\", \"state\", \"in_progress\")
+if get_dialogue_state(\"graybeard\", \"kind\") == true
+	Hero: Sounds good! I'm on it
+	Lord Graybeard: Good luck!
+	=> END
+else:
+	Hero: So I can get paid?
+	Lord Graybeard: Fine, yes yes. You'll get your hours. Now go!
+    => END
+
+~ active_quest_meet
+Lord Graybeard: Oh hello again!
+if get_quest_state(\"quest_1\", \"state\") == \"in_progress\"
+	Lord Graybeard: Shouldn't you be out destroying log files in VarLog?
+	Hero: But I have questions
+	=> questions
+else
+	Lord Graybeard: Hello again. Can I help you?
+	- I need more quests.
+	    Lord Graybeard: I'm afraid this demo server is limited.
+	    Hero: But I only did one!
+	    Lord Graybeard: Severely limited? Come back later.
+	    => END
+	- I have more questions
+	    Lord Graybeard: Very well
+	    => questions
+	
+~ questions
+- What's the deal with all the different styles around here?
+	Lord Graybeard: It's an old system. Many a sysadmin has been through here over the years. Each one leaving their mark.
+	Lord Graybeard: My programming has been here for ten years. Untouched. 
+	Hero: Why are you still here then?
+	Lord Graybeard: No one knows what I do so they're afraid to turn me off.
+	Hero: That checks out.
+	=> questions
+- What do I do with my billable hours?
+	Lord Graybeard: You can buy stuff with it!
+	Hero: Where?
+	Lord Graybeard: Traceback: NameError: \"Shop\" is not defined
+	Hero: What?
+	Lord Graybeard: Looks like no one put in the code for it yet.
+	=> questions
+- What language are you written in?
+	Lord Graybeard: Python
+	Hero: Oh, well that's not so bad.
+	Lord Graybeard: Python 2
+	Hero: Nevermind
+	=> questions
+- Nevermind
+	Lord Graybeard: Good! I need a nap anyway
+	=> END
+
+~ turn_in
+Lord Graybeard: All done then?
+Hero: You bet!
+Lord Graybeard: Well good! I guess the system is in better shape than it was.
+Lord Graybeard: I can feel it in my bits.
+Hero: Gross.
+Lord Graybeard: Anyway, here are your hours. Now go home!
+do increase_hours(50)"
+errors = [  ]
+titles = {
+"active_quest_meet": "78",
+"awake_gentle": "25",
+"awake_panic": "30",
+"first_meet": "18",
+"initialize": "1",
+"introduction": "35",
+"main": "6",
+"quest_1": "46",
+"quest_1_part_2": "65",
+"quest_1_responses": "51",
+"questions": "95",
+"turn_in": "120"
+}
+lines = {
+"0": {
+"next_id": "1",
+"text": "initialize",
+"type": "title"
+},
+"1": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "graybeard"
+} ], [ {
+"type": "string",
+"value": "initialized"
+} ], [ {
+"type": "bool",
+"value": true
+} ] ],
+"function": "set_dialogue_state"
+},
+"next_id": "2",
+"type": "mutation"
+},
+"10": {
+"condition": {
+"expression": [ {
+"function": "get_quest_state",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "any_quest"
+} ], [ {
+"type": "string",
+"value": "state"
+} ] ]
+}, {
+"type": "comparison",
+"value": "=="
+}, {
+"type": "string",
+"value": "in_progess"
+} ]
+},
+"next_conditional_id": "12",
+"next_id": "11",
+"next_id_after": "12",
+"type": "condition"
+},
+"100": {
+"character": "Hero",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "101",
+"parent_id": "95",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "That checks out.",
+"time": null,
+"translation_key": "That checks out.",
+"type": "dialogue"
+},
+"101": {
+"next_id": "95",
+"parent_id": "95",
+"type": "goto"
+},
+"102": {
+"next_id": "103",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "What do I do with my billable hours?",
+"translation_key": "What do I do with my billable hours?",
+"type": "response"
+},
+"103": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "104",
+"parent_id": "102",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "You can buy stuff with it!",
+"time": null,
+"translation_key": "You can buy stuff with it!",
+"type": "dialogue"
+},
+"104": {
+"character": "Hero",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "105",
+"parent_id": "102",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Where?",
+"time": null,
+"translation_key": "Where?",
+"type": "dialogue"
+},
+"105": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "106",
+"parent_id": "102",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Traceback: NameError: \"Shop\" is not defined",
+"time": null,
+"translation_key": "Traceback: NameError: \"Shop\" is not defined",
+"type": "dialogue"
+},
+"106": {
+"character": "Hero",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "107",
+"parent_id": "102",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "What?",
+"time": null,
+"translation_key": "What?",
+"type": "dialogue"
+},
+"107": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "108",
+"parent_id": "102",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Looks like no one put in the code for it yet.",
+"time": null,
+"translation_key": "Looks like no one put in the code for it yet.",
+"type": "dialogue"
+},
+"108": {
+"next_id": "95",
+"parent_id": "102",
+"type": "goto"
+},
+"109": {
+"next_id": "110",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "What language are you written in?",
+"translation_key": "What language are you written in?",
+"type": "response"
+},
+"11": {
+"next_id": "78",
+"parent_id": "10",
+"type": "goto"
+},
+"110": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "111",
+"parent_id": "109",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Python",
+"time": null,
+"translation_key": "Python",
+"type": "dialogue"
+},
+"111": {
+"character": "Hero",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "112",
+"parent_id": "109",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Oh, well that's not so bad.",
+"time": null,
+"translation_key": "Oh, well that's not so bad.",
+"type": "dialogue"
+},
+"112": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "113",
+"parent_id": "109",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Python 2",
+"time": null,
+"translation_key": "Python 2",
+"type": "dialogue"
+},
+"113": {
+"character": "Hero",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "114",
+"parent_id": "109",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Nevermind",
+"time": null,
+"translation_key": "Nevermind",
+"type": "dialogue"
+},
+"114": {
+"next_id": "95",
+"parent_id": "109",
+"type": "goto"
+},
+"115": {
+"next_id": "116",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "Nevermind",
+"translation_key": "Nevermind",
+"type": "response"
+},
+"116": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "117",
+"parent_id": "115",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Good! I need a nap anyway",
+"time": null,
+"translation_key": "Good! I need a nap anyway",
+"type": "dialogue"
+},
+"117": {
+"next_id": "end",
+"parent_id": "115",
+"type": "goto"
+},
+"119": {
+"next_id": "120",
+"text": "turn_in",
+"type": "title"
+},
+"12": {
+"condition": {
+"expression": [ {
+"function": "get_quest_state",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "any_quest"
+} ], [ {
+"type": "string",
+"value": "state"
+} ] ]
+}, {
+"type": "comparison",
+"value": "=="
+}, {
+"type": "string",
+"value": "complete"
+} ]
+},
+"next_conditional_id": "14",
+"next_id": "13",
+"next_id_after": "end",
+"type": "condition"
+},
+"120": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "121",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "All done then?",
+"time": null,
+"translation_key": "All done then?",
+"type": "dialogue"
+},
+"121": {
+"character": "Hero",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "122",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "You bet!",
+"time": null,
+"translation_key": "You bet!",
+"type": "dialogue"
+},
+"122": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "123",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Well good! I guess the system is in better shape than it was.",
+"time": null,
+"translation_key": "Well good! I guess the system is in better shape than it was.",
+"type": "dialogue"
+},
+"123": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "124",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I can feel it in my bits.",
+"time": null,
+"translation_key": "I can feel it in my bits.",
+"type": "dialogue"
+},
+"124": {
+"character": "Hero",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "125",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Gross.",
+"time": null,
+"translation_key": "Gross.",
+"type": "dialogue"
+},
+"125": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "126",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Anyway, here are your hours. Now go home!",
+"time": null,
+"translation_key": "Anyway, here are your hours. Now go home!",
+"type": "dialogue"
+},
+"126": {
+"mutation": {
+"args": [ [ {
+"type": "number",
+"value": 50
+} ] ],
+"function": "increase_hours"
+},
+"next_id": "",
+"type": "mutation"
+},
+"13": {
+"next_id": "120",
+"parent_id": "12",
+"type": "goto"
+},
+"14": {
+"next_conditional_id": "end",
+"next_id": "15",
+"next_id_after": "end",
+"type": "condition"
+},
+"15": {
+"next_id": "78",
+"parent_id": "14",
+"type": "goto"
+},
+"17": {
+"next_id": "18",
+"text": "first_meet",
+"type": "title"
+},
+"18": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "19",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "...",
+"time": null,
+"translation_key": "...",
+"type": "dialogue"
+},
+"19": {
+"next_id": "20",
+"next_id_after": "end",
+"replacements": [  ],
+"responses": PoolStringArray( "19", "21" ),
+"text": "Hello?",
+"translation_key": "Hello?",
+"type": "response"
+},
+"2": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "graybeard"
+} ], [ {
+"type": "string",
+"value": "met"
+} ], [ {
+"type": "number",
+"value": 1
+} ] ],
+"function": "set_dialogue_state"
+},
+"next_id": "3",
+"type": "mutation"
+},
+"20": {
+"next_id": "25",
+"parent_id": "19",
+"type": "goto"
+},
+"21": {
+"next_id": "22",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "The process must be asleep. Ctrl+C!",
+"translation_key": "The process must be asleep. Ctrl+C!",
+"type": "response"
+},
+"22": {
+"next_id": "30",
+"parent_id": "21",
+"type": "goto"
+},
+"24": {
+"next_id": "25",
+"text": "awake_gentle",
+"type": "title"
+},
+"25": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "26",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "What? What's that? Oh, hello there!",
+"time": null,
+"translation_key": "What? What's that? Oh, hello there!",
+"type": "dialogue"
+},
+"26": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "27",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Forgive me, I was in the background for a moment. Much to do!",
+"time": null,
+"translation_key": "Forgive me, I was in the background for a moment. Much to do!",
+"type": "dialogue"
+},
+"27": {
+"next_id": "35",
+"type": "goto"
+},
+"29": {
+"next_id": "30",
+"text": "awake_panic",
+"type": "title"
+},
+"3": {
+"next_id": "18",
+"type": "goto"
+},
+"30": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "31",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "GOOD GRACIOUS! You can't just go around cancelling someone like that.",
+"time": null,
+"translation_key": "GOOD GRACIOUS! You can't just go around cancelling someone like that.",
+"type": "dialogue"
+},
+"31": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "32",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Goodness me. The impatience of the youth these days.",
+"time": null,
+"translation_key": "Goodness me. The impatience of the youth these days.",
+"type": "dialogue"
+},
+"32": {
+"next_id": "35",
+"type": "goto"
+},
+"34": {
+"next_id": "35",
+"text": "introduction",
+"type": "title"
+},
+"35": {
+"next_id": "36",
+"next_id_after": "end",
+"replacements": [  ],
+"responses": PoolStringArray( "35", "39" ),
+"text": "Doug said you needed some help.",
+"translation_key": "Doug said you needed some help.",
+"type": "response"
+},
+"36": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "37",
+"parent_id": "35",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Of course, yes! So glad you've come to fix this place.",
+"time": null,
+"translation_key": "Of course, yes! So glad you've come to fix this place.",
+"type": "dialogue"
+},
+"37": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "graybeard"
+} ], [ {
+"type": "string",
+"value": "kind"
+} ], [ {
+"type": "bool",
+"value": true
+} ] ],
+"function": "set_dialogue_state"
+},
+"next_id": "38",
+"parent_id": "35",
+"type": "mutation"
+},
+"38": {
+"next_id": "46",
+"parent_id": "35",
+"type": "goto"
+},
+"39": {
+"next_id": "40",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "I'm here to fix this system, but I'm billing for it.",
+"translation_key": "I'm here to fix this system, but I'm billing for it.",
+"type": "response"
+},
+"40": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "41",
+"parent_id": "39",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Back in my day we fixed systems for fun! Didn't know we could get paid!",
+"time": null,
+"translation_key": "Back in my day we fixed systems for fun! Didn't know we could get paid!",
+"type": "dialogue"
+},
+"41": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "42",
+"parent_id": "39",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Anyway ..",
+"time": null,
+"translation_key": "Anyway ..",
+"type": "dialogue"
+},
+"42": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "graybeard"
+} ], [ {
+"type": "string",
+"value": "kind"
+} ], [ {
+"type": "bool",
+"value": false
+} ] ],
+"function": "set_dialogue_state"
+},
+"next_id": "43",
+"parent_id": "39",
+"type": "mutation"
+},
+"43": {
+"next_id": "46",
+"parent_id": "39",
+"type": "goto"
+},
+"45": {
+"next_id": "46",
+"text": "quest_1",
+"type": "title"
+},
+"46": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "47",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "We're running low on storage space around here. Somebody turned on debug logging on their app and the logs are out of control.",
+"time": null,
+"translation_key": "We're running low on storage space around here. Somebody turned on debug logging on their app and the logs are out of control.",
+"type": "dialogue"
+},
+"47": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "48",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I need you to go to the distant crypt known as VarLog and take care of it.",
+"time": null,
+"translation_key": "I need you to go to the distant crypt known as VarLog and take care of it.",
+"type": "dialogue"
+},
+"48": {
+"next_id": "51",
+"type": "goto"
+},
+"5": {
+"next_id": "6",
+"text": "main",
+"type": "title"
+},
+"50": {
+"next_id": "51",
+"text": "quest_1_responses",
+"type": "title"
+},
+"51": {
+"next_id": "52",
+"next_id_after": "end",
+"replacements": [  ],
+"responses": PoolStringArray( "51", "54", "58", "60" ),
+"text": "Why are the logs in a crypt?",
+"translation_key": "Why are the logs in a crypt?",
+"type": "response"
+},
+"52": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "53",
+"parent_id": "51",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "It's where they go to die, of course",
+"time": null,
+"translation_key": "It's where they go to die, of course",
+"type": "dialogue"
+},
+"53": {
+"next_id": "51",
+"parent_id": "51",
+"type": "goto"
+},
+"54": {
+"next_id": "55",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "If I remove them, won't they just come back?",
+"translation_key": "If I remove them, won't they just come back?",
+"type": "response"
+},
+"55": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "56",
+"parent_id": "54",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Most likely. We must find the source, but for now, deleting them should buy us some time.",
+"time": null,
+"translation_key": "Most likely. We must find the source, but for now, deleting them should buy us some time.",
+"type": "dialogue"
+},
+"56": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "57",
+"parent_id": "54",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "If this gets any worse, the root filesystem will fill up and then we'll be in big trouble!",
+"time": null,
+"translation_key": "If this gets any worse, the root filesystem will fill up and then we'll be in big trouble!",
+"type": "dialogue"
+},
+"57": {
+"next_id": "51",
+"parent_id": "54",
+"type": "goto"
+},
+"58": {
+"next_id": "59",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "I'm ready to go!",
+"translation_key": "I'm ready to go!",
+"type": "response"
+},
+"59": {
+"next_id": "65",
+"parent_id": "58",
+"type": "goto"
+},
+"6": {
+"condition": {
+"expression": [ {
+"function": "get_dialogue_state",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "graybeard"
+} ], [ {
+"type": "string",
+"value": "initialized"
+} ] ]
+}, {
+"type": "comparison",
+"value": "=="
+}, {
+"type": "bool",
+"value": false
+} ]
+},
+"next_conditional_id": "8",
+"next_id": "7",
+"next_id_after": "8",
+"type": "condition"
+},
+"60": {
+"next_id": "61",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "I don't bother will quest text, just send me on my way!",
+"translation_key": "I don't bother will quest text, just send me on my way!",
+"type": "response"
+},
+"61": {
+"next_id": "65",
+"parent_id": "60",
+"type": "goto"
+},
+"64": {
+"next_id": "65",
+"text": "quest_1_part_2",
+"type": "title"
+},
+"65": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "66",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Once you've destroyed all the logs in the VarLog, come back to me.",
+"time": null,
+"translation_key": "Once you've destroyed all the logs in the VarLog, come back to me.",
+"type": "dialogue"
+},
+"66": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "any_quest"
+} ], [ {
+"type": "string",
+"value": "state"
+} ], [ {
+"type": "string",
+"value": "in_progress"
+} ] ],
+"function": "set_quest_state"
+},
+"next_id": "67",
+"type": "mutation"
+},
+"67": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "quest_1"
+} ], [ {
+"type": "string",
+"value": "state"
+} ], [ {
+"type": "string",
+"value": "in_progress"
+} ] ],
+"function": "set_quest_state"
+},
+"next_id": "68",
+"type": "mutation"
+},
+"68": {
+"condition": {
+"expression": [ {
+"function": "get_dialogue_state",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "graybeard"
+} ], [ {
+"type": "string",
+"value": "kind"
+} ] ]
+}, {
+"type": "comparison",
+"value": "=="
+}, {
+"type": "bool",
+"value": true
+} ]
+},
+"next_conditional_id": "72",
+"next_id": "69",
+"next_id_after": "75",
+"type": "condition"
+},
+"69": {
+"character": "Hero",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "70",
+"parent_id": "68",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Sounds good! I'm on it",
+"time": null,
+"translation_key": "Sounds good! I'm on it",
+"type": "dialogue"
+},
+"7": {
+"next_id": "1",
+"parent_id": "6",
+"type": "goto"
+},
+"70": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "71",
+"parent_id": "68",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Good luck!",
+"time": null,
+"translation_key": "Good luck!",
+"type": "dialogue"
+},
+"71": {
+"next_id": "end",
+"parent_id": "68",
+"type": "goto"
+},
+"72": {
+"next_conditional_id": "75",
+"next_id": "73",
+"next_id_after": "75",
+"type": "condition"
+},
+"73": {
+"character": "Hero",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "74",
+"parent_id": "72",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "So I can get paid?",
+"time": null,
+"translation_key": "So I can get paid?",
+"type": "dialogue"
+},
+"74": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "75",
+"parent_id": "72",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Fine, yes yes. You'll get your hours. Now go!",
+"time": null,
+"translation_key": "Fine, yes yes. You'll get your hours. Now go!",
+"type": "dialogue"
+},
+"75": {
+"next_id": "end",
+"type": "goto"
+},
+"77": {
+"next_id": "78",
+"text": "active_quest_meet",
+"type": "title"
+},
+"78": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "79",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Oh hello again!",
+"time": null,
+"translation_key": "Oh hello again!",
+"type": "dialogue"
+},
+"79": {
+"condition": {
+"expression": [ {
+"function": "get_quest_state",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "quest_1"
+} ], [ {
+"type": "string",
+"value": "state"
+} ] ]
+}, {
+"type": "comparison",
+"value": "=="
+}, {
+"type": "string",
+"value": "in_progress"
+} ]
+},
+"next_conditional_id": "83",
+"next_id": "80",
+"next_id_after": "end",
+"type": "condition"
+},
+"8": {
+"condition": {
+"expression": [ {
+"function": "get_dialogue_state",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "graybeard"
+} ], [ {
+"type": "string",
+"value": "met"
+} ] ]
+}, {
+"type": "comparison",
+"value": "<"
+}, {
+"type": "number",
+"value": 1
+} ]
+},
+"next_conditional_id": "10",
+"next_id": "9",
+"next_id_after": "10",
+"type": "condition"
+},
+"80": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "81",
+"parent_id": "79",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Shouldn't you be out destroying log files in VarLog?",
+"time": null,
+"translation_key": "Shouldn't you be out destroying log files in VarLog?",
+"type": "dialogue"
+},
+"81": {
+"character": "Hero",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "82",
+"parent_id": "79",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "But I have questions",
+"time": null,
+"translation_key": "But I have questions",
+"type": "dialogue"
+},
+"82": {
+"next_id": "95",
+"parent_id": "79",
+"type": "goto"
+},
+"83": {
+"next_conditional_id": "end",
+"next_id": "84",
+"next_id_after": "end",
+"type": "condition"
+},
+"84": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "85",
+"parent_id": "83",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Hello again. Can I help you?",
+"time": null,
+"translation_key": "Hello again. Can I help you?",
+"type": "dialogue"
+},
+"85": {
+"next_id": "86",
+"next_id_after": "86",
+"parent_id": "83",
+"replacements": [  ],
+"responses": PoolStringArray( "85" ),
+"text": "I need more quests.",
+"translation_key": "I need more quests.",
+"type": "response"
+},
+"86": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "87",
+"parent_id": "83",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I'm afraid this demo server is limited.",
+"time": null,
+"translation_key": "I'm afraid this demo server is limited.",
+"type": "dialogue"
+},
+"87": {
+"character": "Hero",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "88",
+"parent_id": "83",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "But I only did one!",
+"time": null,
+"translation_key": "But I only did one!",
+"type": "dialogue"
+},
+"88": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "89",
+"parent_id": "83",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Severely limited? Come back later.",
+"time": null,
+"translation_key": "Severely limited? Come back later.",
+"type": "dialogue"
+},
+"89": {
+"next_id": "end",
+"parent_id": "83",
+"type": "goto"
+},
+"9": {
+"next_id": "18",
+"parent_id": "8",
+"type": "goto"
+},
+"90": {
+"next_id": "91",
+"next_id_after": "91",
+"parent_id": "83",
+"replacements": [  ],
+"responses": PoolStringArray( "90" ),
+"text": "I have more questions",
+"translation_key": "I have more questions",
+"type": "response"
+},
+"91": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "92",
+"parent_id": "83",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Very well",
+"time": null,
+"translation_key": "Very well",
+"type": "dialogue"
+},
+"92": {
+"next_id": "95",
+"parent_id": "83",
+"type": "goto"
+},
+"94": {
+"next_id": "95",
+"text": "questions",
+"type": "title"
+},
+"95": {
+"next_id": "96",
+"next_id_after": "end",
+"replacements": [  ],
+"responses": PoolStringArray( "95", "102", "109", "115" ),
+"text": "What's the deal with all the different styles around here?",
+"translation_key": "What's the deal with all the different styles around here?",
+"type": "response"
+},
+"96": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "97",
+"parent_id": "95",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "It's an old system. Many a sysadmin has been through here over the years. Each one leaving their mark.",
+"time": null,
+"translation_key": "It's an old system. Many a sysadmin has been through here over the years. Each one leaving their mark.",
+"type": "dialogue"
+},
+"97": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "98",
+"parent_id": "95",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "My programming has been here for ten years. Untouched.",
+"time": null,
+"translation_key": "My programming has been here for ten years. Untouched.",
+"type": "dialogue"
+},
+"98": {
+"character": "Hero",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "99",
+"parent_id": "95",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Why are you still here then?",
+"time": null,
+"translation_key": "Why are you still here then?",
+"type": "dialogue"
+},
+"99": {
+"character": "Lord Graybeard",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "100",
+"parent_id": "95",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "No one knows what I do so they're afraid to turn me off.",
+"time": null,
+"translation_key": "No one knows what I do so they're afraid to turn me off.",
+"type": "dialogue"
+}
+}
