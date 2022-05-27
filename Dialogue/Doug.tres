@@ -5,30 +5,592 @@
 [resource]
 script = ExtResource( 1 )
 syntax_version = 2
-raw_text = "~ main
-Doug: well, here we are"
+raw_text = "~ initialize
+do set_dialogue_state(\"doug\", \"met\", 0)
+do set_dialogue_state(\"doug\", \"initialized\", true)
+=> main
+
+~ main
+if get_dialogue_state(\"doug\", \"initialized\") == false
+	=> initialize
+if get_dialogue_state(\"doug\", \"met\") == 0
+	=> first_meet
+if get_dialogue_state(\"doug\", \"met\") == 1
+	=> more_help
+	
+~ first_meet
+do set_dialogue_state(\"doug\", \"met\", 1)
+Doug: Oh boy! I'm so glad you're here. This infrastructure is a mess.
+Doug: There are bugs everywhere! Tons of vulnerabilities.
+Doug: As a matter of fact, we're even out of storage space!
+Doug: Lord Graybeard is LOSING it. You better go see him.
+Hero:
+  - Look, man. I need a quick refresher on what it is I DO here.
+	=> tutorial
+  - What am I standing around here talk to you for then?
+	Doug: Go see Lord Graybeard in the village. He needs your help.
+	=> END
+
+~ phase_2
+Doug: Now that we have that out of the way.
+Doug: Go see Lord Graybeard in the village. 
+Doug: He's very upset with the state of things and you are our only hope.
+Hero: On it!
+=> END
+
+~ more_help
+Doug: Did you need something else?
+Hero:
+  - Could you explain the controls again?
+	=> tutorial
+  - Nah. I'm just QE testing this interaction.
+	Doug: That's a bold strategy, Cotton. Let's see if it pays off for you.
+	=> END
+
+~ tutorial
+Doug: Okay, here's a quick rundown
+Doug: Press 'j' to use the Sword of RF to defeat bugs.
+Doug: Press 'k' to fire the Ping of Doom for ranged attacks.
+Doug: Interact with stuff by pressing 'e'.
+Doug: Good enough?
+Hero:
+  - Could you repeat that?
+	=> tutorial
+  - Thanks. I got it.
+	=> phase_2"
 errors = [  ]
 titles = {
-"main": "1"
+"first_meet": "14",
+"initialize": "1",
+"main": "6",
+"more_help": "34",
+"phase_2": "27",
+"tutorial": "43"
 }
 lines = {
 "0": {
 "next_id": "1",
-"text": "main",
+"text": "initialize",
 "type": "title"
 },
 "1": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "doug"
+} ], [ {
+"type": "string",
+"value": "met"
+} ], [ {
+"type": "number",
+"value": 0
+} ] ],
+"function": "set_dialogue_state"
+},
+"next_id": "2",
+"type": "mutation"
+},
+"10": {
+"condition": {
+"expression": [ {
+"function": "get_dialogue_state",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "doug"
+} ], [ {
+"type": "string",
+"value": "met"
+} ] ]
+}, {
+"type": "comparison",
+"value": "=="
+}, {
+"type": "number",
+"value": 1
+} ]
+},
+"next_conditional_id": "end",
+"next_id": "11",
+"next_id_after": "end",
+"type": "condition"
+},
+"11": {
+"next_id": "34",
+"parent_id": "10",
+"type": "goto"
+},
+"13": {
+"next_id": "14",
+"text": "first_meet",
+"type": "title"
+},
+"14": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "doug"
+} ], [ {
+"type": "string",
+"value": "met"
+} ], [ {
+"type": "number",
+"value": 1
+} ] ],
+"function": "set_dialogue_state"
+},
+"next_id": "15",
+"type": "mutation"
+},
+"15": {
 "character": "Doug",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "",
+"next_id": "16",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "well, here we are",
+"text": "Oh boy! I'm so glad you're here. This infrastructure is a mess.",
 "time": null,
-"translation_key": "well, here we are",
+"translation_key": "Oh boy! I'm so glad you're here. This infrastructure is a mess.",
 "type": "dialogue"
+},
+"16": {
+"character": "Doug",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "17",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "There are bugs everywhere! Tons of vulnerabilities.",
+"time": null,
+"translation_key": "There are bugs everywhere! Tons of vulnerabilities.",
+"type": "dialogue"
+},
+"17": {
+"character": "Doug",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "18",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "As a matter of fact, we're even out of storage space!",
+"time": null,
+"translation_key": "As a matter of fact, we're even out of storage space!",
+"type": "dialogue"
+},
+"18": {
+"character": "Doug",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "19",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Lord Graybeard is LOSING it. You better go see him.",
+"time": null,
+"translation_key": "Lord Graybeard is LOSING it. You better go see him.",
+"type": "dialogue"
+},
+"19": {
+"character": "",
+"inline_mutations": [  ],
+"next_id": "20",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Hero:",
+"time": null,
+"translation_key": "Hero:",
+"type": "dialogue"
+},
+"2": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "doug"
+} ], [ {
+"type": "string",
+"value": "initialized"
+} ], [ {
+"type": "bool",
+"value": true
+} ] ],
+"function": "set_dialogue_state"
+},
+"next_id": "3",
+"type": "mutation"
+},
+"20": {
+"next_id": "21",
+"next_id_after": "end",
+"replacements": [  ],
+"responses": PoolStringArray( "20", "22" ),
+"text": "Look, man. I need a quick refresher on what it is I DO here.",
+"translation_key": "Look, man. I need a quick refresher on what it is I DO here.",
+"type": "response"
+},
+"21": {
+"next_id": "43",
+"parent_id": "20",
+"type": "goto"
+},
+"22": {
+"next_id": "23",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "What am I standing around here talk to you for then?",
+"translation_key": "What am I standing around here talk to you for then?",
+"type": "response"
+},
+"23": {
+"character": "Doug",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "24",
+"parent_id": "22",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Go see Lord Graybeard in the village. He needs your help.",
+"time": null,
+"translation_key": "Go see Lord Graybeard in the village. He needs your help.",
+"type": "dialogue"
+},
+"24": {
+"next_id": "end",
+"parent_id": "22",
+"type": "goto"
+},
+"26": {
+"next_id": "27",
+"text": "phase_2",
+"type": "title"
+},
+"27": {
+"character": "Doug",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "28",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Now that we have that out of the way.",
+"time": null,
+"translation_key": "Now that we have that out of the way.",
+"type": "dialogue"
+},
+"28": {
+"character": "Doug",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "29",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Go see Lord Graybeard in the village.",
+"time": null,
+"translation_key": "Go see Lord Graybeard in the village.",
+"type": "dialogue"
+},
+"29": {
+"character": "Doug",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "30",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "He's very upset with the state of things and you are our only hope.",
+"time": null,
+"translation_key": "He's very upset with the state of things and you are our only hope.",
+"type": "dialogue"
+},
+"3": {
+"next_id": "6",
+"type": "goto"
+},
+"30": {
+"character": "Hero",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "31",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "On it!",
+"time": null,
+"translation_key": "On it!",
+"type": "dialogue"
+},
+"31": {
+"next_id": "end",
+"type": "goto"
+},
+"33": {
+"next_id": "34",
+"text": "more_help",
+"type": "title"
+},
+"34": {
+"character": "Doug",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "35",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Did you need something else?",
+"time": null,
+"translation_key": "Did you need something else?",
+"type": "dialogue"
+},
+"35": {
+"character": "",
+"inline_mutations": [  ],
+"next_id": "36",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Hero:",
+"time": null,
+"translation_key": "Hero:",
+"type": "dialogue"
+},
+"36": {
+"next_id": "37",
+"next_id_after": "end",
+"replacements": [  ],
+"responses": PoolStringArray( "36", "38" ),
+"text": "Could you explain the controls again?",
+"translation_key": "Could you explain the controls again?",
+"type": "response"
+},
+"37": {
+"next_id": "43",
+"parent_id": "36",
+"type": "goto"
+},
+"38": {
+"next_id": "39",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "Nah. I'm just QE testing this interaction.",
+"translation_key": "Nah. I'm just QE testing this interaction.",
+"type": "response"
+},
+"39": {
+"character": "Doug",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "40",
+"parent_id": "38",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "That's a bold strategy, Cotton. Let's see if it pays off for you.",
+"time": null,
+"translation_key": "That's a bold strategy, Cotton. Let's see if it pays off for you.",
+"type": "dialogue"
+},
+"40": {
+"next_id": "end",
+"parent_id": "38",
+"type": "goto"
+},
+"42": {
+"next_id": "43",
+"text": "tutorial",
+"type": "title"
+},
+"43": {
+"character": "Doug",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "44",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Okay, here's a quick rundown",
+"time": null,
+"translation_key": "Okay, here's a quick rundown",
+"type": "dialogue"
+},
+"44": {
+"character": "Doug",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "45",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Press 'j' to use the Sword of RF to defeat bugs.",
+"time": null,
+"translation_key": "Press 'j' to use the Sword of RF to defeat bugs.",
+"type": "dialogue"
+},
+"45": {
+"character": "Doug",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "46",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Press 'k' to fire the Ping of Doom for ranged attacks.",
+"time": null,
+"translation_key": "Press 'k' to fire the Ping of Doom for ranged attacks.",
+"type": "dialogue"
+},
+"46": {
+"character": "Doug",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "47",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Interact with stuff by pressing 'e'.",
+"time": null,
+"translation_key": "Interact with stuff by pressing 'e'.",
+"type": "dialogue"
+},
+"47": {
+"character": "Doug",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "48",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Good enough?",
+"time": null,
+"translation_key": "Good enough?",
+"type": "dialogue"
+},
+"48": {
+"character": "",
+"inline_mutations": [  ],
+"next_id": "49",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Hero:",
+"time": null,
+"translation_key": "Hero:",
+"type": "dialogue"
+},
+"49": {
+"next_id": "50",
+"next_id_after": "end",
+"replacements": [  ],
+"responses": PoolStringArray( "49", "51" ),
+"text": "Could you repeat that?",
+"translation_key": "Could you repeat that?",
+"type": "response"
+},
+"5": {
+"next_id": "6",
+"text": "main",
+"type": "title"
+},
+"50": {
+"next_id": "43",
+"parent_id": "49",
+"type": "goto"
+},
+"51": {
+"next_id": "52",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "Thanks. I got it.",
+"translation_key": "Thanks. I got it.",
+"type": "response"
+},
+"52": {
+"next_id": "27",
+"parent_id": "51",
+"type": "goto"
+},
+"6": {
+"condition": {
+"expression": [ {
+"function": "get_dialogue_state",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "doug"
+} ], [ {
+"type": "string",
+"value": "initialized"
+} ] ]
+}, {
+"type": "comparison",
+"value": "=="
+}, {
+"type": "bool",
+"value": false
+} ]
+},
+"next_conditional_id": "8",
+"next_id": "7",
+"next_id_after": "8",
+"type": "condition"
+},
+"7": {
+"next_id": "1",
+"parent_id": "6",
+"type": "goto"
+},
+"8": {
+"condition": {
+"expression": [ {
+"function": "get_dialogue_state",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "doug"
+} ], [ {
+"type": "string",
+"value": "met"
+} ] ]
+}, {
+"type": "comparison",
+"value": "=="
+}, {
+"type": "number",
+"value": 0
+} ]
+},
+"next_conditional_id": "10",
+"next_id": "9",
+"next_id_after": "10",
+"type": "condition"
+},
+"9": {
+"next_id": "14",
+"parent_id": "8",
+"type": "goto"
 }
 }
