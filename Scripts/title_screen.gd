@@ -2,7 +2,7 @@ extends Control
 
 onready var game_state = get_node("/root/GameState")
 
-export var next_scene = "Town"
+export var next_scene = "Sea"
 var scene_path_to_load
 
 func _ready():
