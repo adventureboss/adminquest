@@ -12,18 +12,36 @@ enum {
 	RANGED_ATTACK
 }
 
+# Knockback properties
+var knockback_vector = Vector2.ZERO
+export var knockback_force = 100
+export var knockback_dur = .15
+var current_knockback_dur = 0
+
+onready var HitEffect = preload("res://newEffects/HitEffect.tscn")
 onready var game_state = get_node("/root/GameState")
 onready var animation_player = get_node_or_null("AnimationPlayer")
 onready var animation_tree = get_node_or_null("AnimationTree")
 var animation_state = null
 
 func _ready():
-	game_state.connect("no_health", self, "queue_free")
 	if animation_tree:
 		 animation_state = animation_tree.get("parameters/playback")
+
+func knockback(area):
+	var effect = HitEffect.instance()
+	get_parent().add_child(effect)
+	effect.global_position = global_position
+	knockback_vector = (global_position - area.global_position).normalized() * knockback_force
+	current_knockback_dur = knockback_dur
 	
-func _physics_process(_delta):
-	pass
+func _physics_process(delta):
+	if current_knockback_dur >= 0.0:
+		var _collision = move_and_slide(knockback_vector)
+		current_knockback_dur -= delta
+
+	else:
+		knockback_vector = Vector2.ZERO
 
 func move_state(delta, movement_vector):
 	if movement_vector != Vector2.ZERO:
