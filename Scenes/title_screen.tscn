@@ -73,7 +73,7 @@ anchor_bottom = 0.0
 margin_top = 20.0
 margin_right = 150.0
 margin_bottom = 40.0
-scene_to_load = "res://Scenes/Sea.tscn"
+scene_to_load = "res://Scenes/Game.tscn"
 
 [node name="ContinueButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 5 )]
 anchor_right = 0.0
