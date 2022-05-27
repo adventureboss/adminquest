@@ -1,5 +1,8 @@
 extends Control
 
+onready var game_state = get_node("/root/GameState")
+
+export var next_scene = "Town"
 var scene_path_to_load
 
 func _ready():
@@ -14,4 +17,6 @@ func _on_Button_pressed(scene_to_load):
 
 
 func _on_FadeIn_fade_finished():
-	get_tree().change_scene(scene_path_to_load)
+	var _game = get_tree().change_scene(scene_path_to_load)
+	
+	game_state.current_scene_name = next_scene
