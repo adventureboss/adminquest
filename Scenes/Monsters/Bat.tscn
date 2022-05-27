@@ -7,7 +7,6 @@
 [ext_resource path="res://Scenes/Player/Stats.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Npc/PlayerDetectionZone/PlayerDetectionZone.tscn" type="PackedScene" id=6]
 
-
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 16, 24 )
