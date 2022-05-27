@@ -131,7 +131,7 @@ Lord Graybeard: Well good! I guess the system is in better shape than it was.
 Lord Graybeard: I can feel it in my bits.
 Hero: Gross.
 Lord Graybeard: Anyway, here are your hours. Now go home!
-# need to have a function call to award hours and end the game"
+do increase_hours(50)"
 errors = [  ]
 titles = {
 "active_quest_meet": "78",
@@ -513,7 +513,7 @@ lines = {
 "character": "Lord Graybeard",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "",
+"next_id": "126",
 "pauses": {
 },
 "replacements": [  ],
@@ -522,6 +522,17 @@ lines = {
 "time": null,
 "translation_key": "Anyway, here are your hours. Now go home!",
 "type": "dialogue"
+},
+"126": {
+"mutation": {
+"args": [ [ {
+"type": "number",
+"value": 50
+} ] ],
+"function": "increase_hours"
+},
+"next_id": "",
+"type": "mutation"
 },
 "13": {
 "next_id": "120",
