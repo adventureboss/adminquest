@@ -2,6 +2,8 @@ extends Node2D
 
 export var path_to_load  = "res://Scenes/World.tscn"
 
+signal scene_changed(path)
+
 var dialogueName = null
 var dialogueSection = null
 
@@ -12,9 +14,12 @@ func _ready():
 
 func add_scene(path = "res://Scenes/World.tscn"):
 	var scene = load(path)
+	
+	emit_signal("scene_changed", path)
+	
 	if scene == null:
 		# no scene, no game...
-		var _game = get_tree().change_scene("res://Scenes/title_screen.tscn")
+		var game = get_tree().change_scene("res://Scenes/title_screen.tscn")
 
 	var instance = scene.instance()
 	call_deferred("add_child", instance)
@@ -24,4 +29,3 @@ func remove_scene(scene):
 
 func display_dialogue(_dialogueName, _dialogueSection):
 	$CanvasLayer/DialogBox.visible = true
-	

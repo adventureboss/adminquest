@@ -1,9 +1,25 @@
 extends Node2D
 
+onready var game_state = get_node("/root/GameState")
+
 func _ready():
+	set_player_transform()
 	set_camera_limits()
 
-
+func set_player_transform():
+	var prev_scene = game_state.current_scene_name
+	var position
+	if prev_scene == "Graveyard":
+		position = $fromGraveyard
+		$YSort/Player.position = position.position
+	elif prev_scene == "Sea":
+		position = $fromSea
+		$YSort/Player.position = position.position
+	else:
+		# error, no entrance there
+		pass
+	game_state.scene_change("Town")
+	
 func set_camera_limits():
 	var map_limits = $GraveyardTileMap.get_used_rect()
 	var map_cellsize = $GraveyardTileMap.cell_size

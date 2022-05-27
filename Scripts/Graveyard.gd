@@ -1,8 +1,10 @@
 extends Node2D
 
+onready var game_state = get_node("/root/GameState")
 
 func _ready():
 	set_camera_limits()
+	game_state.scene_change("Graveyard")
 
 
 func set_camera_limits():

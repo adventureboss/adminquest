@@ -1,7 +1,21 @@
 extends Node2D
 
+onready var game_state = get_node("/root/GameState")
+
 func _ready():
+	set_player_transform()
 	set_camera_limits()
+
+func set_player_transform():
+	var prev_scene = game_state.current_scene_name
+	var position
+	if prev_scene == "Town":
+		position = $fromTown
+		$YSort/Player.position = position.position
+	else:
+		# error, no entrance there
+		pass
+	game_state.scene_change("Sea")
 
 
 func set_camera_limits():
@@ -16,5 +30,5 @@ func set_camera_limits():
 func _on_TownArea2D_area_entered(_area):
 	# Change to town area
 	var game = get_node("/root/Game")
-	game.add_scene("res://Scenes/Town.tscn")
 	game.remove_scene(self)
+	game.add_scene("res://Scenes/Town.tscn")
