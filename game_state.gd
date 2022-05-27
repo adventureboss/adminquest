@@ -46,6 +46,7 @@ func scene_change(name):
 	current_scene_name = name
 	
 func start_dialogue(resource, entry) -> void:
+	DialogueManager.game_states = [self]
 	get_tree().paused = true
 	var dialogue = yield(DialogueManager.get_next_dialogue_line(entry, resource), "completed")
 	if dialogue != null:
