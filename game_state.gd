@@ -50,7 +50,8 @@ func start_dialogue(resource, entry) -> void:
 		balloon.dialogue = dialogue
 		get_tree().current_scene.add_child(balloon)
 		start_dialogue(resource, yield(balloon, "actioned"))
-	get_tree().paused = false
+	else:
+		get_tree().paused = false
 
 func save_game(filename: String):
 	var save_data: Dictionary = {
