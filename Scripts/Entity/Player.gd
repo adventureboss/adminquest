@@ -44,10 +44,10 @@ func enter_move(delta):
 	
 	.move_state(delta, input_vector)
 
-func light_attack_state(delta):
+func light_attack_state(_delta):
 	animation_state.travel("light_attack")
 
-func ranged_attack_state(delta):
+func ranged_attack_state(_delta):
 	var input_vector = get_input_vector()
 	var energyball = ENERGYBALL.instance()
 

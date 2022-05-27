@@ -10,10 +10,10 @@ func _physics_process(delta: float) -> void:
 func destroy():
 	queue_free()
 
-func _on_Hitbox_area_entered(area):
+func _on_Hitbox_area_entered(_area):
 	destroy()
 
-func _on_Hitbox_body_entered(area):
+func _on_Hitbox_body_entered(_area):
 	destroy()
 
 func _on_VisibilityNotifier2D_screen_exited():
