@@ -1,0 +1,140 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialogue_manager/dialogue_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+syntax_version = 2
+raw_text = "~ main
+VarLog Messages: Greetings! I am the all powerful VarLog Messages! I hold the secrets of this world!
+VarLog Messages: The history of the system contained within my 50 Gigabytes. Never rotated. Never removed!
+VarLog Messages: Many have attempted to stop me, yet I reemerge more powerful than before!
+Hero: I'm getting paid good money to stop you.
+VarLog Messages: And it will mean ...
+VarLog Messages: [shake rate=20 level=10]YOUR DOOM[/shake]
+Hero: Well, it's almost time for me to clock out. So ...
+Hero: Prepare to be DELETED!
+"
+errors = [  ]
+titles = {
+"main": "1"
+}
+lines = {
+"0": {
+"next_id": "1",
+"text": "main",
+"type": "title"
+},
+"1": {
+"character": "VarLog Messages",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "2",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Greetings! I am the all powerful VarLog Messages! I hold the secrets of this world!",
+"time": null,
+"translation_key": "Greetings! I am the all powerful VarLog Messages! I hold the secrets of this world!",
+"type": "dialogue"
+},
+"2": {
+"character": "VarLog Messages",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "3",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "The history of the system contained within my 50 Gigabytes. Never rotated. Never removed!",
+"time": null,
+"translation_key": "The history of the system contained within my 50 Gigabytes. Never rotated. Never removed!",
+"type": "dialogue"
+},
+"3": {
+"character": "VarLog Messages",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "4",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Many have attempted to stop me, yet I reemerge more powerful than before!",
+"time": null,
+"translation_key": "Many have attempted to stop me, yet I reemerge more powerful than before!",
+"type": "dialogue"
+},
+"4": {
+"character": "Hero",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "5",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I'm getting paid good money to stop you.",
+"time": null,
+"translation_key": "I'm getting paid good money to stop you.",
+"type": "dialogue"
+},
+"5": {
+"character": "VarLog Messages",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "6",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "And it will mean ...",
+"time": null,
+"translation_key": "And it will mean ...",
+"type": "dialogue"
+},
+"6": {
+"character": "VarLog Messages",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "7",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "[shake rate=20 level=10]YOUR DOOM[/shake]",
+"time": null,
+"translation_key": "[shake rate=20 level=10]YOUR DOOM[/shake]",
+"type": "dialogue"
+},
+"7": {
+"character": "Hero",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "8",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Well, it's almost time for me to clock out. So ...",
+"time": null,
+"translation_key": "Well, it's almost time for me to clock out. So ...",
+"type": "dialogue"
+},
+"8": {
+"character": "Hero",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Prepare to be DELETED!",
+"time": null,
+"translation_key": "Prepare to be DELETED!",
+"type": "dialogue"
+}
+}
