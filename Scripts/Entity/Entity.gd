@@ -24,6 +24,8 @@ onready var animation_player = get_node_or_null("AnimationPlayer")
 onready var animation_tree = get_node_or_null("AnimationTree")
 var animation_state = null
 
+var facingDirection: Vector2 = Vector2.RIGHT
+
 func _ready():
 	if animation_tree:
 		 animation_state = animation_tree.get("parameters/playback")
@@ -45,10 +47,16 @@ func _physics_process(delta):
 
 func move_state(delta, movement_vector):
 	if movement_vector != Vector2.ZERO:
+		var normalizedMovementVector = movement_vector.normalized()
+		if normalizedMovementVector.x > 0:
+			facingDirection = Vector2.RIGHT
+		elif normalizedMovementVector.x < 0:
+			facingDirection = Vector2.LEFT
+
 		if animation_tree:
-			animation_tree.set("parameters/idle/blend_position", movement_vector)
-			animation_tree.set("parameters/run/blend_position", movement_vector)
-			animation_tree.set("parameters/attack/blend_position", movement_vector)
+			animation_tree.set("parameters/idle/blend_position", facingDirection)
+			animation_tree.set("parameters/run/blend_position", facingDirection)
+			animation_tree.set("parameters/light_attack/blend_position", facingDirection)
 			animation_state.travel("run")
 		velocity = velocity.move_toward(movement_vector * max_speed, acceleration * delta)
 		
