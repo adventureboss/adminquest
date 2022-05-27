@@ -9,6 +9,7 @@ export var player_stats = {
 
 # establish defautl dictionary for dialogue states
 var _dialogue_state: Dictionary = {}
+var _quest_state: Dictionary = {}
 
 signal no_health
 signal health_changed(value)
@@ -95,3 +96,16 @@ func get_dialogue_state(actor: String, variable, default = null):
 		self._dialogue_state[actor] = {}
 
 	return self._dialogue_state[actor].get(variable, default)
+
+# handle player quest states
+func set_quest_state(quest: String, variable: String, value):
+	if not self._quest_state.has(quest):
+		self._quest_state[quest] = {}
+	
+	self._quest_state[quest][variable] = value
+
+func get_quest_state(quest: String, variable, default = null):
+	if not self._quest_state.has(quest):
+		self._quest_state[quest] = {}
+		
+	return self._quest_state[quest].get(variable, default)
