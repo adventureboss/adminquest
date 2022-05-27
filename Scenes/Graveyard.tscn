@@ -938,7 +938,9 @@ z_index = 0
 remote_path = NodePath("../../../Camera2D")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
 stream = ExtResource( 14 )
+volume_db = -6.0
 autoplay = true
 
 [connection signal="area_entered" from="TownArea2D" to="." method="_on_TownArea2D_area_entered"]
