@@ -13,6 +13,7 @@ onready var margin := $Balloon/Margin
 onready var character_label := $Balloon/Margin/VBox/Character
 onready var dialogue_label := $Balloon/Margin/VBox/Dialogue
 onready var responses_menu := $Balloon/Margin/VBox/Responses/Menu
+onready var press_enter_to_continue := $Balloon/Margin/VBox/PressEnterToContinue
 
 
 var dialogue: DialogueLine
@@ -59,12 +60,15 @@ func _ready() -> void:
 	
 	# Ok, we can hide it now. It will come back later if we have any responses
 	responses_menu.visible = false
+	press_enter_to_continue.visible = false
 	
 	# Show our box
 	balloon.visible = true
 	
 	dialogue_label.type_out()
 	yield(dialogue_label, "finished")
+	
+	press_enter_to_continue.visible = true
 	
 	# Wait for input
 	var next_id: String = ""
