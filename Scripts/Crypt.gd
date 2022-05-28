@@ -15,4 +15,4 @@ func set_camera_limits():
 	$Camera2D.limit_bottom = map_limits.end.y * map_cellsize.y + 1
 
 func move_player(position):
-	player.transform = position.transform
+	player.position = position.position
