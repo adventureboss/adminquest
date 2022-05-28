@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Assets/TileMap/EmptyTileMap/TextureRect_Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/tilesets/dungeon_/dungeon_text.png" type="Texture" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Stair.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Monsters/GrandmasterWarlock.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scripts/Stairs.gd" type="Script" id=11]
+[ext_resource path="res://Scripts/Crypt.gd" type="Script" id=12]
 
 [sub_resource type="TileSet" id=5]
 0/name = "dungeon_ [lava].png 0"
@@ -125,6 +127,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 0/z_index = 0
 
 [node name="Crypt" type="Node2D"]
+script = ExtResource( 12 )
 
 [node name="TextureRect_Background" parent="." instance=ExtResource( 1 )]
 margin_right = 984.0
@@ -167,6 +170,7 @@ tile_data = PoolIntArray( 1966114, 0, 0 )
 
 [node name="Stairs" type="Node2D" parent="."]
 position = Vector2( 515, 111 )
+script = ExtResource( 11 )
 
 [node name="1" type="Label" parent="Stairs"]
 margin_left = -3.0
@@ -468,3 +472,24 @@ remote_path = NodePath("../../../Camera2D")
 
 [node name="VLog" parent="YSort" instance=ExtResource( 10 )]
 position = Vector2( 489, 698 )
+
+[connection signal="area_entered" from="Stairs/Stair1" to="Stairs" method="_on_Stair1_area_entered"]
+[connection signal="area_entered" from="Stairs/Stair2" to="Stairs" method="_on_Stair2_area_entered"]
+[connection signal="area_entered" from="Stairs/Stair3" to="Stairs" method="_on_Stair3_area_entered"]
+[connection signal="area_entered" from="Stairs/Stair4" to="Stairs" method="_on_Stair4_area_entered"]
+[connection signal="area_entered" from="Stairs/Stair5" to="Stairs" method="_on_Stair5_area_entered"]
+[connection signal="area_entered" from="Stairs/Stair6" to="Stairs" method="_on_Stair6_area_entered"]
+[connection signal="area_entered" from="Stairs/Stair7" to="Stairs" method="_on_Stair7_area_entered"]
+[connection signal="area_entered" from="Stairs/Stair8" to="Stairs" method="_on_Stair8_area_entered"]
+[connection signal="area_entered" from="Stairs/Stair9" to="Stairs" method="_on_Stair9_area_entered"]
+[connection signal="area_entered" from="Stairs/Stair10" to="Stairs" method="_on_Stair10_area_entered"]
+[connection signal="area_entered" from="Stairs/Stair11" to="Stairs" method="_on_Stair11_area_entered"]
+[connection signal="area_entered" from="Stairs/Stair12" to="Stairs" method="_on_Stair12_area_entered"]
+[connection signal="area_entered" from="Stairs/Stair13" to="Stairs" method="_on_Stair13_area_entered"]
+[connection signal="area_entered" from="Stairs/Stair14" to="Stairs" method="_on_Stair14_area_entered"]
+[connection signal="area_entered" from="Stairs/Stair15" to="Stairs" method="_on_Stair15_area_entered"]
+[connection signal="area_entered" from="Stairs/Stair16" to="Stairs" method="_on_Stair16_area_entered"]
+[connection signal="area_entered" from="Stairs/Stair17" to="Stairs" method="_on_Stair17_area_entered"]
+[connection signal="area_entered" from="Stairs/Stair18" to="Stairs" method="_on_Stair18_area_entered"]
+[connection signal="area_entered" from="Stairs/Stair19" to="Stairs" method="_on_Stair19_area_entered"]
+[connection signal="area_entered" from="Stairs/Stair20" to="Stairs" method="_on_Stair20_area_entered"]
