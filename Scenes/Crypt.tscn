@@ -721,6 +721,7 @@ process_mode = 0
 smoothing_enabled = true
 
 [node name="Stairs" type="Node2D" parent="."]
+visible = false
 script = ExtResource( 11 )
 
 [node name="1" type="Label" parent="Stairs"]
