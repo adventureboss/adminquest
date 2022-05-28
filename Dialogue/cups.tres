@@ -1,0 +1,63 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialogue_manager/dialogue_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+syntax_version = 2
+raw_text = "~ main
+CUPS: Hey, do you want to print something?
+Print? What is this? The 90's
+CUPS: I'm ... so old."
+errors = [  ]
+titles = {
+"main": "1"
+}
+lines = {
+"0": {
+"next_id": "1",
+"text": "main",
+"type": "title"
+},
+"1": {
+"character": "CUPS",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "2",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Hey, do you want to print something?",
+"time": null,
+"translation_key": "Hey, do you want to print something?",
+"type": "dialogue"
+},
+"2": {
+"character": "",
+"inline_mutations": [  ],
+"next_id": "3",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Print? What is this? The 90's",
+"time": null,
+"translation_key": "Print? What is this? The 90's",
+"type": "dialogue"
+},
+"3": {
+"character": "CUPS",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I'm ... so old.",
+"time": null,
+"translation_key": "I'm ... so old.",
+"type": "dialogue"
+}
+}
