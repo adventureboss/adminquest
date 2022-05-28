@@ -498,7 +498,9 @@ position = Vector2( 163, 372 )
 position = Vector2( 275, 182 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
 stream = ExtResource( 16 )
+volume_db = -6.0
 autoplay = true
 
 [node name="GenericEnemy" parent="." instance=ExtResource( 17 )]
