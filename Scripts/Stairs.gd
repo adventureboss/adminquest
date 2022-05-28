@@ -83,5 +83,4 @@ func _on_Stair20_area_entered(_area):
 	crypt.move_player($Position4)
 	
 func _on_Stair21_area_entered(_area):
-	#crypt.move_player($Position12)
-	pass
+	crypt.move_player($Position12)
