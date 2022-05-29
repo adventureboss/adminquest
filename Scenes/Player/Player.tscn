@@ -449,7 +449,7 @@ height = 6.00006
 [sub_resource type="CircleShape2D" id=35]
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 0, -8 )
+position = Vector2( 0, -20 )
 z_index = 1
 collision_layer = 524288
 script = ExtResource( 2 )
