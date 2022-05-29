@@ -138,6 +138,7 @@ interact={
 
 [layer_names]
 
+2d_physics/layer_1="Player"
 2d_physics/layer_9="Scene"
 2d_physics/layer_15="Monster"
 
