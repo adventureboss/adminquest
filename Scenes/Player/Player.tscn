@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://Assets/characters/player.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Entity/Player.gd" type="Script" id=2]
@@ -216,6 +216,21 @@ tracks/5/keys = {
 "values": [ false, true ]
 }
 
+[sub_resource type="Animation" id=36]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 24, 25, 26 ]
+}
+
 [sub_resource type="Animation" id=7]
 resource_name = "idle_left"
 length = 0.6
@@ -344,6 +359,31 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
+[sub_resource type="AnimationNodeAnimation" id=37]
+animation = "death"
+
+[sub_resource type="AnimationNodeAnimation" id=38]
+animation = "death"
+
+[sub_resource type="AnimationNodeAnimation" id=39]
+animation = "death"
+
+[sub_resource type="AnimationNodeAnimation" id=40]
+animation = "death"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=41]
+blend_point_0/node = SubResource( 37 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 38 )
+blend_point_1/pos = Vector2( 1, 0 )
+blend_point_2/node = SubResource( 39 )
+blend_point_2/pos = Vector2( 0, 1.1 )
+blend_point_3/node = SubResource( 40 )
+blend_point_3/pos = Vector2( 0, -1.1 )
+min_space = Vector2( -1, -1.1 )
+max_space = Vector2( 1, 1.1 )
+blend_mode = 1
+
 [sub_resource type="AnimationNodeAnimation" id=8]
 animation = "idle_left"
 
@@ -427,16 +467,24 @@ max_space = Vector2( 1, 1.1 )
 switch_mode = 2
 auto_advance = true
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=42]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=43]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=44]
+
 [sub_resource type="AnimationNodeStateMachine" id=13]
+states/death/node = SubResource( 41 )
+states/death/position = Vector2( 617.452, 277.5 )
 states/idle/node = SubResource( 12 )
 states/idle/position = Vector2( 381.327, 142.812 )
 states/light_attack/node = SubResource( 29 )
 states/light_attack/position = Vector2( 383.389, 277.5 )
 states/run/node = SubResource( 20 )
 states/run/position = Vector2( 617.452, 142.75 )
-transitions = [ "idle", "run", SubResource( 21 ), "run", "idle", SubResource( 22 ), "idle", "light_attack", SubResource( 30 ), "light_attack", "idle", SubResource( 31 ) ]
+transitions = [ "idle", "run", SubResource( 21 ), "run", "idle", SubResource( 22 ), "idle", "light_attack", SubResource( 30 ), "light_attack", "idle", SubResource( 31 ), "run", "death", SubResource( 42 ), "idle", "death", SubResource( 43 ), "light_attack", "death", SubResource( 44 ) ]
 start_node = "idle"
-graph_offset = Vector2( -178.548, 80.0386 )
+graph_offset = Vector2( -612.548, 72.0386 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=14]
 
@@ -471,6 +519,7 @@ shape = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 anims/attack_left = SubResource( 15 )
 anims/attack_right = SubResource( 3 )
+anims/death = SubResource( 36 )
 anims/idle_left = SubResource( 7 )
 anims/idle_right = SubResource( 4 )
 anims/run_left = SubResource( 5 )
@@ -481,6 +530,7 @@ tree_root = SubResource( 13 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 14 )
+parameters/death/blend_position = Vector2( 0, 0 )
 parameters/idle/blend_position = Vector2( 0.95632, 0.963492 )
 parameters/light_attack/blend_position = Vector2( 0, 0 )
 parameters/run/blend_position = Vector2( 0.86803, 0.0142857 )

@@ -8,7 +8,7 @@ var inventory = inventory_resource.new()
 const ENERGYBALL = preload("res://Scenes/Player/Attacks/Energyball.tscn")
 
 func _ready():
-	game_state.connect("no_health", self, "queue_free")
+	game_state.connect("no_health", self, "onPlayerDeath")
 	animation_player = $AnimationPlayer
 	animation_tree = $AnimationTree
 	animation_state = animation_tree.get("parameters/playback")
@@ -26,9 +26,12 @@ func _physics_process(delta):
 			ranged_attack_state(delta)
 
 	if Input.is_action_just_pressed("light_attack"):
+		$AudioStreamPlayer.play()
 		state = LIGHT_ATTACK
 	if Input.is_action_just_pressed("ranged_attack"):
 		state = RANGED_ATTACK
+	
+	
 
 	._physics_process(delta)
 
@@ -65,3 +68,7 @@ func attack_animation_finished():
 func onPlayerHit(area):
 	knockback(area)
 	GameState.set_health(GameState.player_stats.health - 1)
+	
+func onPlayerDeath():
+	queue_free()
+	animation_state.travel("death")
