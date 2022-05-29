@@ -35,3 +35,9 @@ func remove_scene(scene):
 
 func display_dialogue(_dialogueName, _dialogueSection):
 	$CanvasLayer/DialogBox.visible = true
+
+func display_interact():
+	$CanvasLayer/InteractTip.show()
+
+func hide_interact():
+	$CanvasLayer/InteractTip.hide()
