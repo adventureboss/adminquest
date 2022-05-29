@@ -19,7 +19,7 @@
 [ext_resource path="res://Scenes/Monsters/NovicePyromancer.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Scenes/Monsters/AdeptNecromancer.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Assets/tilesets/portal_animated.tres" type="Texture" id=19]
-[ext_resource path="res://Scripts/PortalArea2D.gd" type="Script" id=20]
+[ext_resource path="res://Scripts/InteractableObjects/PortalArea2D.gd" type="Script" id=20]
 
 [sub_resource type="ConvexPolygonShape2D" id=102]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
