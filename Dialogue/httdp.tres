@@ -1,0 +1,124 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialogue_manager/dialogue_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+syntax_version = 2
+raw_text = "~ main
+HTTPD: Apache Test Page!
+You: You've never been configured have you?
+HTTPD: Nope! But, doggone it, I'm going to do my job.
+You: Is the firewall even open for you?
+HTTPD: ....
+HTTPD: I'm so lonely.
+You: Um. Good luck with that!"
+errors = [  ]
+titles = {
+"main": "1"
+}
+lines = {
+"0": {
+"next_id": "1",
+"text": "main",
+"type": "title"
+},
+"1": {
+"character": "HTTPD",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "2",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Apache Test Page!",
+"time": null,
+"translation_key": "Apache Test Page!",
+"type": "dialogue"
+},
+"2": {
+"character": "You",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "3",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "You've never been configured have you?",
+"time": null,
+"translation_key": "You've never been configured have you?",
+"type": "dialogue"
+},
+"3": {
+"character": "HTTPD",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "4",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Nope! But, doggone it, I'm going to do my job.",
+"time": null,
+"translation_key": "Nope! But, doggone it, I'm going to do my job.",
+"type": "dialogue"
+},
+"4": {
+"character": "You",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "5",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Is the firewall even open for you?",
+"time": null,
+"translation_key": "Is the firewall even open for you?",
+"type": "dialogue"
+},
+"5": {
+"character": "HTTPD",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "6",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "....",
+"time": null,
+"translation_key": "....",
+"type": "dialogue"
+},
+"6": {
+"character": "HTTPD",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "7",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I'm so lonely.",
+"time": null,
+"translation_key": "I'm so lonely.",
+"type": "dialogue"
+},
+"7": {
+"character": "You",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Um. Good luck with that!",
+"time": null,
+"translation_key": "Um. Good luck with that!",
+"type": "dialogue"
+}
+}

@@ -24,8 +24,8 @@ func set_player_transform():
 	game_state.scene_change("Town")
 	
 func set_camera_limits():
-	var map_limits = $GraveyardTileMap.get_used_rect()
-	var map_cellsize = $GraveyardTileMap.cell_size
+	var map_limits = $GroundTileMap.get_used_rect()
+	var map_cellsize = $GroundTileMap.cell_size
 	$Camera2D.limit_left = map_limits.position.x * map_cellsize.x
 	$Camera2D.limit_right = map_limits.end.x * map_cellsize.x
 	$Camera2D.limit_top = map_limits.position.y * map_cellsize.y
