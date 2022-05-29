@@ -81,6 +81,7 @@ anchor_bottom = 0.0
 margin_top = 40.0
 margin_right = 150.0
 margin_bottom = 60.0
+scene_to_load = "res://Scenes/Game.tscn"
 
 [node name="OptionsButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 3 )]
 anchor_right = 0.0
