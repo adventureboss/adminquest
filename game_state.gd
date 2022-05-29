@@ -18,6 +18,10 @@ signal hours_changed(value)
 
 var game
 
+# Once the player beats the crypt, some dialog could be different
+# Dialog could check this var then choose between pre- or post-crypt dialog
+export var win_status = false setget set_win_status
+
 export var current_scene_name = "Title Screen" setget scene_change
 
 func _ready():
@@ -109,3 +113,6 @@ func get_quest_state(quest: String, variable, default = null):
 		self._quest_state[quest] = {}
 		
 	return self._quest_state[quest].get(variable, default)
+
+func set_win_status(value):
+	win_status = true
