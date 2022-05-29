@@ -17,7 +17,11 @@ func set_camera_limits():
 
 
 func _on_TownArea2D_area_entered(_area):
-	# Change to town area
 	var game = get_node("/root/Game")
 	game.add_scene("res://Scenes/Town.tscn")
+	game.remove_scene(self)
+
+func change_scene(path = "res://Scenes/Town.tscn"):
+	var game = get_node("/root/Game")
+	game.add_scene(path)
 	game.remove_scene(self)

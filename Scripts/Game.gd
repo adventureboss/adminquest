@@ -11,6 +11,12 @@ func _ready():
 	add_scene(path_to_load)
 	$CanvasLayer/DialogBox.visible = false
 	GameState.game = self
+	
+func _process(_delta):
+	# display help dialog
+	if Input.is_action_just_pressed("ui_cancel"):
+		$CanvasLayer/HelpMenu/PopupPanel.popup()
+
 
 func add_scene(path = "res://Scenes/Sea.tscn"):
 	var scene = load(path)
