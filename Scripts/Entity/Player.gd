@@ -32,6 +32,7 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("light_attack"):
 		state = LIGHT_ATTACK
+		$AudioStreamPlayer.play()
 	if Input.is_action_just_pressed("ranged_attack"):
 		state = RANGED_ATTACK
 
