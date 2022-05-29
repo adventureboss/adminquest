@@ -1,8 +1,11 @@
 extends Node2D
 
 onready var game_state = get_node("/root/GameState")
+onready var game = get_parent()
 
 func _ready():
+	game.hide_interact()
+	
 	set_player_transform()
 	set_camera_limits()
 
