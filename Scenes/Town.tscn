@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://Assets/TileMap/EmptyTileMap/EmptyCarpetTileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/TileMap/EmptyTileMap/EmptyWaterTileMap.tscn" type="PackedScene" id=2]
@@ -13,7 +13,6 @@
 [ext_resource path="res://Assets/TileMap/SpookyGroundTileMap.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Scripts/Town.gd" type="Script" id=13]
-[ext_resource path="res://Scenes/Monsters/Bat.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scenes/InteractableObjects/LordGraybeard.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Music.mp3" type="AudioStream" id=16]
 [ext_resource path="res://Scenes/Monsters/WaterElemental.tscn" type="PackedScene" id=17]
@@ -457,7 +456,7 @@ collision_layer = 256
 collision_mask = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GraveyardArea2D"]
-position = Vector2( 40.0802, 5 )
+position = Vector2( 11.022, 16 )
 shape = SubResource( 38 )
 
 [node name="DockArea2D" type="Area2D" parent="."]
@@ -492,37 +491,34 @@ collision_layer = 524545
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
 remote_path = NodePath("../../../Camera2D")
 
-[node name="Bat" parent="YSort" instance=ExtResource( 14 )]
-position = Vector2( 163, 372 )
-
 [node name="LordGraybeard" parent="YSort" instance=ExtResource( 15 )]
 position = Vector2( 275, 182 )
+
+[node name="GenericEnemy" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 282, 273 )
+
+[node name="GenericEnemy2" parent="YSort" instance=ExtResource( 18 )]
+position = Vector2( 333, 236 )
+
+[node name="GenericEnemy4" parent="YSort" instance=ExtResource( 21 )]
+position = Vector2( 455, 221 )
+
+[node name="GenericEnemy5" parent="YSort" instance=ExtResource( 20 )]
+position = Vector2( 445, 261 )
+
+[node name="GenericEnemy6" parent="YSort" instance=ExtResource( 22 )]
+position = Vector2( 390, 299 )
+
+[node name="CUPS" parent="YSort" instance=ExtResource( 19 )]
+position = Vector2( 163, 191 )
+dialogFile = ExtResource( 25 )
+entryDialog = "main"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 stream = ExtResource( 16 )
 volume_db = -6.0
 autoplay = true
-
-[node name="GenericEnemy" parent="." instance=ExtResource( 17 )]
-position = Vector2( 282, 273 )
-
-[node name="GenericEnemy2" parent="." instance=ExtResource( 18 )]
-position = Vector2( 333, 236 )
-
-[node name="GenericEnemy4" parent="." instance=ExtResource( 21 )]
-position = Vector2( 455, 221 )
-
-[node name="GenericEnemy5" parent="." instance=ExtResource( 20 )]
-position = Vector2( 445, 261 )
-
-[node name="GenericEnemy6" parent="." instance=ExtResource( 22 )]
-position = Vector2( 390, 299 )
-
-[node name="CUPS" parent="." instance=ExtResource( 19 )]
-position = Vector2( 163, 191 )
-dialogFile = ExtResource( 25 )
-entryDialog = "main"
 
 [connection signal="area_entered" from="GraveyardArea2D" to="." method="_on_GraveyardArea2D_area_entered"]
 [connection signal="area_entered" from="DockArea2D" to="." method="_on_DockArea2D_area_entered"]
