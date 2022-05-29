@@ -1,0 +1,75 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialogue_manager/dialogue_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+syntax_version = 2
+raw_text = "~ main
+The entire infrastructure is crumbling. Mass panic has consumed upper management.[next=0.5]
+Updates have been paused, vulnerabilities have been breached, bugs run unpatched.[next=0.5]
+You are the only hope for stability. You ...[next=0.5]
+The System Administrator [next=2]"
+errors = [  ]
+titles = {
+"main": "1"
+}
+lines = {
+"0": {
+"next_id": "1",
+"text": "main",
+"type": "title"
+},
+"1": {
+"character": "",
+"inline_mutations": [  ],
+"next_id": "2",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "The entire infrastructure is crumbling. Mass panic has consumed upper management.",
+"time": "0.5",
+"translation_key": "The entire infrastructure is crumbling. Mass panic has consumed upper management.",
+"type": "dialogue"
+},
+"2": {
+"character": "",
+"inline_mutations": [  ],
+"next_id": "3",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Updates have been paused, vulnerabilities have been breached, bugs run unpatched.",
+"time": "0.5",
+"translation_key": "Updates have been paused, vulnerabilities have been breached, bugs run unpatched.",
+"type": "dialogue"
+},
+"3": {
+"character": "",
+"inline_mutations": [  ],
+"next_id": "4",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "You are the only hope for stability. You ...",
+"time": "0.5",
+"translation_key": "You are the only hope for stability. You ...",
+"type": "dialogue"
+},
+"4": {
+"character": "",
+"inline_mutations": [  ],
+"next_id": "",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "The System Administrator ",
+"time": "2",
+"translation_key": "The System Administrator ",
+"type": "dialogue"
+}
+}
