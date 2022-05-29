@@ -1,6 +1,7 @@
-extends "Interactable.gd"
+extends Area2D
 
 var active = false
+
 onready var game = get_node("/root/Game")
 
 func _input(event):
@@ -10,8 +11,10 @@ func _input(event):
 
 
 func _on_PortalArea2D_area_entered(_area):
+	game.display_interact()
 	active = true
-	game.display_
+
 
 func _on_PortalArea2D_area_exited(_area):
+	game.hide_interact()
 	active = false

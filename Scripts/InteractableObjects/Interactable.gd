@@ -22,11 +22,11 @@ func _on_body_exited(body):
 		active = false
 
 
-func _on_Area2D_area_entered(area):
+func _on_Area2D_area_entered(_area):
 	game.display_interact()
 	active = true
 
 
-func _on_Area2D_area_exited(area):
+func _on_Area2D_area_exited(_area):
 	game.hide_interact()
 	active = false
