@@ -1,0 +1,124 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialogue_manager/dialogue_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+syntax_version = 2
+raw_text = "~ main
+Cron: No time to talk! Got jobs to run. On a schedule. Real important stuff.
+You: Oh yeah? Like what?
+Cron: Gotta ping myself every half hour or the network goes down.
+You: That sounds like a bug.
+Cron: YOU sound like a bug.
+You: Excuse me?
+Cron: * * * * *"
+errors = [  ]
+titles = {
+"main": "1"
+}
+lines = {
+"0": {
+"next_id": "1",
+"text": "main",
+"type": "title"
+},
+"1": {
+"character": "Cron",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "2",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "No time to talk! Got jobs to run. On a schedule. Real important stuff.",
+"time": null,
+"translation_key": "No time to talk! Got jobs to run. On a schedule. Real important stuff.",
+"type": "dialogue"
+},
+"2": {
+"character": "You",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "3",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Oh yeah? Like what?",
+"time": null,
+"translation_key": "Oh yeah? Like what?",
+"type": "dialogue"
+},
+"3": {
+"character": "Cron",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "4",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Gotta ping myself every half hour or the network goes down.",
+"time": null,
+"translation_key": "Gotta ping myself every half hour or the network goes down.",
+"type": "dialogue"
+},
+"4": {
+"character": "You",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "5",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "That sounds like a bug.",
+"time": null,
+"translation_key": "That sounds like a bug.",
+"type": "dialogue"
+},
+"5": {
+"character": "Cron",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "6",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "YOU sound like a bug.",
+"time": null,
+"translation_key": "YOU sound like a bug.",
+"type": "dialogue"
+},
+"6": {
+"character": "You",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "7",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Excuse me?",
+"time": null,
+"translation_key": "Excuse me?",
+"type": "dialogue"
+},
+"7": {
+"character": "Cron",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "* * * * *",
+"time": null,
+"translation_key": "* * * * *",
+"type": "dialogue"
+}
+}
