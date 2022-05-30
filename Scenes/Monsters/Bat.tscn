@@ -57,7 +57,6 @@ shouldFollow = true
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
 animation = "Fly"
-frame = 1
 speed_scale = 0.6
 playing = true
 offset = Vector2( 0, -12 )
@@ -79,6 +78,7 @@ shape = SubResource( 8 )
 one_way_collision_margin = 1.8
 
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 6 )]
+collision_layer = 0
 collision_mask = 8912896
 
 [node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]

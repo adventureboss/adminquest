@@ -3,6 +3,9 @@ extends Node2D
 # Crypt reference
 onready var crypt = get_parent()
 
+func _ready():
+	$Stair21.call_deferred("disabeled", true)
+	
 # Not the cleanest way to do this, but it allows for easy specification for each collision
 func _on_Stair1_area_entered(_area):
 	crypt.move_player($Position2)
@@ -75,3 +78,6 @@ func _on_Stair20_area_entered(_area):
 	
 func _on_Stair21_area_entered(_area):
 	crypt.move_player($Position12)
+
+func allow_enter_stair21():
+	$Stair21.call_deferred("diabled", false)

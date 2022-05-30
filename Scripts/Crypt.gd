@@ -3,6 +3,8 @@ extends Node2D
 onready var player = get_node("YSort/Player")
 
 func _ready():
+	$EndingStairTileMap.call_deferred("disabled", true)
+	$EndingStairTileMap.call_deferred("visible", false)
 	set_camera_limits()
 	GameState.scene_change("Crypt")
 
@@ -16,3 +18,8 @@ func set_camera_limits():
 
 func move_player(position):
 	player.position = position.position
+
+func vlog_death():
+	$EndingStairTileMap.call_deferred("disabled", false)
+	$EndingStairTileMap.call_deferred("visible", true)
+	GameState.win_status = true
