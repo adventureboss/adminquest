@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Assets/fonts/novem___.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/characters/monsters/GrandmasterWarlockIdle.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Buttons/ExitButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/UI/HoursUI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Buttons/ContinueButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/FadeIn.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scripts/title_screen.gd" type="Script" id=8]
@@ -74,8 +75,7 @@ margin_right = 225.0
 margin_bottom = 17.0
 
 [node name="SubText" type="RichTextLabel" parent="Menu/Title"]
-margin_left = -43.0
-margin_right = 211.0
+margin_right = 225.0
 margin_bottom = 17.0
 theme = SubResource( 4 )
 text = "           Clocking Out?"
@@ -122,11 +122,13 @@ margin_bottom = 119.0
 position = Vector2( -49, 43 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 12 )
-frame = 4
+frame = 7
 playing = true
 flip_h = true
 
 [node name="FadeIn" parent="." instance=ExtResource( 7 )]
 visible = false
+
+[node name="HoursUI" parent="." instance=ExtResource( 4 )]
 
 [connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]
