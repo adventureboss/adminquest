@@ -1,0 +1,133 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Assets/fonts/novem___.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/characters/monsters/GrandmasterWarlockIdle.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Buttons/OptionsButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Buttons/ContinueButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/FadeIn.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scripts/title_screen.gd" type="Script" id=8]
+
+[sub_resource type="DynamicFont" id=3]
+size = 15
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=4]
+default_font = SubResource( 3 )
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 2 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 192, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 2 )
+region = Rect2( 224, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 2 )
+region = Rect2( 256, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=12]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 10 ), SubResource( 11 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Title Screen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 8 )
+
+[node name="Menu" type="VBoxContainer" parent="."]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 300.0
+margin_bottom = 160.0
+
+[node name="Title" type="VBoxContainer" parent="Menu"]
+margin_right = 280.0
+margin_bottom = 17.0
+
+[node name="SubText" type="RichTextLabel" parent="Menu/Title"]
+margin_right = 280.0
+margin_bottom = 17.0
+theme = SubResource( 4 )
+text = "           Clocking Out?"
+fit_content_height = true
+
+[node name="CenterRow" type="HBoxContainer" parent="Menu"]
+margin_top = 21.0
+margin_right = 280.0
+margin_bottom = 140.0
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
+margin_right = 276.0
+margin_bottom = 119.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 0
+alignment = 1
+
+[node name="ContinueButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 39.0
+margin_right = 276.0
+margin_bottom = 59.0
+scene_to_load = "res://Scenes/Graveyard.tscn"
+
+[node name="Exit" parent="Menu/CenterRow/Buttons" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 59.0
+margin_right = 276.0
+margin_bottom = 79.0
+scene_to_load = "res://Scenes/title_screen.tscn"
+
+[node name="CenterContainer" type="CenterContainer" parent="Menu/CenterRow"]
+margin_left = 280.0
+margin_top = 10.0
+margin_right = 280.0
+margin_bottom = 119.0
+
+[node name="Node2D" type="Node2D" parent="Menu/CenterRow/CenterContainer"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Menu/CenterRow/CenterContainer"]
+position = Vector2( -49, 43 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 12 )
+frame = 1
+playing = true
+flip_h = true
+
+[node name="FadeIn" parent="." instance=ExtResource( 7 )]
+visible = false
+
+[connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]
