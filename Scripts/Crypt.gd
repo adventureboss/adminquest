@@ -3,8 +3,7 @@ extends Node2D
 onready var player = get_node("YSort/Player")
 
 func _ready():
-	$EndingStairTileMap.call_deferred("disabled", true)
-	$EndingStairTileMap.call_deferred("visible", false)
+	$EndingStairTileMap.set_deferred("visible", false)
 	set_camera_limits()
 	GameState.scene_change("Crypt")
 
@@ -20,6 +19,12 @@ func move_player(position):
 	player.position = position.position
 
 func vlog_death():
-	$EndingStairTileMap.call_deferred("disabled", false)
-	$EndingStairTileMap.call_deferred("visible", true)
+	$EndingStairTileMap.set_deferred("visible", true)
 	GameState.win_status = true
+
+
+func _on_completed_game():
+	# load Graveyard near portal
+	var game = get_node("/root/Game")
+	game.remove_scene(self)
+	game.add_scene("res://Scenes/Sea.tscn")

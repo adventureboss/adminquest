@@ -18,8 +18,14 @@ func _ready():
 	display_health(stats.health)
 	
 func _on_Stats_health_changed(value):
-	display_health(stats.health)
-
+	display_health(value)
 
 func _on_Stats_max_health_changed(value):
-	display_max_health(stats.max_health)
+	display_max_health(value)
+
+func hide_hearts():
+	set_deferred("visible", false)
+	
+func display_hearts():
+	print("display")
+	set_deferred("visible", true)

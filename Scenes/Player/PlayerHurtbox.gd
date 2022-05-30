@@ -24,8 +24,6 @@ func _on_Timer_timeout():
 
 func _on_Hurtbox_invincibility_ended():
 	collision.set_deferred("disabled", false)
-	print("ended")
 
 func _on_Hurtbox_invincibility_started():
 	collision.set_deferred("disabled", true)
-	print("started")

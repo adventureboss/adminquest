@@ -4,7 +4,7 @@ extends Node2D
 onready var crypt = get_parent()
 
 func _ready():
-	$Stair21.call_deferred("disabeled", true)
+	$Stair21/CollisionShape2D.set_deferred("disabled", true)
 	
 # Not the cleanest way to do this, but it allows for easy specification for each collision
 func _on_Stair1_area_entered(_area):
@@ -80,4 +80,4 @@ func _on_Stair21_area_entered(_area):
 	crypt.move_player($Position12)
 
 func allow_enter_stair21():
-	$Stair21.call_deferred("diabled", false)
+	$Stair21/CollisionShape2D.set_deferred("disabled", false)
