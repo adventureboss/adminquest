@@ -2,8 +2,8 @@ extends Node
 
 # Chose hours for the currency, soooo funny.
 export var player_stats = {
-	max_health = 3,
-	health = 3,
+	max_health = 4,
+	health = 4,
 	hours = 0
 }
 
