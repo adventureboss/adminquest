@@ -1090,7 +1090,6 @@ position = Vector2( 250, 376 )
 [node name="Slime5" parent="YSort" instance=ExtResource( 13 )]
 position = Vector2( 264, 453 )
 
-[connection signal="area_entered" from="LavaArea2D" to="YSort/Player" method="onPlayerHit"]
 [connection signal="area_entered" from="Stairs/Stair1" to="Stairs" method="_on_Stair1_area_entered"]
 [connection signal="area_entered" from="Stairs/Stair2" to="Stairs" method="_on_Stair2_area_entered"]
 [connection signal="area_entered" from="Stairs/Stair3" to="Stairs" method="_on_Stair3_area_entered"]
