@@ -115,4 +115,8 @@ func get_quest_state(quest: String, variable, default = null):
 	return self._quest_state[quest].get(variable, default)
 
 func set_win_status(value):
-	win_status = true
+	win_status = value
+	if value:
+		set_quest_state("any_quest", "state", "complete")
+	else:
+		set_quest_state("any_quest", "state", "in_progress")

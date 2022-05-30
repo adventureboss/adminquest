@@ -6,11 +6,23 @@
 script = ExtResource( 1 )
 syntax_version = 2
 raw_text = "~ main
+if get_quest_state(\"any_quest\", \"state\") == \"complete\"
+	=> completed
+else
+	=> hello
+	
+~ hello
 CUPS: Hey, do you want to print something?
-Print? What is this? The 90's
-CUPS: I'm ... so old."
+You: Print? What is this? The 90's?
+CUPS: I'm ... so old.
+
+~ completed
+CUPS: I printed you something.
+You: It's blank..."
 errors = [  ]
 titles = {
+"completed": "12",
+"hello": "7",
 "main": "1"
 }
 lines = {
@@ -20,10 +32,89 @@ lines = {
 "type": "title"
 },
 "1": {
+"condition": {
+"expression": [ {
+"function": "get_quest_state",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "any_quest"
+} ], [ {
+"type": "string",
+"value": "state"
+} ] ]
+}, {
+"type": "comparison",
+"value": "=="
+}, {
+"type": "string",
+"value": "complete"
+} ]
+},
+"next_conditional_id": "3",
+"next_id": "2",
+"next_id_after": "end",
+"type": "condition"
+},
+"11": {
+"next_id": "12",
+"text": "completed",
+"type": "title"
+},
+"12": {
 "character": "CUPS",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "2",
+"next_id": "13",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I printed you something.",
+"time": null,
+"translation_key": "I printed you something.",
+"type": "dialogue"
+},
+"13": {
+"character": "You",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "It's blank...",
+"time": null,
+"translation_key": "It's blank...",
+"type": "dialogue"
+},
+"2": {
+"next_id": "12",
+"parent_id": "1",
+"type": "goto"
+},
+"3": {
+"next_conditional_id": "end",
+"next_id": "4",
+"next_id_after": "end",
+"type": "condition"
+},
+"4": {
+"next_id": "7",
+"parent_id": "3",
+"type": "goto"
+},
+"6": {
+"next_id": "7",
+"text": "hello",
+"type": "title"
+},
+"7": {
+"character": "CUPS",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "8",
 "pauses": {
 },
 "replacements": [  ],
@@ -33,24 +124,25 @@ lines = {
 "translation_key": "Hey, do you want to print something?",
 "type": "dialogue"
 },
-"2": {
-"character": "",
+"8": {
+"character": "You",
+"character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "3",
+"next_id": "9",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Print? What is this? The 90's",
+"text": "Print? What is this? The 90's?",
 "time": null,
-"translation_key": "Print? What is this? The 90's",
+"translation_key": "Print? What is this? The 90's?",
 "type": "dialogue"
 },
-"3": {
+"9": {
 "character": "CUPS",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "",
+"next_id": "end",
 "pauses": {
 },
 "replacements": [  ],
