@@ -1,4 +1,4 @@
-extends Node
+extends Area2D
 
 
 # Declare member variables here. Examples:
