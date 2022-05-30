@@ -18,7 +18,6 @@ func _ready():
 	animation_tree = $AnimationTree
 	animation_state = animation_tree.get("parameters/playback")
 
-
 # Code so far based on HeartBeast tutorial
 # https://youtu.be/TQKXU7iSWUU
 func _physics_process(delta):
@@ -38,13 +37,11 @@ func _physics_process(delta):
 
 	._physics_process(delta)
 
-
 func get_input_vector():
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	return input_vector.normalized()
-
 
 func enter_move(delta):
 	var input_vector = get_input_vector()

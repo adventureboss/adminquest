@@ -33,13 +33,11 @@ func set_camera_limits():
 
 func _on_GraveyardArea2D_area_entered(_area):
 	# Change to Graveyard scene
-	var game = get_node("/root/Game")
 	game.add_scene("res://Scenes/Graveyard.tscn")
 	game.remove_scene(self)
 
 
 func _on_DockArea2D_area_entered(_area):
 	# Change to seaside scene
-	var game = get_node("/root/Game")
 	game.add_scene("res://Scenes/Sea.tscn")
 	game.remove_scene(self)

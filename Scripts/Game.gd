@@ -42,7 +42,24 @@ func display_interact():
 
 func hide_interact():
 	$CanvasLayer/InteractTip.hide()
-
+	
+func hide_ui():
+	$CanvasLayer/HealthUI.hide()
+	$CanvasLayer/HoursUI.hide()
+	
+func show_ui():
+	$CanvasLayer/HealthUI.show()
+	$CanvasLayer/HoursUI.show()
+	
 func death():
 	# player died
+	$DeathTimer.start(3.0)
+
+func _on_DeathTimer_timeout():
+	$FadeIn.show()
+	$FadeIn.Fade_in()
 	add_scene("res://Scenes/death_screen.tscn")
+	if GameState.current_scene_name == "Crypt":
+		remove_scene(get_node("Crypt"))
+	# anything else
+	$FadeIn.hide()
