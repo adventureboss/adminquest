@@ -8,6 +8,7 @@ var dialogueName = null
 var dialogueSection = null
 
 func _ready():
+	GameState.connect("no_health", self, "death")
 	add_scene(path_to_load)
 	$CanvasLayer/DialogBox.visible = false
 	GameState.game = self
@@ -41,3 +42,7 @@ func display_interact():
 
 func hide_interact():
 	$CanvasLayer/InteractTip.hide()
+
+func death():
+	# player died
+	add_scene("res://Scenes/death_screen.tscn")

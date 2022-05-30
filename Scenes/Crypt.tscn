@@ -783,7 +783,7 @@ position = Vector2( -1, -23 )
 shape = SubResource( 73 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 488, 763 )
+position = Vector2( 522, 118 )
 current = true
 process_mode = 0
 smoothing_enabled = true
@@ -1087,7 +1087,7 @@ collision_layer = 0
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 487, 759 )
+position = Vector2( 521, 114 )
 z_index = 0
 collision_layer = 524545
 
@@ -1097,7 +1097,6 @@ remote_path = NodePath("../../../Camera2D")
 
 [node name="VLog" parent="YSort" instance=ExtResource( 10 )]
 position = Vector2( 489, 698 )
-collision_layer = 16384
 
 [node name="Slime" parent="YSort" instance=ExtResource( 13 )]
 position = Vector2( 433, 265 )
