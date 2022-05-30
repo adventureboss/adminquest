@@ -81,6 +81,7 @@ text = "           Clocking Out?"
 fit_content_height = true
 
 [node name="CenterRow" type="HBoxContainer" parent="Menu"]
+margin_left = 20.0
 margin_top = 21.0
 margin_right = 280.0
 margin_bottom = 140.0
@@ -88,7 +89,7 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
-margin_right = 276.0
+margin_right = 256.0
 margin_bottom = 119.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -99,7 +100,7 @@ alignment = 1
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 39.0
-margin_right = 276.0
+margin_right = 256.0
 margin_bottom = 59.0
 scene_to_load = "res://Scenes/Graveyard.tscn"
 
@@ -107,14 +108,14 @@ scene_to_load = "res://Scenes/Graveyard.tscn"
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 59.0
-margin_right = 276.0
+margin_right = 256.0
 margin_bottom = 79.0
 scene_to_load = "res://Scenes/title_screen.tscn"
 
 [node name="CenterContainer" type="CenterContainer" parent="Menu/CenterRow"]
-margin_left = 280.0
+margin_left = 235.0
 margin_top = 10.0
-margin_right = 280.0
+margin_right = 281.0
 margin_bottom = 119.0
 
 [node name="Node2D" type="Node2D" parent="Menu/CenterRow/CenterContainer"]
@@ -123,7 +124,7 @@ margin_bottom = 119.0
 position = Vector2( -49, 43 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 12 )
-frame = 1
+frame = 3
 playing = true
 flip_h = true
 
