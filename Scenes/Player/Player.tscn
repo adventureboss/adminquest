@@ -454,6 +454,7 @@ position = Vector2( 0, -20 )
 z_index = 1
 collision_layer = 524288
 script = ExtResource( 2 )
+knockback_force = 150
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -1 )
@@ -515,7 +516,7 @@ stream = ExtResource( 4 )
 [node name="Hurtbox" type="Area2D" parent="."]
 modulate = Color( 1, 0, 0, 0.768627 )
 position = Vector2( 1, 9 )
-collision_layer = 16384
+collision_layer = 0
 collision_mask = 16384
 script = ExtResource( 5 )
 

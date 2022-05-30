@@ -39,6 +39,7 @@ radius = 10.0499
 [sub_resource type="CircleShape2D" id=8]
 
 [node name="Slime" type="KinematicBody2D"]
+collision_layer = 16384
 script = ExtResource( 3 )
 max_speed = 12
 hoursPerKill = 2
@@ -47,12 +48,10 @@ shouldFollow = true
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 5 )
 animation = "Bounce"
-frame = 1
+frame = 3
 playing = true
 
-[node name="Moving Collision" type="KinematicBody2D" parent="AnimatedSprite"]
-
-[node name="Collision" type="CollisionShape2D" parent="AnimatedSprite/Moving Collision"]
+[node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource( 7 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 1 )]
@@ -65,6 +64,7 @@ shape = SubResource( 6 )
 
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, 2 )
+collision_layer = 0
 collision_mask = 8912896
 
 [node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
