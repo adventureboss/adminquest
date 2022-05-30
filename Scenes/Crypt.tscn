@@ -764,22 +764,26 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 1966114, 0, 0 )
 
-[node name="Area2D" type="Area2D" parent="ChestEndTileMap"]
+[node name="ChestArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 256
 script = ExtResource( 15 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ChestEndTileMap/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChestArea2D"]
 position = Vector2( 551, 489 )
 shape = SubResource( 72 )
 
 [node name="BossArea2D" type="Area2D" parent="."]
 position = Vector2( 489, 758 )
+collision_layer = 0
+collision_mask = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossArea2D"]
 position = Vector2( -1, -23 )
 shape = SubResource( 73 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 522, 112 )
+position = Vector2( 488, 763 )
 current = true
 process_mode = 0
 smoothing_enabled = true
@@ -1078,11 +1082,12 @@ position = Vector2( 488, 769 )
 
 [node name="Stair21" parent="Stairs" instance=ExtResource( 9 )]
 position = Vector2( 555, 688 )
+collision_layer = 0
 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 521, 108 )
+position = Vector2( 487, 759 )
 z_index = 0
 collision_layer = 524545
 
@@ -1162,7 +1167,9 @@ position = Vector2( 447, 709 )
 [node name="Bat7" parent="YSort/BossBats" instance=ExtResource( 14 )]
 position = Vector2( 489, 827 )
 
-[connection signal="completed_game" from="ChestEndTileMap/Area2D" to="." method="_on_completed_game"]
+[connection signal="area_entered" from="ChestArea2D" to="ChestArea2D" method="_on_ChestArea2D_area_entered"]
+[connection signal="area_exited" from="ChestArea2D" to="ChestArea2D" method="_on_ChestArea2D_area_exited"]
+[connection signal="completed_game" from="ChestArea2D" to="." method="_on_completed_game"]
 [connection signal="area_entered" from="BossArea2D" to="YSort/VLog" method="_on_BossArea2D_area_entered"]
 [connection signal="area_entered" from="Stairs/Stair1" to="Stairs" method="_on_Stair1_area_entered"]
 [connection signal="area_entered" from="Stairs/Stair2" to="Stairs" method="_on_Stair2_area_entered"]

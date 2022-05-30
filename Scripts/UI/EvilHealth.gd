@@ -27,5 +27,4 @@ func hide_hearts():
 	set_deferred("visible", false)
 	
 func display_hearts():
-	print("display")
 	set_deferred("visible", true)
