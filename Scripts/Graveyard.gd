@@ -4,6 +4,18 @@ onready var game_state = get_node("/root/GameState")
 
 func _ready():
 	set_camera_limits()
+	
+	set_player_transform()
+	
+func set_player_transform():
+	var prev_scene = game_state.current_scene_name
+	var position
+	if prev_scene == "Crypt":
+		position = $fromCrypt
+		$YSort/Player.position = position.position
+	else:
+		# error, no entrance there
+		pass
 	game_state.scene_change("Graveyard")
 
 

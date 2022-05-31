@@ -966,6 +966,9 @@ collision_mask = 256
 position = Vector2( 40.0802, 5 )
 shape = SubResource( 101 )
 
+[node name="fromCrypt" type="Position2D" parent="."]
+position = Vector2( 348, 363 )
+
 [node name="YSort" type="YSort" parent="."]
 position = Vector2( -93, 53 )
 
