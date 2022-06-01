@@ -783,7 +783,7 @@ position = Vector2( -1, -23 )
 shape = SubResource( 73 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 524, 119 )
+position = Vector2( 522, 118 )
 current = true
 process_mode = 0
 smoothing_enabled = true
@@ -1087,7 +1087,7 @@ collision_layer = 0
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 523, 115 )
+position = Vector2( 521, 114 )
 z_index = 0
 collision_layer = 524545
 
