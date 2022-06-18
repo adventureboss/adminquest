@@ -8,7 +8,7 @@ var dialogueName = null
 var dialogueSection = null
 
 func _ready():
-	GameState.connect("no_health", self, "death")
+	var _status = GameState.connect("no_health", self, "death")
 	add_scene(path_to_load)
 	$CanvasLayer/DialogBox.visible = false
 	GameState.game = self
