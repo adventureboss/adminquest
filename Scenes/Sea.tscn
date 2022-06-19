@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/TileMap/EmptyTileMap/EmptyWaterTileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/TileMap/EmptyTileMap/TextureRect_Background.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Assets/TileMap/EmptyTileMap/EmptyDecorationsTileMap.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scripts/Sea.gd" type="Script" id=10]
 [ext_resource path="res://salamisound-4195836-small-quiet-waves-rippling.mp3" type="AudioStream" id=11]
+[ext_resource path="res://Scenes/InteractableObjects/Sign.tscn" type="PackedScene" id=12]
 
 [sub_resource type="CapsuleShape2D" id=38]
 radius = 53.1063
@@ -76,6 +77,8 @@ remote_path = NodePath("../../../Camera2D")
 
 [node name="Doug" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 350, 412 )
+
+[node name="Sign" parent="YSort" instance=ExtResource( 12 )]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
