@@ -1,0 +1,33 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialogue_manager/dialogue_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+syntax_version = 2
+raw_text = "~ main
+Our branches run deep. Our town's oldest tree, Mappleworth, has produced rich syrup for generations."
+errors = [  ]
+titles = {
+"main": "1"
+}
+lines = {
+"0": {
+"next_id": "1",
+"text": "main",
+"type": "title"
+},
+"1": {
+"character": "",
+"inline_mutations": [  ],
+"next_id": "",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Our branches run deep. Our town's oldest tree, Mappleworth, has produced rich syrup for generations.",
+"time": null,
+"translation_key": "Our branches run deep. Our town's oldest tree, Mappleworth, has produced rich syrup for generations.",
+"type": "dialogue"
+}
+}
