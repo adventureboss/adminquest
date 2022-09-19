@@ -49,17 +49,17 @@ func _physics_process(_delta: float) -> void:
 		page_up_counter = 0
 
 	if Input.is_action_just_pressed("ui_up") or up_counter >= PRESSED_COUNTER:
-		up_counter = clamp(up_counter - 15, 0, PRESSED_COUNTER)
+		up_counter = int(clamp(up_counter - 15, 0, PRESSED_COUNTER))
 		self.index -= 1
 	elif Input.is_action_just_pressed("ui_down") or down_counter >= PRESSED_COUNTER:
-		down_counter = clamp(down_counter - 15, 0, PRESSED_COUNTER)
+		down_counter = int(clamp(down_counter - 15, 0, PRESSED_COUNTER))
 		self.index += 1
 	
 	elif Input.is_action_just_pressed("ui_right") or page_down_counter >= PRESSED_COUNTER:
-		page_down_counter = clamp(page_down_counter - 15, 0, PRESSED_COUNTER)
+		page_down_counter = int(clamp(page_down_counter - 15, 0, PRESSED_COUNTER))
 		self.index += 5
 	elif Input.is_action_just_pressed("ui_left") or page_up_counter >= PRESSED_COUNTER:
-		page_up_counter = clamp(page_up_counter - 15, 0, PRESSED_COUNTER)
+		page_up_counter = int(clamp(page_up_counter - 15, 0, PRESSED_COUNTER))
 		self.index -= 5
 		
 	elif Input.is_action_just_pressed("ui_accept"):
@@ -67,7 +67,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func set_index(next_index: int) -> void:
-	next_index = clamp(next_index, 0, get_child_count() - 1)
+	next_index = int(clamp(next_index, 0, get_child_count() - 1))
 	
 	if next_index != index:
 		index = next_index
